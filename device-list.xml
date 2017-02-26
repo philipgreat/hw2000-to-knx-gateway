@@ -8,23 +8,23 @@
        </area>
        <area>
            <id>1</id>
-           <name>主卧</name>
+           <name>涓诲崸</name>
        </area>
        <area>
            <id>2</id>
-           <name>次卧</name>
+           <name>娆″崸</name>
        </area>
        <area>
            <id>3</id>
-           <name>客厅</name>
+           <name>瀹㈠巺</name>
        </area>
        <area>
            <id>4</id>
-           <name>餐厅</name>
+           <name>椁愬巺</name>
        </area>
        <area>
            <id>5</id>
-           <name>书房</name>
+           <name>涔︽埧</name>
        </area>
    </Area_Info>
    <Device_Info>
@@ -75,27 +75,27 @@
        <LIGHT>
            <light>
                <id>129</id>
-               <name>主卧主灯</name>
+               <name>涓诲崸涓荤伅</name>
                <areaid>1</areaid>
            </light>
            <light>
                <id>130</id>
-               <name>主卧筒灯</name>
+               <name>涓诲崸绛掔伅</name>
                <areaid>1</areaid>
            </light>
            <light>
                <id>131</id>
-               <name>主卧灯带</name>
+               <name>涓诲崸鐏甫</name>
                <areaid>1</areaid>
            </light>
            <light>
                <id>132</id>
-               <name>次卧主灯</name>
+               <name>娆″崸涓荤伅</name>
                <areaid>2</areaid>
            </light>
            <light>
                <id>133</id>
-               <name>次卧筒灯</name>
+               <name>娆″崸绛掔伅</name>
                <areaid>2</areaid>
            </light>
        </LIGHT>
@@ -104,145 +104,145 @@
                <id>1</id>
                <name>11</name>
                <areaid>2</areaid>
-               <areaname>次卧</areaname>
+               <areaname>娆″崸</areaname>
            </hbuslight>
            <hbuslight>
                <id>2</id>
                <name>22</name>
                <areaid>2</areaid>
-               <areaname>次卧</areaname>
+               <areaname>娆″崸</areaname>
            </hbuslight>
            <hbuslight>
                <id>3</id>
                <name>33</name>
                <areaid>2</areaid>
-               <areaname>次卧</areaname>
+               <areaname>娆″崸</areaname>
            </hbuslight>
            <hbuslight>
                <id>4</id>
                <name>44</name>
                <areaid>2</areaid>
-               <areaname>次卧</areaname>
+               <areaname>娆″崸</areaname>
            </hbuslight>
            <hbuslight>
                <id>5</id>
                <name>55</name>
                <areaid>2</areaid>
-               <areaname>次卧</areaname>
+               <areaname>娆″崸</areaname>
            </hbuslight>
            <hbuslight>
                <id>6</id>
                <name>66</name>
                <areaid>2</areaid>
-               <areaname>次卧</areaname>
+               <areaname>娆″崸</areaname>
            </hbuslight>
            <hbuslight>
                <id>7</id>
                <name>77</name>
                <areaid>2</areaid>
-               <areaname>次卧</areaname>
+               <areaname>娆″崸</areaname>
            </hbuslight>
            <hbuslight>
                <id>8</id>
                <name>88</name>
                <areaid>2</areaid>
-               <areaname>次卧</areaname>
+               <areaname>娆″崸</areaname>
            </hbuslight>
            <hbuslight>
                <id>1</id>
-               <name>客厅主灯</name>
+               <name>瀹㈠巺涓荤伅</name>
                <areaid>3</areaid>
-               <areaname>客厅</areaname>
+               <areaname>瀹㈠巺</areaname>
            </hbuslight>
            <hbuslight>
                <id>2</id>
-               <name>客厅筒灯</name>
+               <name>瀹㈠巺绛掔伅</name>
                <areaid>3</areaid>
-               <areaname>客厅</areaname>
+               <areaname>瀹㈠巺</areaname>
            </hbuslight>
            <hbuslight>
                <id>3</id>
                <name>3333</name>
                <areaid>3</areaid>
-               <areaname>客厅</areaname>
+               <areaname>瀹㈠巺</areaname>
            </hbuslight>
            <hbuslight>
                <id>1</id>
-               <name>餐厅主灯</name>
+               <name>椁愬巺涓荤伅</name>
                <areaid>4</areaid>
-               <areaname>餐厅</areaname>
+               <areaname>椁愬巺</areaname>
            </hbuslight>
            <hbuslight>
                <id>2</id>
-               <name>餐厅筒灯</name>
+               <name>椁愬巺绛掔伅</name>
                <areaid>4</areaid>
-               <areaname>餐厅</areaname>
+               <areaname>椁愬巺</areaname>
            </hbuslight>
            <hbuslight>
                <id>3</id>
-               <name>餐厅灯带</name>
+               <name>椁愬巺鐏甫</name>
                <areaid>4</areaid>
-               <areaname>餐厅</areaname>
+               <areaname>椁愬巺</areaname>
            </hbuslight>
            <hbuslight>
                <id>4</id>
-               <name>餐厅壁灯</name>
+               <name>椁愬巺澹佺伅</name>
                <areaid>4</areaid>
-               <areaname>餐厅</areaname>
+               <areaname>椁愬巺</areaname>
            </hbuslight>
            <hbuslight>
                <id>5</id>
-               <name>餐厅廊灯</name>
+               <name>椁愬巺寤婄伅</name>
                <areaid>4</areaid>
-               <areaname>餐厅</areaname>
+               <areaname>椁愬巺</areaname>
            </hbuslight>
            <hbuslight>
                <id>6</id>
-               <name>餐厅廊灯2</name>
+               <name>椁愬巺寤婄伅2</name>
                <areaid>4</areaid>
-               <areaname>餐厅</areaname>
+               <areaname>椁愬巺</areaname>
            </hbuslight>
            <hbuslight>
                <id>7</id>
-               <name>餐厅灯带2</name>
+               <name>椁愬巺鐏甫2</name>
                <areaid>4</areaid>
-               <areaname>餐厅</areaname>
+               <areaname>椁愬巺</areaname>
            </hbuslight>
            <hbuslight>
                <id>8</id>
-               <name>餐厅筒灯2</name>
+               <name>椁愬巺绛掔伅2</name>
                <areaid>4</areaid>
-               <areaname>餐厅</areaname>
+               <areaname>椁愬巺</areaname>
            </hbuslight>
        </HBUSLIGHT>
        <COMBINELIGHT>
            <combinelight>
                <id>129</id>
-               <name>主卧主灯</name>
+               <name>涓诲崸涓荤伅</name>
                <areaid>1</areaid>
                <type>maialight</type>
            </combinelight>
            <combinelight>
                <id>130</id>
-               <name>主卧筒灯</name>
+               <name>涓诲崸绛掔伅</name>
                <areaid>1</areaid>
                <type>maialight</type>
            </combinelight>
            <combinelight>
                <id>131</id>
-               <name>主卧灯带</name>
+               <name>涓诲崸鐏甫</name>
                <areaid>1</areaid>
                <type>maialight</type>
            </combinelight>
            <combinelight>
                <id>132</id>
-               <name>次卧主灯</name>
+               <name>娆″崸涓荤伅</name>
                <areaid>2</areaid>
                <type>maialight</type>
            </combinelight>
            <combinelight>
                <id>133</id>
-               <name>次卧筒灯</name>
+               <name>娆″崸绛掔伅</name>
                <areaid>2</areaid>
                <type>maialight</type>
            </combinelight>
@@ -296,13 +296,13 @@
            </combinelight>
            <combinelight>
                <id>1</id>
-               <name>客厅主灯</name>
+               <name>瀹㈠巺涓荤伅</name>
                <areaid>3</areaid>
                <type>hbuslight</type>
            </combinelight>
            <combinelight>
                <id>2</id>
-               <name>客厅筒灯</name>
+               <name>瀹㈠巺绛掔伅</name>
                <areaid>3</areaid>
                <type>hbuslight</type>
            </combinelight>
@@ -314,49 +314,49 @@
            </combinelight>
            <combinelight>
                <id>1</id>
-               <name>餐厅主灯</name>
+               <name>椁愬巺涓荤伅</name>
                <areaid>4</areaid>
                <type>hbuslight</type>
            </combinelight>
            <combinelight>
                <id>2</id>
-               <name>餐厅筒灯</name>
+               <name>椁愬巺绛掔伅</name>
                <areaid>4</areaid>
                <type>hbuslight</type>
            </combinelight>
            <combinelight>
                <id>3</id>
-               <name>餐厅灯带</name>
+               <name>椁愬巺鐏甫</name>
                <areaid>4</areaid>
                <type>hbuslight</type>
            </combinelight>
            <combinelight>
                <id>4</id>
-               <name>餐厅壁灯</name>
+               <name>椁愬巺澹佺伅</name>
                <areaid>4</areaid>
                <type>hbuslight</type>
            </combinelight>
            <combinelight>
                <id>5</id>
-               <name>餐厅廊灯</name>
+               <name>椁愬巺寤婄伅</name>
                <areaid>4</areaid>
                <type>hbuslight</type>
            </combinelight>
            <combinelight>
                <id>6</id>
-               <name>餐厅廊灯2</name>
+               <name>椁愬巺寤婄伅2</name>
                <areaid>4</areaid>
                <type>hbuslight</type>
            </combinelight>
            <combinelight>
                <id>7</id>
-               <name>餐厅灯带2</name>
+               <name>椁愬巺鐏甫2</name>
                <areaid>4</areaid>
                <type>hbuslight</type>
            </combinelight>
            <combinelight>
                <id>8</id>
-               <name>餐厅筒灯2</name>
+               <name>椁愬巺绛掔伅2</name>
                <areaid>4</areaid>
                <type>hbuslight</type>
            </combinelight>
@@ -364,40 +364,40 @@
        <HBUSCURTAIN>
            <hbuscurtain>
                <id>1</id>
-               <name>客厅布帘</name>
+               <name>瀹㈠巺甯冨笜</name>
                <areaid>3</areaid>
-               <areaname>客厅</areaname>
+               <areaname>瀹㈠巺</areaname>
            </hbuscurtain>
            <hbuscurtain>
                <id>2</id>
-               <name>客厅纱帘</name>
+               <name>瀹㈠巺绾卞笜</name>
                <areaid>3</areaid>
-               <areaname>客厅</areaname>
+               <areaname>瀹㈠巺</areaname>
            </hbuscurtain>
        </HBUSCURTAIN>
        <CURTAIN>
            <curtain>
                <id>134</id>
-               <name>主卧窗帘</name>
+               <name>涓诲崸绐楀笜</name>
                <areaid>1</areaid>
            </curtain>
        </CURTAIN>
        <COMBINECURTAIN>
            <combinecurtain>
                <id>134</id>
-               <name>主卧窗帘</name>
+               <name>涓诲崸绐楀笜</name>
                <areaid>1</areaid>
                <type>maiacurtain</type>
            </combinecurtain>
            <combinecurtain>
                <id>1</id>
-               <name>客厅布帘</name>
+               <name>瀹㈠巺甯冨笜</name>
                <areaid>3</areaid>
                <type>hbuscurtain</type>
            </combinecurtain>
            <combinecurtain>
                <id>2</id>
-               <name>客厅纱帘</name>
+               <name>瀹㈠巺绾卞笜</name>
                <areaid>3</areaid>
                <type>hbuscurtain</type>
            </combinecurtain>
@@ -438,7 +438,7 @@
    <Scenario_Info>
        <scenario>
            <id>1</id>
-           <name>居家模式</name>
+           <name>灞呭妯″紡</name>
            <areaid>1</areaid>
            <isenergy>0</isenergy>
            <picup>../images/Mainpage/button_scenario_home_normal.png</picup>
@@ -446,7 +446,7 @@
        </scenario>
        <scenario>
            <id>2</id>
-           <name>离家模式</name>
+           <name>绂诲妯″紡</name>
            <areaid>1</areaid>
            <isenergy>0</isenergy>
            <picup>../images/Mainpage/button_scenario_away_normal.png</picup>
@@ -454,7 +454,7 @@
        </scenario>
        <scenario>
            <id>3</id>
-           <name>就寝模式</name>
+           <name>灏卞瘽妯″紡</name>
            <areaid>1</areaid>
            <isenergy>0</isenergy>
            <picup>../images/Mainpage/button_scenario_sleep_normal.png</picup>
@@ -462,7 +462,7 @@
        </scenario>
        <scenario>
            <id>4</id>
-           <name>全开</name>
+           <name>鍏ㄥ紑</name>
            <areaid>3</areaid>
            <isenergy>0</isenergy>
            <picup>../images/Mainpage/button_scenario_customize_normal.png</picup>
@@ -470,7 +470,7 @@
        </scenario>
        <scenario>
            <id>5</id>
-           <name>全关</name>
+           <name>鍏ㄥ叧</name>
            <areaid>3</areaid>
            <isenergy>0</isenergy>
            <picup>../images/Mainpage/button_scenario_customize_normal.png</picup>
@@ -478,7 +478,7 @@
        </scenario>
        <scenario>
            <id>6</id>
-           <name>全开</name>
+           <name>鍏ㄥ紑</name>
            <areaid>2</areaid>
            <isenergy>0</isenergy>
            <picup>../images/Mainpage/button_scenario_customize_normal.png</picup>
@@ -486,7 +486,7 @@
        </scenario>
        <scenario>
            <id>7</id>
-           <name>全关</name>
+           <name>鍏ㄥ叧</name>
            <areaid>2</areaid>
            <isenergy>0</isenergy>
            <picup>../images/Mainpage/button_scenario_customize_normal.png</picup>
@@ -500,65 +500,65 @@
        </area>
        <area>
            <id>1</id>
-           <name>主卧</name>
+           <name>涓诲崸</name>
            <scenario>
                <id>1</id>
-               <name>居家模式</name>
+               <name>灞呭妯″紡</name>
                <picup>../images/Mainpage/button_scenario_home_normal.png</picup>
                <picdn>../images/Mainpage/button_scenario_home_selected.png</picdn>
            </scenario>
            <scenario>
                <id>2</id>
-               <name>离家模式</name>
+               <name>绂诲妯″紡</name>
                <picup>../images/Mainpage/button_scenario_away_normal.png</picup>
                <picdn>../images/Mainpage/button_scenario_away_selected.png</picdn>
            </scenario>
            <scenario>
                <id>3</id>
-               <name>就寝模式</name>
+               <name>灏卞瘽妯″紡</name>
                <picup>../images/Mainpage/button_scenario_sleep_normal.png</picup>
                <picdn>../images/Mainpage/button_scenario_sleep_selected.png</picdn>
            </scenario>
        </area>
        <area>
            <id>2</id>
-           <name>次卧</name>
+           <name>娆″崸</name>
            <scenario>
                <id>6</id>
-               <name>全开</name>
+               <name>鍏ㄥ紑</name>
                <picup>../images/Mainpage/button_scenario_customize_normal.png</picup>
                <picdn>../images/Mainpage/button_scenario_customize_selected.png</picdn>
            </scenario>
            <scenario>
                <id>7</id>
-               <name>全关</name>
+               <name>鍏ㄥ叧</name>
                <picup>../images/Mainpage/button_scenario_customize_normal.png</picup>
                <picdn>../images/Mainpage/button_scenario_customize_selected.png</picdn>
            </scenario>
        </area>
        <area>
            <id>3</id>
-           <name>客厅</name>
+           <name>瀹㈠巺</name>
            <scenario>
                <id>4</id>
-               <name>全开</name>
+               <name>鍏ㄥ紑</name>
                <picup>../images/Mainpage/button_scenario_customize_normal.png</picup>
                <picdn>../images/Mainpage/button_scenario_customize_selected.png</picdn>
            </scenario>
            <scenario>
                <id>5</id>
-               <name>全关</name>
+               <name>鍏ㄥ叧</name>
                <picup>../images/Mainpage/button_scenario_customize_normal.png</picup>
                <picdn>../images/Mainpage/button_scenario_customize_selected.png</picdn>
            </scenario>
        </area>
        <area>
            <id>4</id>
-           <name>餐厅</name>
+           <name>椁愬巺</name>
        </area>
        <area>
            <id>5</id>
-           <name>书房</name>
+           <name>涔︽埧</name>
        </area>
    </Scenario_Area>
    <Fast_Scenario_Info>

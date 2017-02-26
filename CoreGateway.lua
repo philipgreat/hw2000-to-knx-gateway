@@ -29,7 +29,9 @@ function CoreGateway.process(request)
         return "$verify,SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw=="
     end
     --other commands
-    
+    if string.starts(request,"$") then
+        return "$verify,error,103"
+    end
     local replaceTable = {}
     
 

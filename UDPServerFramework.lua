@@ -29,11 +29,14 @@ function UDPServerFramework.run(host, port, proccessorFunction)
   while 1 do
     dgram, ip, port = udp:receivefrom()
     if dgram then
-      print("Echoing '" .. dgram .. "' to " .. ip .. ":" .. port)
+      
       local response = proccessorFunction(dgram);
       udp:sendto(response.."\n", ip, port)
+      
+      print("get '" .. dgram .. "' from " .. ip .. ":" .. port.."and sent "..response)
+      
     else
-      print(ip)
+      --print(ip)
     end
   end
     
