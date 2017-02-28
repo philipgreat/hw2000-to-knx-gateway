@@ -1,0 +1,122 @@
+Binding to host '0.0.0.0' and port 10099...
+Waiting packets on 0.0.0.0:10099...
+get '$verify,admin,ce0bfd15059b68d67688884d7a3d3e8c\n' from 192.168.0.101:10099 and sent $verify,SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==
+command from honeywell client $req,trigger,0,l
+map command '$req,trigger,0,l to 7e 06 00 0d 00 01 14 0e
+count: 8
+
+
+Current status is: timeout
+get 'SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$req,trigger,0,l' from 192.168.0.101:10099 and sent SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$res,trigger,0,l
+command from honeywell client $cfg,scenario,1,l
+map command '$cfg,scenario,1,l to 7e 06 00 0d 00 01 14 0e
+count: 8
+
+
+Current status is: timeout
+get 'SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$cfg,scenario,1,l' from 192.168.0.101:10099 and sent SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$ack,scenario,1,l
+command from honeywell client $cfg,scenario,2,l
+map command '$cfg,scenario,2,l to 7e 06 00 0d 00 01 14 0e
+count: 8
+
+
+Current status is: timeout
+get 'SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$cfg,scenario,2,l' from 192.168.0.101:10099 and sent SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$ack,scenario,2,l
+command from honeywell client $cfg,scenario,3,l
+map command '$cfg,scenario,3,l to 7e 06 00 0d 00 01 14 0e
+count: 8
+
+
+Current status is: timeout
+get 'SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$cfg,scenario,3,l' from 192.168.0.101:10099 and sent SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$ack,scenario,3,l
+command from honeywell client $req,trigger,0,l
+map command '$req,trigger,0,l to 7e 06 00 0d 00 01 14 0e
+count: 8
+
+
+Current status is: timeout
+get 'SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$req,trigger,0,l' from 192.168.0.101:10099 and sent SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$res,trigger,0,l
+command from honeywell client $cfg,scenario,1,l
+map command '$cfg,scenario,1,l to 7e 06 00 0d 00 01 14 0e
+count: 8
+
+
+Current status is: timeout
+get 'SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$cfg,scenario,1,l' from 192.168.0.101:10099 and sent SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$ack,scenario,1,l
+command from honeywell client $cfg,scenario,2,l
+map command '$cfg,scenario,2,l to 7e 06 00 0d 00 01 14 0e
+count: 8
+
+
+Current status is: timeout
+get 'SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$cfg,scenario,2,l' from 192.168.0.101:10099 and sent SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$ack,scenario,2,l
+command from honeywell client $cfg,scenario,3,l
+map command '$cfg,scenario,3,l to 7e 06 00 0d 00 01 14 0e
+count: 8
+
+
+Current status is: timeout
+get 'SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$cfg,scenario,3,l' from 192.168.0.101:10099 and sent SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$ack,scenario,3,l
+command from honeywell client $req,trigger,0,l
+map command '$req,trigger,0,l to 7e 06 00 0d 00 01 14 0e
+count: 8
+
+
+Current status is: timeout
+get 'SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$req,trigger,0,l' from 192.168.0.101:10099 and sent SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$res,trigger,0,l
+command from honeywell client $req,trigger,0,l
+map command '$req,trigger,0,l to 7e 06 00 0d 00 01 14 0e
+count: 8
+
+
+Current status is: timeout
+get 'SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$req,trigger,0,l' from 192.168.0.101:10099 and sent SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$res,trigger,0,l
+command from honeywell client $req,trigger,0,l
+map command '$req,trigger,0,l to 7e 06 00 0d 00 01 14 0e
+count: 8
+
+
+Current status is: timeout
+get 'SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$req,trigger,0,l' from 192.168.0.101:10099 and sent SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$res,trigger,0,l
+command from honeywell client $req,trigger,0,l
+map command '$req,trigger,0,l to 7e 06 00 0d 00 01 14 0e
+count: 8
+
+
+Current status is: timeout
+get 'SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$req,trigger,0,l' from 192.168.0.101:10099 and sent SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$res,trigger,0,l
+command from honeywell client $req,trigger,0,l
+map command '$req,trigger,0,l to 7e 06 00 0d 00 01 14 0e
+count: 8
+
+
+Current status is: timeout
+get 'SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$req,trigger,0,l' from 192.168.0.101:10099 and sent SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$res,trigger,0,l
+command from honeywell client $req,trigger,0,l
+map command '$req,trigger,0,l to 7e 06 00 0d 00 01 14 0e
+count: 8
+
+
+Current status is: timeout
+get 'SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$req,trigger,0,l' from 192.168.0.101:10099 and sent SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$res,trigger,0,l
+command from honeywell client $req,trigger,0,l
+map command '$req,trigger,0,l to 7e 06 00 0d 00 01 14 0e
+count: 8
+
+
+Current status is: timeout
+get 'SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$req,trigger,0,l' from 192.168.0.101:10099 and sent SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$res,trigger,0,l
+command from honeywell client $req,trigger,0,l
+map command '$req,trigger,0,l to 7e 06 00 0d 00 01 14 0e
+count: 8
+
+
+Current status is: timeout
+get 'SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$req,trigger,0,l' from 192.168.0.101:10099 and sent SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$res,trigger,0,l
+command from honeywell client $req,trigger,0,l
+map command '$req,trigger,0,l to 7e 06 00 0d 00 01 14 0e
+count: 8
+
+
+Current status is: timeout
+get 'SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$req,trigger,0,l' from 192.168.0.101:10099 and sent SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw==$res,trigger,0,l

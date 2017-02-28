@@ -4,10 +4,10 @@ local CommandTable = {}
 local commandTable={
     -- honeywell text command to binary KTS command
     -- the 
-    ["$cfg,curtain,1,1,1,1,0"]="7e 06 00 0d 00 01 14 0d",
-    ["$cfg,curtain,1,1,1,1,1"]="7e 06 00 0d 00 01 14 0d",
-    ["$cfg,hbuslig,1,1,1,1,1,0"]="7e 06 00 0d 00 01 14 0d",
-    ["$cfg,hbuscurtain,1,1,1,1,1,0"]="7e 06 00 0d 00 01 14 0d"
+    ["$cfg,scenario,1,l"]="7e 06 00 0d 00 03 16 0d",
+    ["$cfg,scenario,2,l"]="7e 06 00 0d 00 01 14 0d",
+    ["$cfg,scenario,3,l"]="7e 06 00 0d 00 02 15 0d",
+    ["$cfg,scenario,4,l"]="7e 06 00 0d 00 01 14 0d"
     
 }
 

@@ -10,7 +10,7 @@ local ktsClient = assert(socket.tcp())
 
 ktsClient:settimeout(0.1)
 
-assert(ktsClient:connect("127.0.0.1", 8888))
+assert(ktsClient:connect("192.168.0.232", 8888))
 
 run("0.0.0.0",10099,processorFunction,ktsClient)
 
