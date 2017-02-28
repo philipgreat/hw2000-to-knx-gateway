@@ -1,3 +1,6 @@
+local commandTable = require("CommandTable")
+require("HexTool")
+
 local CoreGateway = {}
 
 
@@ -16,14 +19,35 @@ function string.split(s, p)
     return rt
 end
 
+function stringAfterDollar(str)
+  local dollarPos = string.find( str,"%$")
+  if dollarPos > 0 then
+    return string.sub( str, dollarPos )
+  end
+  return nil
+end
 
 
+local function cleanRecvBuffer(client)
+
+  while true do
+    local s, status, partial = client:receive(8)
+    --print(s)
+    local  value = s or partial
+    if value ~= nil then
+        print(hexdump(value))
+    end
+    if status ~=nil then
+      print("Current status is: "..status)
+    end
+    if status == "closed" then break end
+    if status == "timeout" then break end
+  end
+
+end
 
 
-
-
-
-function CoreGateway.process(request)
+function CoreGateway.process(request,ktsClient)
     --print(request)
     if string.starts(request,"$verify") then
         return "$verify,SKdNuu/ijrLx70xk5oAzSTk5LjI1MS44Mw=="
@@ -44,6 +68,20 @@ function CoreGateway.process(request)
       result = string.gsub(result,"%$"..v.from,"%$"..v.to)
       
     end
+
+    local honeywellCommand = stringAfterDollar(request)
+    print("command from honeywell client " .. honeywellCommand)
+    if ktsClient ~=nil and honeywellCommand ~= nil then
+    
+      local ktsCommand = commandTable:get(honeywellCommand)
+       print("map command '"..honeywellCommand.." to " .. ktsCommand)
+      local ktsBinary = tohex(ktsCommand) 
+      ktsClient:send(ktsBinary)
+      cleanRecvBuffer(ktsClient)
+    end
+
+
+
     return result
     
 end

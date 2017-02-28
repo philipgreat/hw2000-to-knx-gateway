@@ -11,8 +11,10 @@ local UDPServerFramework = {}
 local coreServer = require("CoreGateway")
 local socket = require("socket")
 
-
-function UDPServerFramework.run(host, port, proccessorFunction)
+function trim(s)
+  return (s:gsub("^%s*(.-)%s*$", "%1"))
+end
+function UDPServerFramework.run(host, port, proccessorFunction,ktsClient)
   if type(proccessorFunction) ~= "function" then
     print("The input parameter proccessorFunction is not a function, it is a "..type(proccessorFunction))
       return
@@ -30,10 +32,10 @@ function UDPServerFramework.run(host, port, proccessorFunction)
     dgram, ip, port = udp:receivefrom()
     if dgram then
       
-      local response = proccessorFunction(dgram);
+      local response = proccessorFunction(trim(dgram),ktsClient);
       udp:sendto(response.."\n", ip, port)
       
-      print("get '" .. dgram .. "' from " .. ip .. ":" .. port.."and sent "..response)
+      print("get '" .. trim(dgram) .. "' from " .. ip .. ":" .. port.." and sent "..response)
       
     else
       --print(ip)
