@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.chanllenge;
+package com.challenge;
 
 /**
  * @author Philip

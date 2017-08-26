@@ -1,4 +1,4 @@
-package com.chanllenge;
+package com.challenge;
 
 import java.util.Timer;
 

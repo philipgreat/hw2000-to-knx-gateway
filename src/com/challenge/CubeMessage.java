@@ -1,9 +1,11 @@
-package com.chanllenge;
+package com.challenge;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 /*Cube 与 手机APP 接口文档
 
@@ -28,14 +30,19 @@ public class CubeMessage {
 		this.jsonBody = jsonBody;
 	}
 	protected int getLength(CubeMessageBody body){
+		
+		return getHeaderLength()
+				+body.length();
+	}
+	protected int getHeaderLength(){
 		final int encryptFlagLength = 1;
 		final int bodyLengthLength = 4;
 		return FIXED_HEADER.getBytes().length
 				+encryptFlagLength
-				+bodyLengthLength
-				+body.length();
+				+bodyLengthLength;
+				
 	}
-	public byte[] pack(CubeMessageBody body){
+	public byte[] pack(CubeMessageBody body) throws JsonProcessingException{
 		ByteBuffer buffer = ByteBuffer.allocate(getLength(body));
 		buffer.put(FIXED_HEADER.getBytes());
 		buffer.put((byte)0);
@@ -45,11 +52,19 @@ public class CubeMessage {
 		return buffer.array();
 		
 	}
-	public CubeMessage unpack(){
+	public CubeMessage unpack(byte[] data){
+		ByteBuffer buffer = ByteBuffer.allocate(data.length);
+		buffer.put(data);
+		
+		CubeMessage msg = new CubeMessage();
+		//msg.set
+		
+		//ByteBuffer bodyBuffer = buffer.get(data, getHeaderLength(), FIXED_HEADER.length());
+		
 		
 		return null;
 	}
-	public static void main(String[] args) {
+	public static void main(String[] args) throws JsonProcessingException {
 		// TODO Auto-generated method stub
 		CubeMessage message =new  CubeMessage();
 		CubeMessageBody body = new CubeMessageBody();

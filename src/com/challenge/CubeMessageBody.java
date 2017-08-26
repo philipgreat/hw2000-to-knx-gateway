@@ -1,4 +1,4 @@
-package com.chanllenge;
+package com.challenge;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,9 +43,11 @@ public class CubeMessageBody {
 	}
 
 
-	public String stringBody() {
+	public String stringBody() throws JsonProcessingException {
 		// TODO Auto-generated method stub
-		return testBody;
+		ObjectMapper mapper = new ObjectMapper();
+		
+		return mapper.writeValueAsString(this);
 	}
 	
 	
