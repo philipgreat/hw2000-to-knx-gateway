@@ -1,4 +1,4 @@
-package com.challenge;
+package com.challenge.cube;
 
 import java.io.IOException;
 

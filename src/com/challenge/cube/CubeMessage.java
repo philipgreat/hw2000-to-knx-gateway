@@ -1,4 +1,4 @@
-package com.challenge;
+package com.challenge.cube;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
@@ -22,19 +22,14 @@ Json protocol
 public class CubeMessage {
 	private static final String FIXED_HEADER = "PHONE_CUBE_PROTOCOL";
 	static int encryptFlag = 0;
-	private String jsonBody;
-	public String getJsonBody() {
-		return jsonBody;
-	}
-	public void setJsonBody(String jsonBody) {
-		this.jsonBody = jsonBody;
-	}
-	protected int getLength(CubeMessageBody body){
+	//private String jsonBody;
+
+	protected static int getLength(CubeMessageBody body){
 		
 		return getHeaderLength()
 				+body.length();
 	}
-	protected int getHeaderLength(){
+	protected static int getHeaderLength(){
 		final int encryptFlagLength = 1;
 		final int bodyLengthLength = 4;
 		return FIXED_HEADER.getBytes().length
@@ -42,17 +37,17 @@ public class CubeMessage {
 				+bodyLengthLength;
 				
 	}
-	public byte[] pack(CubeMessageBody body) throws JsonProcessingException{
+	public static byte[] pack(CubeMessageBody body) throws JsonProcessingException{
 		ByteBuffer buffer = ByteBuffer.allocate(getLength(body));
 		buffer.put(FIXED_HEADER.getBytes());
 		buffer.put((byte)0);
 		buffer.putInt(body.length());
-		buffer.put(body.stringBody().getBytes());
+		buffer.put(body.getBodyData());
 		
 		return buffer.array();
 		
 	}
-	public CubeMessage unpack(byte[] data){
+	public static CubeMessage unpack(byte[] data){
 		ByteBuffer buffer = ByteBuffer.allocate(data.length);
 		buffer.put(data);
 		

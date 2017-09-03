@@ -1,4 +1,4 @@
-package com.challenge;
+package com.challenge.cube;
 
 public class CubeProperty {
 	private String propertyName;

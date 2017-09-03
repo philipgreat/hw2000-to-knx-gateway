@@ -1,4 +1,4 @@
-package com.challenge;
+package com.challenge.cube;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,10 +9,18 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @JsonSerialize(using = CubeMsgBodySerializer.class)
 public class CubeMessageBody {
-	static String testBody = "{\"msgid\":\"2387r958273894\",\"action\":\"request\",\"subaction\":\"heartbeat\"}";
+	//static String testBody = "{\"msgid\":\"2387r958273894\",\"action\":\"request\",\"subaction\":\"heartbeat\"}";
+	int length = 0;
+	byte[] body ;
+	public CubeMessageBody(){
+		
+	}
+	public byte [] getBodyData(){
+		return body;
+	}
 	public int length() {
 		// TODO Auto-generated method stub
-		return testBody.length();
+		return length;
 	}
 	
 	private List<CubeProperty> properties;
@@ -43,12 +51,7 @@ public class CubeMessageBody {
 	}
 
 
-	public String stringBody() throws JsonProcessingException {
-		// TODO Auto-generated method stub
-		ObjectMapper mapper = new ObjectMapper();
-		
-		return mapper.writeValueAsString(this);
-	}
+	
 	
 	
 	public static void main(String[] args) throws JsonProcessingException {
@@ -71,23 +74,38 @@ public class CubeMessageBody {
 		
 	}
 	
-	public CubeMessageBody start(){
+	public CubeMessageBody msgBody(){
 		return this.withMsgid(System.currentTimeMillis()+"");
+	}
+	protected CubeMessageBody done() {
+		ObjectMapper mapper = new ObjectMapper();
+		
+		try {
+			this.body = mapper.writeValueAsString(this).getBytes();
+			this.length = body.length;
+			return this;
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			throw new IllegalStateException("Parsing error: "+ e.getMessage());
+		}
+		
+		
+		
 	}
 	public CubeMessageBody buildLogin(String cubeid, String cubepwd){
 		
-		return withRegister().withCubeid(cubeid).withCubepwd(cubepwd);
+		return withRegister().withCubeid(cubeid).withCubepwd(cubepwd).done();
 		
 	}
 	
 	public CubeMessageBody buildHeartbeat(){
 		
-		return start().withAction("request").withSubaction("heartbeat");
+		return msgBody().withAction("request").withSubaction("heartbeat").done();
 		
 	}
 	public CubeMessageBody buildGetConfig(){
 		
-		return start().withAction("request").withSubaction("getdeviceconfig").withModuletype("cube").withVersion("0");
+		return msgBody().withAction("request").withSubaction("getdeviceconfig").withModuletype("cube").withVersion("0").done();
 		
 	}
 	
@@ -95,7 +113,7 @@ public class CubeMessageBody {
 	
 	private CubeMessageBody withRegister() {
 		// TODO Auto-generated method stub
-		return start().withAction("request").withSubaction("register");
+		return msgBody().withAction("request").withSubaction("register");
 	}
 
 	public CubeMessageBody withMsgid(String value){ addProperty("msgid", value); return this;}
