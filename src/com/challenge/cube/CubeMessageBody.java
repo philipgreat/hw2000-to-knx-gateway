@@ -108,8 +108,326 @@ public class CubeMessageBody {
 		return msgBody().withAction("request").withSubaction("getdeviceconfig").withModuletype("cube").withVersion("0").done();
 		
 	}
+	/*{
+“msgid”:”2387r958273894”
+“action”:”request”
+“subaction”:” configmodule”
+“moduletype”:”cube”
+“cubeid”:”1324545”
+“cubeoldpwd”:”29u4rji” 
+“cubepwd”:”jowjeoiu2o0”
+}*/
+	public CubeMessageBody buildChangeCubePassword(String cubeId, String oldPassword, String newPassword){
+		
+		return msgBody().withAction("request")
+				.withSubaction("getdeviceconfig")
+				.withModuletype("cube")
+				.withCubeid(cubeId)
+				.withCubeoldpwd(oldPassword)
+				.withCubepwd(newPassword)
+				.withVersion("0").done();
+		
+	}
+	/*{
+“msgid”:”2387r958273894”
+“action”:”request”
+“subaction”:” configmodule”
+“moduletype”:”cube”
+“cubeid”:”1324545”
+ “aliasname”:”我的家”
+}*/
+	public CubeMessageBody buildConfigAlias(String cubeId, String aliasName){
+		
+		return msgBody().withAction("request")
+				.withSubaction("getdeviceconfig")
+				.withModuletype("cube")
+				.withCubeid(cubeId)
+				.withAliasname(aliasName)
+				.done();
+		
+	}
+	/*
+ “action”:”event”
+“subaction”:” configmodule”
+“configtype”:”add”
+}*/
+	public CubeMessageBody buildDiscoverNewModule(){
+		
+		return msgBody().withAction("event")
+				.withSubaction("getdeviceconfig")
+				.withModuletype("configmodule")
+				.withConfigtype("add")
+				.done();
+		
+	}
 	
+	/*
+	 * {
+“msgid”:”2387r958273894”
+“action”:”request”
+“subaction”:” getnewmodulelist”
+}*/
 	
+	public CubeMessageBody buildGetDiscoveredNewModuleInfo(){
+		
+		return msgBody().withAction("request")
+				.withSubaction("getnewmodulelist")
+				.withModuletype("configmodule")
+				
+				.done();
+		
+	}
+	/*
+	 * {
+“msgid”:”2387r958273894”
+“action”:”request”
+“subaction”:” getdeviceconfigipvdp”
+“moduletype”:”cube”
+ “version”:”0”
+}
+	 * 
+	 * */
+	
+	public CubeMessageBody buildGetDeviceConfigIPVDP(){
+		
+		return msgBody().withAction("request")
+				.withSubaction("getdeviceconfigipvdp")
+				.withModuletype("cube")
+				.withVersion("0")
+				.done();
+		
+	}
+	
+	/*
+	 * {
+“msgid”:”2387r958273894”,
+“action”:”request”,
+“subaction”:” configmodule”,
+“moduletype”:”cube”,
+“configtype”:”ethernet”,
+“ethmode”:”manual/dhcp”,
+“ethname”:”eth0/eth1” , // currently only support eth1
+“ethip”:”10.2.2.5”,
+“ethmask”:”255.0.0.0”,
+“ethgw”:”10.0.0.1”,
+“ethdns1”:”10.0.0.1”,
+“ethdns2”:”10.0.0.2”,
+}
+	 * 
+	 * */
+	
+	public CubeMessageBody buildConfigEthernet(String ethMode, String ethName, 
+			String ethIp, String ethMask, String ethGW, String ethDNS1, String ethDNS2){
+		
+		return msgBody().withAction("request")
+				.withSubaction("configmodule")
+				.withModuletype("cube")
+				.withConfigtype("ethernet")
+				.withEthMode(ethMode)
+				.withEthName(ethName)
+				.withEthIp(ethIp)
+				.withEthMask(ethMask)
+				.withEthGW(ethGW)
+				.withEthDNS1(ethDNS1)
+				.withEthDNS2(ethDNS2)
+				//.with
+				.done();
+		
+	}
+	
+	public CubeMessageBody buildConfigSecurityCode(String oldPwd, 
+			String newPwd
+			){
+		
+		return msgBody().withAction("request")
+				.withSubaction("configsecurity")
+				.withModuletype("cube")
+				.withOldpwd(oldPwd)
+				.withNewpwd(newPwd)
+				//.with
+				.done();
+		
+	}
+	public CubeMessageBody buildGet485ConfigType(){
+		
+		return msgBody().withAction("request")
+				.withSubaction("get485configtype")
+				.withModuletype("cube")
+				
+				//.with
+				.done();
+		
+	}
+	/*{
+“msgid”:”2387r958273894”
+“action”:”request”
+“subaction”:”configmodule”
+“configtype”:”modify”
+“moduletype”:”485”
+“primaryid”:100
+ “aliasname”:”485设备modify”
+ }*/
+	public CubeMessageBody buildConfig485Module(String macAddr,String ipAddr,String aliasName){
+		
+		return msgBody().withAction("request")
+				.withSubaction("configmodule")
+				.withConfigtype("add")
+				.withModuletype("485")
+				.withModulemacaddr(macAddr)
+				.withModuleipaddr(ipAddr)
+				.withAliasname(aliasName)
+				
+				//.with
+				.done();
+		
+	}
+	/*{
+“msgid”:”2387r958273894”
+“action”:”response”
+“subaction”:”configmodule”
+“configtype”:”modify”
+“moduletype”:”485”
+“errorcode”:0
+“primaryid”:100
+ “aliasname”:”485设备modify”
+ }*/
+	public CubeMessageBody buildModify485Module( String primaryId,String aliasNam){
+		
+		return msgBody().withAction("request")
+				.withSubaction("configmodule")
+				.withConfigtype("modify")
+				.withModuletype("485")
+				.withPrimaryid(primaryId)
+				.withAliasname(aliasNam)
+				
+				//.with
+				.done();
+		
+	}
+	
+	public CubeMessageBody buildDelete485Module( String primaryId){
+		
+		return msgBody().withAction("request")
+				.withSubaction("configmodule")
+				.withConfigtype("modify")
+				.withModuletype("485")
+				.withPrimaryid(primaryId)
+				
+				
+				//.with
+				.done();
+		
+	}
+	/*{
+“msgid”:”2387r958273894”
+“action”:”request”
+“subaction”:” configdevice”
+“moduletype”:”485”
+“configtype”:”add”
+“primaryid”:100（外围设备表的id）
+ “looptype”:”aircondition”
+“brandname”:”dakin”
+“portid”:1
+ “deviceloopmap”:
+[
+{
+“slaveaddr”:2
+“loopid”:1
+“roomid”:1
+“aliasname”:”主卧空调”
+},
+{
+“slaveaddr”:2
+“loopid”:2
+“roomid”:2
+ “aliasname”:”客卧空调”
+},
+]
+}*/
+	public CubeMessageBody buildConfig485Aircondition( String primaryId, String brandName, String portId){
+		
+		return msgBody().withAction("request")
+				.withSubaction("configdevice")
+				.withConfigtype("add")
+				.withModuletype("485")
+				.withPrimaryid(primaryId)
+				.withLooptype("aircondition")
+				.withBrandname(brandName)
+				.withPortid(portId)
+				.withDeviceMap("") //TODO here is complex
+				//.with
+				.done();
+		
+	}
+	public CubeMessageBody buildDelete485Aircondition( String primaryId, String brandName, String portId){
+		
+		return msgBody().withAction("request")
+				.withSubaction("configdevice")
+				.withConfigtype("delete")
+				.withModuletype("485")
+				.withPrimaryid(primaryId)
+				.withLooptype("aircondition")
+				.withBrandname(brandName)
+				.withPortid(portId)
+				.withDeviceMap("") //TODO here is complex
+				//.with
+				.done();
+		
+	}
+	
+	private CubeMessageBody withDeviceMap(String deviceMap) {
+		// TODO Auto-generated method stub
+		addProperty("deviceloopmap", deviceMap); 
+		return this;
+	}
+	private CubeMessageBody withOldpwd(String value) {
+		// TODO Auto-generated method stub
+		addProperty("oldpwd", value); 
+		return this;
+	}
+	private CubeMessageBody withNewpwd(String value) {
+		// TODO Auto-generated method stub
+		addProperty("newpwd", value); 
+		return this;
+	}
+	private CubeMessageBody withEthMode(String value) {
+		// TODO Auto-generated method stub
+		addProperty("ethmode", value); 
+		return this;
+	}
+	
+	private CubeMessageBody withEthName(String value) {
+		// TODO Auto-generated method stub
+		addProperty("ethname", value); 
+		return this;
+	}
+	private CubeMessageBody withEthIp(String value) {
+		// TODO Auto-generated method stub
+		addProperty("ethip", value); 
+		return this;
+	}
+	private CubeMessageBody withEthMask(String value) {
+		// TODO Auto-generated method stub
+		addProperty("ethmask", value); 
+		return this;
+	}
+	private CubeMessageBody withEthGW(String value) {
+		// TODO Auto-generated method stub
+		addProperty("ethgw", value); 
+		return this;
+	}
+	private CubeMessageBody withEthDNS1(String value) {
+		// TODO Auto-generated method stub
+		addProperty("ethdns1", value); 
+		return this;
+	}
+
+	private CubeMessageBody withEthDNS2(String value) {
+		// TODO Auto-generated method stub
+		addProperty("ethdns2", value); 
+		return this;
+	}
+
 	
 	private CubeMessageBody withRegister() {
 		// TODO Auto-generated method stub
