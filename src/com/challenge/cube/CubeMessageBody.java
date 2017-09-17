@@ -12,6 +12,14 @@ public class CubeMessageBody {
 	//static String testBody = "{\"msgid\":\"2387r958273894\",\"action\":\"request\",\"subaction\":\"heartbeat\"}";
 	int length = 0;
 	byte[] body ;
+	List<CubeLoop> deviceLoopMap;
+	
+	public List<CubeLoop> getDeviceLoopMap() {
+		return deviceLoopMap;
+	}
+	public void setDeviceLoopMap(List<CubeLoop> deviceLoopMap) {
+		this.deviceLoopMap = deviceLoopMap;
+	}
 	public CubeMessageBody(){
 		
 	}
@@ -108,6 +116,12 @@ public class CubeMessageBody {
 		return msgBody().withAction("request").withSubaction("getdeviceconfig").withModuletype("cube").withVersion("0").done();
 		
 	}
+	
+	
+	
+	
+	
+	
 	/*{
 “msgid”:”2387r958273894”
 “action”:”request”
@@ -374,6 +388,22 @@ public class CubeMessageBody {
 				.done();
 		
 	}
+	
+	
+	/*
+	 * 
+	 * {"action":"request",
+"subaction":"readdevice",
+"deviceloopmap":
+[{"loopid":1,"brandname":"ecc_o1","looptype":"aircondition","modulemacaddr":"00:1F:55:2A:00:74","slaveaddr":1,"portid":1}
+],
+"msgid":"28"
+,"moduletype":"485"
+}
+
+	 * 
+	 * */
+	
 	
 	private CubeMessageBody withDeviceMap(String deviceMap) {
 		// TODO Auto-generated method stub

@@ -1,0 +1,9126 @@
+Cube 与 手机APP 接口文档
+
+ 
+固定头:
+PHONE_CUBE_PROTOCOL
+
+加密算法(1 Bytes)
+(0:不加密，1:chacha加密)
+Body length(4 Bytes)
+body
+Json protocol
+
+目录
+Contents
+协议BODY定义	9
+1)	字段名	9
+2)	模块类型	16
+1.	APP登陆cube&心跳	17
+1)	APP用cubeid登陆cube	17
+2)	心跳包	18
+3)	修改cube登陆密码	18
+4)	配置cube别名	19
+5)	APP获取cube所有配置信息	20
+6)	发现新模块通知	21
+7)	APP获取新发现小模块信息	22
+8)	IPVDP获取cube配置信息	23
+9)	设置CubeBase社区网络	24
+10）修改cube安防密码	25
+11）获取485支持的类型及型号	26
+2.空调温控器控制	30
+1）配置485 模块	30
+2）修改485模块	31
+3）删除485模块	32
+4）配置485 空调	33
+5）修改485空调	35
+6）删除485空调	36
+7）查询485空调状态	38
+8）设置485空调状态	39
+9）配置485温控器	40
+10）修改485温控器	42
+11）删除485温控器	44
+12）查询温控器状态	45
+13）设置温控器状态	46
+14）配置485新风	47
+15）查询新风状态(暂不支持)	49
+16）设置新风状态(暂不支持)	51
+17）配置485 窗帘(黄浦湾)	53
+18）485窗帘控制(黄浦湾)	55
+. Bacnet 控制及配置	56
+1）配置bacnet网关	56
+2）修改bacnet网关	57
+3）删除bacnet网关	58
+4）添加bacnet空调	59
+5）修改bacnet空调	61
+6）删除bacnet空调	63
+7）查询bacnet空调状态	64
+8）设置bacnet空调状态	66
+4.sparklight配置及控制	68
+1）配置sparklight 系统	68
+2）修改sparklight 系统	69
+3）删除sparklighting系统	70
+4）配置sparklight 系统灯光	71
+4）修改sparklight 系统灯光	73
+5）删除sparklighting 系统灯光	75
+6）配置sparklight 系统窗帘	76
+7）修改sparklight 系统窗帘	79
+8）删除sparklight 系统窗帘	80
+9）配置sparklighting 系统 吸顶红外	82
+10）修改sparklighting系统吸顶红外	84
+11）删除sparklighting系统吸顶红外	85
+12）配置sparklighting 系统 空气质量模块	86
+13）修改sparklighting系统空气质量模块	88
+14）删除sparklighting系统空气质量模块	89
+15）查询sparklighting 灯光状态	91
+16）设置sparklighting 灯光状态	92
+17）查询sparklighting 窗帘状态	92
+18）设置sparklighting 窗帘状态	94
+19）查询sparklighting relay状态	95
+20）设置sparklighting relay状态	97
+21）查询sparklighting 空气质量状态	99
+5. 315M433M配置及控制	101
+1）配置315M433M小模块	101
+2）修改315M433M小模块	102
+3）删除315M433M小模块	103
+4）配置maia2小模块灯光	104
+5）修改maia2小模块灯光	106
+6）删除maia2小模块灯光	107
+7）配置maia2窗帘	109
+8）修改maia2窗帘	111
+9）删除maia2窗帘	113
+10）查询maia2灯光状态	114
+11）设置maia2灯光状态	117
+12）查询maia2窗帘状态	119
+13）设置maia2窗帘状态	121
+14）配置433M红外sensor	122
+15）修改433M红外sensor	125
+16）删除433M红外sensor	127
+6.Wired zone配置及控制	128
+1）配置wired zone模块	128
+2）修改wired zone模块	129
+3）删除wired zone模块	130
+4）	配置wired zone防区	131
+5）修改wired zone防区	134
+6）删除wired zone防区	135
+7）撤布防防区	137
+7.relay配置及控制	139
+1）配置relay小模块	139
+2）修改relay小模块	139
+3）删除relay小模块	140
+4）配置relay回路	141
+5）修改relay回路	143
+6）删除relay回路	145
+7）设置relay回路状态	146
+8）查询relay回路状态	148
+9）relay回路状态变化通知	149
+10）添加新风	150
+11）编辑新风	152
+12）删除新风	153
+8.wifi-air配置及控制	155
+1）配置air小模块	155
+2）修改air小模块	156
+3）删除air小模块	157
+4）查询air	157
+5）状态变化通知	158
+9.ipvdp配置及控制	159
+1）配置IPVDP信息	159
+2）修改ipvdp信息	161
+3）删除IPVDP	163
+4）配置ipvdp防区	164
+5）修改ipvdp防区	167
+6）删除ipvdp防区	169
+7）通话	170
+8）门锁信息-开门记录	173
+10.IPC配置及控制	174
+1）IPC配置	174
+2）IPC修改	175
+3）IPC删除	176
+4）IPC查看	177
+5）结束IPC查看	178
+6）获取IPC参数（暂不支持）	179
+11. 安防	181
+1）系统报警事件	181
+2）系统撤布防状态事件	182
+3）获取当前系统布防防区状态	182
+12.防打扰	184
+1）防打扰设置	184
+13.upgrade	185
+1）cube升级	185
+2）module升级	186
+3）升级提示	186
+4）查询cube是否有新版本	187
+14.HDMI	188
+1）HDMI控制	188
+15.Backaudio配置及控制	188
+1）Backaudio设备配置	188
+2）修改Backaudio设备	189
+3）删除Backaudio设备	190
+4）配置Backaudio回路	191
+5）修改Backaudio回路	193
+6）删除Backaudio回路	195
+7）backaudio控制	196
+8）backaudio查询	198
+9）backaudio通知	199
+16.IR配置及控制	200
+1）Wifi ir模块配置	200
+2）修改Wifi ir模块	202
+3）删除Wifi IR模块	202
+4）Wifi IR 控制	203
+5）Wifi IR 对码	205
+6）Wifi IR保存遥控器（loop）	206
+7）Wifi IR快速网络配置	208
+8）修改遥控器（loop）	209
+9）删除遥控器（loop）	210
+17.场景scenario配置及控制	212
+1）scenario配置	212
+2）修改scenario配置	220
+3）删除scenario	226
+4）scenario控制	227
+18.场景联动	228
+1）场景联动规则配置	228
+2）修改场景联动规则	239
+3）删除联调场景	246
+4）获取联动规则	247
+5）Enable/Disable场景联动规则	250
+19.schedule规则	251
+1）schedule规则配置	251
+2）修改schedule规则	259
+3）Schedule规则删除	264
+4）Enable/Disable schedule规则	265
+20. Cube Base事件上报	266
+1）SD卡/U盘插拔事件	266
+2）录像事件	267
+3）升级事件	267
+21. room	268
+1）添加自定义room	268
+2）编辑roomname	269
+3）删除roomname	270
+22. environment查询	271
+1）查询某个房间的temperature, humidity,pm2.5	271
+23. 查看IPC联调报警录像	273
+24. 配置备份与恢复	274
+25. 语音识别开关(默认关)	276
+26. 获取天气预报，时间，房间情况	277
+27. 通用控制协议	279
+1）新风控制	279
+2）新风查询	281
+3）空气质量查询	283
+28.iaq配置及控制	284
+1）发现iaq小模块	284
+2）修改iaq小模块	285
+3）删除iaq小模块	286
+4）配置iaq回路(虚拟回路,为了增加房间及名字的概念)	286
+5）修改iaq回路（虚拟回路）	288
+6）删除iaq回路	289
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+协议BODY定义
+1)	 字段名
+Json格式
+Name
+Value
+备注
+msgid
+
+
+action
+
+
+sub action
+
+
+cubeid
+最大20个字符
+Cube ID 号
+cubepwd
+6~20 字符
+Cube密码
+cubeoldpwd
+6~20 字符
+修改cube密码时用于传输cube的旧密码
+cloudid
+11位手机号码或者是最大64个字符的邮箱
+cloud ID 号
+cloudpwd
+6~20 字符
+cloud密码
+moduletype
+
+
+modulemacaddr
+**.**.**.**.**.**
+要控制的小模块的mac地址
+moduleipaddr
+
+
+moduleserialnum
+
+string
+machinetype
+
+
+devicetype
+sensor,maia2
+airconditon;thermostat;ventilation;
+
+looptype
+light;curtain;sensor; relay; 5804EU,5816EU,5800-PIR-AP;airconditon;thermostat;ventilation;
+
+brandname
+dakin;mit;
+dakin_dta116A621, dakin_r4r5,  toshiba_tcb-ifmb640tle, york_yvoh-a_bas
+htc961d3200, ecc_dt300,  simens_rdf302
+
+aliasname
+
+别名
+subdevtype
+
+
+roomname
+
+房间名
+errorcode
+0~65535
+0:ok ;other:error
+应答错误码
+moduleloopmap
+
+用于传输多个模块时标识数组
+deviceloopmap
+
+用于同时配置多路设备时标识数组
+sparklightloopmap
+
+
+bacnetloopmap
+
+
+irloopmap
+
+
+485loopmap
+
+
+relayloopmap
+
+
+alarmzoneloopmap
+
+
+maialoopmap
+
+
+deviceid
+
+
+slaveaddr
+1~15
+
+loopnum
+
+回路数
+loopid
+0~255
+回路ID
+maskid
+1~255
+Sparklighting系统的子网id
+portid
+1,2
+485串口id
+portrate
+
+串口波特率
+cubebacnetid
+1~255
+cube作为bacnet设备时的ID号
+bacnetdeviceid
+1~255
+所连接bacnet网关的ID号
+settemp
+0~100
+设定温度
+currenttmp
+0~100
+当前温度
+mode
+空调：cooling; heating; ventilation; dehumidifying; auto
+温控器：comfort; economy; protection
+空调运行模式
+fanspeed
+low,middle,high
+风速
+status
+on;off;opening ;closing;stopped
+open;normal;close
+开关状态
+openclosepercent
+0~100
+灯光窗帘调节百分比
+zonetype
+24hours;instant;delay
+防区类型
+alarmtimer
+0~255
+防区延时时间，当zonetype设定为delay时， 这个字段有效，
+alarmenable
+on;off
+
+armtype
+outdoor;indoor;sleep
+
+isarm
+arm,disarm
+
+securitypwd
+
+场景切换时的密码验证
+alarmtype
+fire,help, gas, thief
+
+alarmmsgid
+
+
+time
+
+
+rtspurl
+
+
+airtype
+main;sub
+
+currenttime
+**:**
+当前时间
+currentco2
+
+二氧化碳值
+currentpm2_5
+
+PM2.5值
+currenthumid
+
+湿度
+hnsserveraddr
+
+HNS ip address
+callmsg
+incomingcall,takecall,terminatecall,opendoor,elevator
+通话消息
+calltype
+lobby,guard,doorcamera,neighbour
+通话类型
+callsessionid
+
+
+videoport
+ 
+视频端口
+audioport
+
+音频端口
+videocodectype
+pcmu,pcma
+视频codec类型
+audiocodectype
+h.264
+音频codec类型
+videoratio
+
+分辨率                                 
+takecallipaddr
+
+
+dooropentype
+key,password,finger,id card,gateway
+
+dooropenway
+front,back
+
+dooropenrole
+man,woman,child,nurse,friend,relation,old
+
+dooropenid
+
+
+uuid
+
+
+ipctype
+Hdc,phoneix
+
+ipcsrc
+community,home
+
+ipcurl
+
+
+ipcusername
+
+
+ipcpassword
+
+
+ipcloopmap
+
+
+disturbtype
+disturb,undisturb
+
+keytype
+power,volume,pitch,source,switchsong,mute;status;singlecycle,songname,songinfo,playtime,allplaytime,songdir
+
+
+keyvalue
+on, off, high, low, up,down,treble，bass
+
+keytypeloop
+
+
+version
+2.1.0
+版本号
+upgradetype
+cloud,sdcard,harddisk
+升级包来源
+controltype
+
+
+configdata
+
+
+configtype
+add,delete,modify
+
+scenarioid
+
+
+primaryid
+手机请求的唯一的代表module或者loop的id
+
+responseprimaryid
+cube存储后返回给手机的唯一的module或者loop的id
+
+Keytype
+报警类型,如fire，help，emergency
+
+keyvalue
+报警事件，如normal，trigger
+
+securityscenarioid
+安防场景号
+
+callsessionid
+Sessionid
+
+controltype
+新风控制的模块类型，如relay
+
+cycletype
+新风循环类型，内循环，外循环
+
+humidity
+新风加湿
+
+dehumidity
+新风除湿
+
+inner
+内循环
+
+outside
+外循环
+
+
+
+action:
+value
+value
+备注
+request
+0x01
+请求
+response 
+0x02
+应答
+event 
+0x03
+事件
+
+Sub action:
+value
+备注
+setdevice
+控制信息
+readdevice
+读取信息
+configmodule
+配置模块信息
+configdevice
+配置子设备信息
+getdeviceconfigconfig
+获取配置信息
+getnewmodulelist
+获取新发现模块信息
+deletedevice
+删除信息
+alarminfo
+报警
+arm
+撤布防
+ipcmonitor
+摄像头监控
+call
+通话
+upgrade
+升级
+disturb
+防打扰
+scenariocontrol
+场景控制
+hdmicontrol
+HDMI控制
+register
+APP登陆cube
+heartbeat
+心跳包
+configbackup
+备份
+configrecovery
+恢复
+configvoicerecognize
+备注语音助手
+scenariocontrol
+场景控制
+discovermodule
+发现
+playipc
+播放ipc
+getsecuritystatus
+获取安防状态
+ipvdpgetdisplayinfo
+Ipvdp获取参数
+replacedevice
+替换设备
+getarmzoneconfig
+获取防区信息
+getscenarioconfig
+获取场景信息
+gettriggerruleconfig
+获取规则信息
+getscheduleruleconfig
+获取计划信息
+subphoneinfo
+获取分机信息
+getweather
+获取天气
+2)	 模块类型
+Module type: 
+value
+备注
+485
+485设备
+bacnet
+Bacnet空调
+sparklighting
+Sparklighting系统
+wiredzone
+有线防区
+315M433M
+315M/433M
+ipc
+Ip camera
+ir
+红外设备
+relay
+继电器模块
+air
+无线空气探测
+ipvdp
+ipvdp
+nfc
+
+backaudio
+
+Cube
+
+digitallock
+门锁
+elevator
+电梯
+alarmzone
+防区
+scenario
+场景
+scenariotrigger
+规则
+schedulerule
+计划
+room
+房间
+ipvdplock
+门锁
+ventilation
+新风
+
+1.	APP登陆cube&心跳
+1)	 APP用cubeid登陆cube
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" register"
+"cubeid":"1324545"
+"cubepwd":"29u4rji" 
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" register"
+"errorcode":0
+}
+
+
+
+2)	 心跳包
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" heartbeat"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" heartbeat" 
+"errorcode":0
+}
+
+3)	 修改cube登陆密码
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule"
+"moduletype":"cube"
+"cubeid":"1324545"
+"cubeoldpwd":"29u4rji" 
+"cubepwd":"jowjeoiu2o0"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configmodule"
+"moduletype":"cube"
+"errorcode":0
+}
+
+
+
+4)	 配置cube别名
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule"
+"moduletype":"cube"
+"cubeid":"1324545"
+ "aliasname":"我的家"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+ "action":"response"
+"subaction":" configmodule"
+"moduletype":"cube"
+"errorcode":0
+}
+
+
+
+5)	 APP获取cube所有配置信息
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" getdeviceconfig"
+ "moduletype":"cube"
+ "version":"0"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+ "action":"response"
+"subaction":" getdeviceconfig"
+securitypwd":"123456"
+"scenarioid":1
+"armstaus":1
+"aliasname":"cube"
+"errorcode":0
+"moduletype":"cube"
+"version":"220"
+"securityscenarioid":1,
+"voicerecognizestatus":1,
+"moduleipaddr":"192.168.31.107",
+"modulemacaddr":"00:1f:55:2a:00:08",
+"moduleversion":" 0.0.9"
+"configdata":[
+{"cubebase":[{"_id":1,"conf_value":"001F552A0008","conf_name":"CUBE_ID"},
+….],
+{"peripheraldevice":[{"port":9000,"isonline":1,"isconfig":1,"mac_addr":"C8:93:46:80:07:6B","ip_addr":"192.168.32.119","_id":1,"name":"HEJ-RELAY-4_80076B","type":6,"version":"0.0.8.2418"},…..]},
+{"ipvdpinfo":[{"_id":1,"dev_id":10,"hnsserveraddr":"192.168.32.192","deviceid":8}]},{"backaudiodevice":[]},
+{"sparklightingloopmap":[{"loop_type":1,"sub_dev_id":1,"roomid":1,"loop_id":1,"sub_dev_type":"HBLS-D0206","_id":1,"dev_id":12,"room_name":"主卧","loop_name":"light 1","is_enable":1},…],
+,,,
+]
+}
+
+
+
+6)	 发现新模块通知
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+ "action":"event"
+"subaction":" configmodule"
+"configtype":"add"
+}
+
+
+
+7)	 APP获取新发现小模块信息
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" getnewmodulelist"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+ "action":"response"
+"subaction":" getnewmodulelist"
+"errorcode":0
+moduleloopmap 
+[
+{
+"moduletype":"485"
+"modulemacaddr":"12.23.45.65.67.86"
+"moduleipaddr":"192.168.1.50"
+},
+{
+"moduletype":"backaudio",
+"moduleserialnum":"12e45f65w67dd86",
+"aliasname":"BackAudioName",
+"machinetype": 102,
+"isonline": 0,
+"loopnum":6
+},
+{
+"moduletype":"relay"
+"modulemacaddr":"12.23.45.65.67.86"
+"moduleipaddr":"192.168.1.50"
+},
+]
+}
+
+
+8)	 IPVDP获取cube配置信息
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" getdeviceconfigipvdp"
+"moduletype":"cube"
+ "version":"0"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+ "action":"response"
+"subaction":" getdeviceconfigipvdp"
+ "errorcode":0
+"moduletype":"cube"
+"version":"220"
+"Configdata":""(与手机获取配置类似)
+}
+
+
+9)	 设置CubeBase社区网络
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"request",
+"subaction":" configmodule",
+"moduletype":"cube",
+"configtype":"ethernet",
+"ethmode":"manual/dhcp",
+"ethname":"eth0/eth1" , // currently only support eth1
+"ethip":"10.2.2.5",
+"ethmask":"255.0.0.0",
+"ethgw":"10.0.0.1",
+"ethdns1":"10.0.0.1",
+"ethdns2":"10.0.0.2",
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+ "action":"response",
+"subaction":" configmodule",
+"moduletype":"cube",
+"configtype":"ethernet",
+"errorcode":0,
+}
+
+
+
+10）修改cube安防密码
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":"configsecurity"
+"moduletype":"cube"
+ "oldpwd":"123456" 
+"newpwd":"111222"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":"configsecurity"
+"moduletype":"cube"
+ "securityoldpwd":"123456" 
+"securitynewpwd":"111222"
+"errorcode":0
+}
+
+
+
+11）获取485支持的类型及型号
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"request",
+"subaction":"get485configtype",
+"moduletype":"cube"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"request",
+"subaction":"get485configtype",
+"moduletype":"cube"
+"configmap":
+   [
+	{
+	   "type":"curtain",
+	   "brand":
+	   [
+		{
+"common":" huangpuwan",
+	                   "chinese":"黄浦湾",
+		   "english":"huangpuwan",
+		   "tradition":"黄浦湾"
+		}
+	   ]
+	},
+	{
+	   "type":"aircondition",
+	   "brand":
+	   [
+		{
+                         "common":" dakin_dta116a621",
+	           "chinese":"Dakin DTA",
+		   "english":"Dakin DTA",
+		   "tradition":"Dakin DTA"
+		},
+		{
+                          "common":" dakin_r4r5",
+	           "chinese":"Dakin R4R5",
+		   "english":"Dakin R4R5",
+		   "tradition":"Dakin R4R5"
+		},
+		{
+                         "common":" toshiba_tcb-ifmb640tle",
+	           "chinese":"Toshiba TCB",
+		   "english":"Toshiba TCB",
+		   "tradition":"Toshiba TCB"
+		},
+		{
+                          common":" york_yvoh-a_bas",
+	           "chinese":"York YVOH-A",
+		   "english":"York YVOH-A",
+		   "tradition":"York YVOH-A"
+		}
+	   ]
+	},
+	{
+	   "type":"thermostat",
+	   "brand":
+	   [
+		{
+                          "common":" ecc_o1",
+	           "chinese":"ECC O1",
+		   "english":"ECC O1",
+		   "tradition":"ECC O1"
+		},
+		{
+                          "common":" htc961d3200",
+	           "chinese":"HTC961",
+		   "english":"HTC961",
+		   "tradition":"HTC961"
+		},
+		{
+                         "common":" ecc_dt300",
+	           "chinese":"ECC DT300",
+		   "english":"ECC DT300",
+		   "tradition":"ECC DT300"
+		},
+		{
+                         "common":" simens_rdf302",
+	           "chinese":"Simens RDF302",
+		   "english":"Simens RDF302",
+		   "tradition":"Simens RDF302"
+		},
+		{
+                        "common":" hagrid",
+	           "chinese":"海格",
+		   "english":"Hagrid",
+		   "tradition":"Hagrid"
+		}
+	   ]
+	},
+	{
+	   "type":"ventilation",
+	   "brand":
+	   [
+		{
+                          "common":" 4in1",
+	           "chinese":"4 IN 1",
+		   "english":"4 IN 1",
+		   "tradition":"4 IN 1"
+		}
+	   ]
+	}
+   ]
+ "errorcode":0
+}
+
+
+
+2.空调温控器控制
+1）配置485 模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule"
+"configtype":"add"
+"moduletype":"485"
+"modulemacaddr":"12.23.45.65.67.86"
+"moduleipaddr":"192.168.1.50"
+"aliasname":"485设备"
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configmodule"
+"errorcode":0
+"moduletype":"485"
+"modulemacaddr":"12.23.45.65.67.86"
+"moduleipaddr":"192.168.1.50"
+"aliasname":"485设备"
+"responseprimaryid":199
+}
+
+
+2）修改485模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":"configmodule"
+"configtype":"modify"
+"moduletype":"485"
+"primaryid":100
+ "aliasname":"485设备modify"
+ }
+
+
+
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":"configmodule"
+"configtype":"modify"
+"moduletype":"485"
+"errorcode":0
+"primaryid":100
+ "aliasname":"485设备modify"
+ }
+
+
+3）删除485模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":"configmodule"
+"configtype":"delete"
+"moduletype":"485"
+"primaryid":100
+ }
+
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":"configmodule"
+"configtype":"delete"
+"errorcode":0
+"moduletype":"485"
+"primaryid":100
+ }
+
+
+4）配置485 空调
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configdevice"
+"moduletype":"485"
+"configtype":"add"
+"primaryid":100（外围设备表的id）
+ "looptype":"aircondition"
+"brandname":"dakin"
+"portid":1
+ "deviceloopmap":
+[
+{
+"slaveaddr":2
+"loopid":1
+"roomid":1
+"aliasname":"主卧空调"
+},
+{
+"slaveaddr":2
+"loopid":2
+"roomid":2
+ "aliasname":"客卧空调"
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configdevice"
+"moduletype":"485"
+"primaryid":100
+ "looptype":"aircondition"
+"brandname":"dakin"
+"portid":1
+"deviceloopmap":
+[
+{
+"slaveaddr":2
+"loopid":1
+"responseprimaryid":199（loop的唯一id，64位long类型）
+"roomid":1
+"aliasname":"主卧空调"
+ "errorcode":0
+},
+{
+"slaveaddr":2
+"loopid":2
+roomid:2
+"aliasname":"客卧空调"
+"errorcode":0
+"responseprimaryid":200（loop的唯一id，64位long类型）
+},
+]
+}
+
+
+5）修改485空调
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configdevice"
+ "configtype":"modify"
+ "deviceloopmap":
+[
+{
+ "uuid":"0081"
+"roomid":1
+ "aliasname":"主卧空调modify"
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configdevice"
+ "configtype":"modify"
+ "deviceloopmap":
+[
+{
+ "uuid":"0081"
+"roomid":1
+ "aliasname":"主卧空调modify"
+},
+]
+}
+
+
+	
+6）删除485空调
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configdevice"
+ "configtype":"delete"
+ "deviceloopmap":
+[
+{
+"uuid":"0081"
+},
+]
+}
+
+
+
+	head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configdevice"
+ "configtype":" delete"
+ "deviceloopmap":
+[
+{
+"uuid":"0081"
+ "errorcode":0
+},]
+}
+
+
+7）查询485空调状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+B
+O
+D
+y
+{"action":"request",
+"subaction":"readdevice",
+"deviceloopmap":
+[{"loopid":1,"brandname":"ecc_o1","looptype":"aircondition","modulemacaddr":"00:1F:55:2A:00:74","slaveaddr":1,"portid":1}
+],
+"msgid":"28"
+,"moduletype":"485"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{"action":"response",
+"subaction":"readdevice",
+"deviceloopmap":
+[{"loopid":1,"brandname":"ecc_o1","looptype":"aircondition","modulemacaddr":"00:1F:55:2A:00:74","slaveaddr":1,"portid":1,
+errorcode":0
+"settemp":23
+"currenttemp":25
+"mode":"cooling"
+"fanspeed":"middle"	
+"status":"on"
+}
+],
+"msgid":"28"
+,"moduletype":"485"
+}
+
+
+
+8）设置485空调状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{"action":"request",
+"subaction":"setdevice",
+"deviceloopmap":[
+{
+"fanspeed":"low","loopid":1,"brandname":"ecc_o1","looptype":"aircondition",
+"modulemacaddr":"00:1F:55:2A:00:74","slaveaddr":1,"status":"on","portid":1,"settemp":12,"mode":"cooling"
+}
+],
+"msgid":"29",
+"moduletype":"485"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{"action":"response",
+"subaction":"setdevice",
+"deviceloopmap":[
+{
+"fanspeed":"low","loopid":1,"brandname":"ecc_o1","looptype":"aircondition",
+"modulemacaddr":"00:1F:55:2A:00:74","slaveaddr":1,"status":"on","portid":1,"settemp":12,"mode":"cooling",
+"errorcode":0
+}
+],
+"msgid":"29",
+"moduletype":"485"
+}
+
+
+9）配置485温控器
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configdevice"
+"moduletype":"485"
+"configtype":"add"
+"primaryid":100（外围设备表的id）
+ "looptype":"thermostat"
+"brandname":"DT"
+"portid":1
+ "deviceloopmap":
+[
+{
+"slaveaddr":1
+"roomid":3
+ "aliasname":"温控器"
+},
+{
+"slaveaddr":2
+"roomid":4
+ "aliasname":"温控器"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configdevice"
+"moduletype":"485"
+"configtype":"add"
+"primaryid":100
+ "looptype":"thermostat"
+"brandname":"DT"
+"portid":1
+"deviceloopmap":
+[
+{
+"slaveaddr":1
+"roomid":3
+ "aliasname":"温控器"
+"responseprimaryid":199（loop的唯一id，64位long类型）
+ "errorcode":0
+},
+{
+"slaveaddr":2
+"roomid":4
+ "aliasname":"温控器"
+"responseprimaryid":200（loop的唯一id，64位long类型）
+ "errorcode":0
+}
+]
+}
+
+
+10）修改485温控器
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configdevice"
+ "configtype":"modify"
+ "deviceloopmap":
+[
+{
+ "uuid":"0081"
+"roomid":1
+ "aliasname":"温控器modify"
+},
+{
+"uuid":"0082"
+ "roomid":1
+"aliasname":"温控器modify"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configdevice"
+ "configtype":" modify"
+ "deviceloopmap":
+[
+{
+"uuid":"0081"
+ "roomid":1
+"aliasname":"温控器modify"
+ "errorcode":0
+},
+{
+"uuid":"0082"
+ "roomid":1
+"aliasname":"温控器modify"
+ "errorcode":0
+}
+]
+}
+
+
+11）删除485温控器
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configdevice"
+ "configtype":"delete"
+ "deviceloopmap":
+[
+{
+"uuid":"0081"
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configdevice"
+ "configtype":" delete"
+ "deviceloopmap":
+[
+{
+"uuid":"0081"
+ "errorcode":0
+},
+]
+}
+
+
+12）查询温控器状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{"action":"request","subaction":"readdevice","deviceloopmap":[{" 
+"uuid":"0081"，
+}],
+"msgid":"36"
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{"action":"response","subaction":"readdevice","deviceloopmap":[{"
+"uuid":"0081"
+"errorcode":0
+"settemp":23
+"currenttemp":25
+ "fanspeed":"low"
+"status":"on"
+"mode":" comfort"
+}],
+"msgid":"36""}
+
+
+13）设置温控器状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{"action":"request","subaction":"setdevice","deviceloopmap":
+[
+{"uuid":"0081"，
+"fanspeed":"low",""status":"on"settemp":12,"mode":"cooling"}],
+"msgid":"37}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{"action":"request","subaction":"setdevice","deviceloopmap":
+[
+{"fanspeed":"lowstatus":"on",settemp":12,"mode":"cooling","uuid":"0081"，
+"errorcode":0
+}],
+"msgid":"37}
+
+
+14）配置485新风
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configdevice"
+"moduletype":"485"
+"configtype":"add"
+"primaryid":100（外围设备表的id）
+ 
+ "deviceloopmap":
+[
+{
+"slaveaddr":1
+"looptype":"ventilation"
+"brandname":"4in1"
+"portid":1
+"roomid":3
+ "aliasname":"新风1"
+},
+{
+"slaveaddr":2
+"looptype":"ventilation"
+"brandname":"4in1"
+"portid":1
+"roomid":4
+ "aliasname":"新风2"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configdevice"
+"moduletype":"485"
+"configtype":"add"
+"primaryid":100
+ 
+"deviceloopmap":
+[
+{
+"slaveaddr":1
+"looptype":"ventilation"
+"brandname":"4in1"
+"portid":1
+"roomid":3
+ "aliasname":"新风1"
+"responseprimaryid":199（loop的唯一id，64位long类型）
+ "errorcode":0
+},
+{
+"slaveaddr":2
+"roomid":4
+"looptype":"ventilation"
+"brandname":"4in1"
+"portid":1
+ "aliasname":"新风2"
+"responseprimaryid":200（loop的唯一id，64位long类型）
+ "errorcode":0
+}
+]
+}}
+
+
+15）查询新风状态(暂不支持)
+使用协议27进行控制和查询。
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" readdevice"
+"moduletype":"485"
+"Modulemacaddr":"12.23.45.65.67.86"
+"looptype":"ventilation"
+"deviceloopmap":
+[
+{
+"portid":1
+"loopid":1
+},
+{
+"portid":1
+"loopid":2
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" readdevice"
+ "moduletype":"485"
+ "Modulemacaddr":"12.23.45.65.67.86"
+"looptype":"ventilation"
+"deviceloopmap":
+[
+{
+"portid":1
+"loopid":1
+ "errorcode":0
+"status":"on"
+},
+{
+"portid":1
+"loopid":2
+ "errorcode":0
+"status":"on"
+},
+]
+ }
+
+
+16）设置新风状态(暂不支持)
+使用协议27进行控制和查询。
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" setdevice"
+"moduletype":"485"
+"Moduledmacaddr":"12.23.45.65.67.86"
+"looptype":"ventilation"
+"deviceloopmap":
+[
+{
+"portid":1
+"loopid":1
+ "status":"on"
+},
+{
+"portid":1
+"loopid":2
+ "status":"on"
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" readdevice"
+ "moduletype":"485"
+ "Modulemacaddr":"12.23.45.65.67.86"
+"looptype":"ventilation"
+"deviceloopmap":
+[
+{
+"portid":1
+"loopid":1
+ "status":"on"
+ "errorcode":0
+},
+{
+"portid":1
+"loopid":2
+ "status":"on"
+ "errorcode":0
+},
+]
+}
+
+
+
+
+17）配置485 窗帘(黄浦湾)
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configdevice"
+"moduletype":"485"
+"configtype":"add"
+"primaryid":100（外围设备表的id）
+  "deviceloopmap":
+[
+{
+"slaveaddr":1
+"looptype":"curtain"
+"brandname":"huangpuwan"
+"portid":1
+"roomid":3
+ "aliasname":"客厅窗帘"
+},
+{
+"slaveaddr":2
+"looptype":" curtain"
+"brandname":" huangpuwan"
+"portid":1
+"roomid":4
+ "aliasname":"次卧窗帘"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configdevice"
+"moduletype":"485"
+"configtype":"add"
+"primaryid":100
+ 
+"deviceloopmap":
+[
+{
+"slaveaddr":1
+"looptype":"curtain"
+"brandname":"huangpuwan"
+"portid":1
+"roomid":3
+ "aliasname":"客厅窗帘"
+"responseprimaryid":199（loop的唯一id，64位long类型）
+ "errorcode":0
+},
+{
+"slaveaddr":2
+"roomid":4
+"looptype":"curtain"
+"brandname":" huangpuwan"
+"portid":1
+ "aliasname":"次卧窗帘"
+"responseprimaryid":200（loop的唯一id，64位long类型）
+ "errorcode":0
+}
+]
+}}
+
+
+18）485窗帘控制(黄浦湾)
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{"action":"request","subaction":"setdevice","deviceloopmap":[
+{"macaddr":"12.23.45.65.67.86","portid":1,"slaveaddr":1,"loopid":1,"looptype":"curtain",status":"opening "}//opening,closing,stopped
+],
+"msgid":"10","moduletype":"485"}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{"action":"request","subaction":"setdevice","deviceloopmap":[
+{{"macaddr":"12.23.45.65.67.86","portid":1,"slaveaddr":1,"loopid":1,"looptype":"curtain","openclosepercent":45,"status":" opening "}//opening,closing,stopped
+],
+"msgid":"10","moduletype":"485"}
+
+
+. Bacnet 控制及配置
+1）配置bacnet网关
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule"
+"moduletype":"bacnet"
+ "configtype":"add"
+ "brandname":"dakin"
+ "cubebacnetid":1
+"bacnetdeviceid":2
+"aliasname":"大金bacnet网关"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":"configmodule"
+"errorcode":0
+ "configtype":"add"
+"looptype":"aircondtion"
+"brandname":"dakin"
+ "cubebacnetid":1
+"bacnetdeviceid":2
+"aliasname":"大金bacnet网关"
+"responseprimaryid":199（loop的唯一id，64位long类型）
+ }
+
+
+
+2）修改bacnet网关
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule"
+"moduletype":"bacnet"
+ "configtype":"modify"
+ "primaryid":2
+"aliasname":"大金bacnet网关modify"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configmodule"
+"errorcode":0
+ "configtype":"modify"
+"primaryid":2
+ "aliasname":"大金bacnet网关modify"
+ }
+
+
+3）删除bacnet网关
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule"
+"moduletype":"bacnet"
+ "configtype":"delete"
+ "primaryid":2
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configmodule"
+"errorcode":0
+ "configtype":"delete"
+"primaryid":2
+ }
+
+
+4）添加bacnet空调
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configdevice"
+"moduletype":"bacnet"
+"primaryid":100（外围设备表的id）
+ "configtype":"add"
+"deviceloopmap":
+[
+{ 
+"looptype":"aircondtion"
+"deviceid":1
+"loopid":1
+"roomid":1
+ "aliasname":"主卧空调"
+},
+{ 
+"deviceid":1
+"looptype":"aircondtion"
+"loopid":2
+"roomid":2
+ "aliasname":"次卧空调"
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" bacnet"
+"primaryid":100
+ "configtype":"add"
+ "deviceloopmap":
+[
+{ 
+"deviceid":1
+"looptype":"aircondtion"
+"loopid":1
+"errorcode":0
+"roomid":1
+ "aliasname":"主卧空调"
+"responseprimaryid":199（loop的唯一id，64位long类型）
+},
+{ 
+"deviceid":1
+"looptype":"aircondtion"
+"loopid":2
+"errorcode": 0
+"roomid":2
+ "aliasname":"次卧空调"
+"responseprimaryid":200（loop的唯一id，64位long类型）
+},
+]
+}
+
+
+5）修改bacnet空调
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configdevice"
+"moduletype":"bacnet"
+ "configtype":"modify"
+"deviceloopmap":
+[
+{ 
+"primaryid":2
+ "roomid":3
+ "aliasname":"主卧空调modify"
+},
+{ 
+"primaryid":3
+ "roomid":4
+"aliasname":"次卧空调modify"
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" bacnet"
+ "configtype":"modify"
+ "deviceloopmap":
+[
+{ 
+"primaryid":2
+ "errorcode":0
+"roomid":3
+ "aliasname":"主卧空调modify"
+},
+{ 
+"primaryid":3
+ "errorcode": 0
+"roomid":4
+ "aliasname":"次卧空调modify"
+},
+]
+}
+
+
+6）删除bacnet空调
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configdevice"
+"moduletype":"bacnet"
+ "configtype":"delete"
+"deviceloopmap":
+[
+{ 
+"primaryid":2
+ "loopid":1
+},
+{ 
+"primaryid":3
+ "loopid":2
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" bacnet"
+"bacnetdeviceid":2
+ "configtype":"delete"
+ "deviceloopmap":
+[
+{ 
+"primaryid":2
+ "errorcode":0
+},
+{ 
+"primaryid":3
+"errorcode": 0
+},
+]
+}
+
+
+7）查询bacnet空调状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" readdevice"
+"moduletype":" bacnet"
+"bacnetdeviceid":2
+ "deviceloopmap":
+[
+{ 
+"deviceid":1
+"loopid":1
+},
+{ 
+"deviceid":1
+"loopid":2
+},
+]
+
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+ "action":"response"
+"subaction":" readdevice"
+"moduletype":" bacnet"
+"bacnetdeviceid":2
+ "deviceloopmap":
+[
+{ 
+"deviceid":1
+"loopid":1
+"errorcode":0
+"settemp":23
+"currenttemp":25
+"mode":cooling
+"fanspeed":"low"
+"status":"on"
+},
+{ 
+"deviceid":1
+"loopid":2
+"errorcode":0
+"settemp":23
+"currenttemp":25
+"mode":cooling
+"fanspeed":"high"
+"status":"on"
+},
+]
+}
+
+
+8）设置bacnet空调状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" setdevice"
+"moduletype":"bacnet"
+"bacnetdeviceid":2
+ "deviceloopmap":
+[
+{ 
+"deviceid":1
+"loopid":1
+ "settemp":23
+"currenttemp":25
+"mode":cooling
+"fanspeed":"middle"
+"status":"on"
+},
+{ 
+"deviceid":1
+"loopid":2
+ "settemp":23
+"currenttemp":25
+"mode":cooling
+"fanspeed": "middle"
+"status":"on"
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" setdevice"
+ "moduletype":"bacnet"
+ "bacnetdeviceid":2
+"deviceloopmap":
+[
+{ 
+"deviceid":1
+"loopid":1
+"errorcode":0
+},
+{ 
+"deviceid":1
+"loopid":2
+"errorcode":0
+},
+]
+}
+
+
+
+4.sparklight配置及控制
+1）配置sparklight 系统
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request",
+"subaction":" configmodule"
+"moduletype":"sparklighting"
+ "moduleipaddr":"192.168.1.50"
+"maskid":1
+"configtype":"add"
+"aliasname":"灯光系统1"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+ "action":"response"
+"subaction":" configmodule"
+"errorcode":0
+ "moduletype":" sparklighting"
+"moduleipaddr":" 192.168.1.50"
+"maskid":1
+"configtype":"add"
+"aliasname":"灯光系统1"
+"responseprimaryid":199（loop的唯一id，64位long类型）
+}
+
+
+2）修改sparklight 系统
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request",
+"subaction":"configmodule"
+"moduletype":"sparklighting"
+ "configtype":"modify"
+"primaryid":3
+"aliasname":"灯光系统1modify"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+ "action":"response"
+"subaction":" configmodule"
+"errorcode":0
+ "moduletype":" sparklighting"
+"primaryid":3
+ "configtype":"modify"
+"aliasname":"灯光系统1modify"
+}
+
+
+3）删除sparklighting系统
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+ "action":"request",
+"subaction":" configmodule"
+"moduletype":"sparklighting"
+"primaryid":2
+ "configtype":"delete"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{                                                         
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configmodule"
+"errorcode":0
+ "moduletype":" sparklighting"
+"primaryid":2
+ "configtype":"delete"
+}
+
+
+4）配置sparklight 系统灯光
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request",
+"subaction":" configdevice"
+"moduletype":"sparklighting"
+"primaryid":100（外围设备表的id）
+"configtype":"add"
+ "deviceid":6
+"subdevtype":" HBLS-D0206"
+"deviceloopmap"
+ [
+{
+"loopid":1
+"looptype":"light"
+"roomid":1
+ "aliasname":"桌前灯"
+},
+{
+"loopid":2
+"looptype":"light"
+"roomid":3
+ "aliasname":"镜前灯"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+ "action":"response"
+"subaction":" configdevice"
+"moduletype":" sparklighting"
+"primaryid":100
+ "configtype":"add"
+ "deviceid":6
+"deviceloopmap"
+ [
+{
+"loopid":1
+"errorcode":0
+"looptype":"light"
+"roomid":1
+ "aliasname":"桌前灯"
+"responseprimaryid":199（loop的唯一id，64位long类型）
+},
+{
+"loopid":2
+"errorcode":0
+"looptype":"light"
+"roomid":3
+ "aliasname":"镜前灯"
+"responseprimaryid":200（loop的唯一id，64位long类型）
+}
+]
+}
+
+
+4）修改sparklight 系统灯光
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request",
+"subaction":"configdevice"
+"moduletype":"sparklighting"
+ "configtype":"modify"
+ "deviceloopmap"
+ [
+{
+"primaryid":3
+"roomid":1
+ "aliasname":"桌前灯modify"
+},
+{
+"primaryid":4
+ "roomid":1
+"aliasname":"镜前灯modify"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+ "action":"response"
+"subaction":" configdevice"
+"moduletype":" sparklighting"
+ "configtype":" modify"
+ "deviceloopmap"
+ [
+{
+"primaryid":3
+ "errorcode":0
+ "roomid":1
+"aliasname":"桌前灯modify"
+},
+{
+"primaryid":4
+"errorcode":0
+"roomid":1
+ "aliasname":"镜前灯modify"
+}
+]
+}
+
+
+5）删除sparklighting 系统灯光
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request",
+"subaction":" configdevice"
+"module type":"sparklighting"
+ "configtype": "delete"
+ "deviceloopmap"
+ [
+{
+"primaryid":2
+},
+{
+"primaryid":3
+}
+],
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" sparklighting"
+"moduleipaddr":" 192.168.1.50"
+"configtype":"delete"
+ "deviceloopmap"
+ [
+{
+"primaryid":2
+ "errorcode":0
+},
+{
+"primaryid":3
+ "errorcode":0
+}
+],
+
+}
+
+
+6）配置sparklight 系统窗帘
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request",
+"subaction":" configdevice"
+"moduletype":"sparklighting"
+"primaryid":100（外围设备表的id）
+ "configtype":"add"
+ "deviceid":7
+"subdevtype":"HBLS-C02 "
+"deviceloopmap":
+ [
+{
+"loopid":1
+"looptype":"curtain"
+"roomid":2
+ "aliasname":"左窗帘"
+},
+{
+"loopid":2
+"looptype":"curtain"
+"roomid":2
+ "aliasname":"右窗帘"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" sparklighting"
+"primaryid":100
+ "configtype":"add"
+ "deviceid":7
+"deviceloopmap":
+ [
+{
+"loopid":1
+"errorcode":0
+"looptype":"curtain"
+"roomid":2
+ "aliasname":"左窗帘"
+"responseprimaryid":199（loop的唯一id，64位long类型）
+},
+{
+"loopid":2
+"errorcode":0
+"looptype":"curtain"
+"roomid":2
+ "aliasname":"右窗帘"
+"responseprimaryid":200（loop的唯一id，64位long类型）
+}
+]
+}
+
+
+
+7）修改sparklight 系统窗帘
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request",
+"subaction":" configdevice"
+"moduletype":"sparklighting"
+ "configtype":"modify"
+ "deviceloopmap":
+ [
+{
+"primaryid":3
+"roomid":3
+ "aliasname":"左窗帘modify"
+},
+{
+"primaryid":4
+ "roomid":3
+ "aliasname":"右窗帘modify"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" sparklighting"
+"moduleipaddr":" 192.168.1.50"
+"configtype":"modify"
+ "deviceloopmap":
+ [
+{
+"loopid":1
+"deviceid":7
+"errorcode":0
+ "roomid":3
+ "aliasname":"左窗帘modify"
+},
+{
+"loopid":2
+"deviceid":7
+"errorcode":0
+ "roomid":3
+ "aliasname":"右窗帘modify"
+}
+]
+}
+
+
+8）删除sparklight 系统窗帘
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request",
+"subaction":"configdevice"
+"moduletype":"sparklighting"
+ "configtype":"delete"
+ "deviceloopmap":
+ [
+{
+"primaryid":2
+},
+{
+"primaryid":3
+}
+],
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" sparklighting"
+"moduleipaddr":" 192.168.1.50"
+"configtype":"delete"
+ "deviceloopmap":
+ [
+{
+"primaryid":2
+ "errorcode":0
+},
+{
+"primaryid":3
+"errorcode":0
+}
+],
+}
+
+
+
+9）配置sparklighting 系统 吸顶红外
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request",
+"subaction":" configdevice"
+"moduletype":"sparklighting"
+"primaryid":100（外围设备表的id）
+ "configtype":"add"
+ "deviceid":7
+ "subdevtype":"HBLS-SIR"
+"deviceloopmap":
+ [
+{// 只有一个loop，固定为1
+"loopid":1 
+"looptype":"sensor"
+"roomid":5
+ "aliasname":" 起夜"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"respsonse",
+"subaction":" configdevice"
+"moduletype":"sparklighting"
+"primaryid":100（外围设备表的id）
+ "configtype":"add"
+ "deviceid":7
+ "subdevtype":"HBLS-SIR"
+"deviceloopmap":
+ [
+{// 只有一个loop，固定为1
+ "loopid":1 
+"looptype":" sensor"
+"roomid":5
+ "aliasname":" 起夜"
+"responseprimaryid":200（loop的唯一id，64位long类型）
+"errorcode":0
+}
+]
+}
+
+
+10）修改sparklighting系统吸顶红外
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request",
+"subaction":" configdevice"
+"moduletype":"sparklighting"
+ "configtype":"modify"
+ "deviceloopmap":
+ [
+{
+"primaryid":3
+ "roomid":6
+"aliasname":"起夜modify"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" sparklighting"
+"moduleipaddr":" 192.168.1.50"
+"configtype":"modify"
+ "deviceloopmap":
+ [
+{
+"primaryid":3
+ "roomid":6
+"aliasname":"起夜modify"
+"errorcode":0
+}
+]
+}
+
+
+
+11）删除sparklighting系统吸顶红外
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request",
+"subaction":"configdevice"
+"moduletype":"sparklighting"
+ "configtype":"delete"
+ "deviceloopmap":
+ [
+{
+"primaryid":2
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" sparklighting"
+ "configtype":"delete"
+ "deviceloopmap":
+ [
+{
+"primaryid":2
+"errorcode":0
+}
+]
+}
+
+
+
+12）配置sparklighting 系统 空气质量模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request",
+"subaction":" configdevice"
+"moduletype":"sparklighting"
+"primaryid":100（外围设备表的id）
+ "configtype":"add"
+ "deviceid":7
+ "subdevtype":"HBLS-STLA"
+"deviceloopmap":
+ [
+{// 只有一个loop，固定为1
+"loopid":1 
+"looptype":"sensor"
+"roomid":4
+ "aliasname":"空气探测器"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"respsonse",
+"subaction":" configdevice"
+"moduletype":"sparklighting"
+"primaryid":100（外围设备表的id）
+ "configtype":"add"
+ "deviceid":7
+"subdevtype":"HBLS-STLA"
+"deviceloopmap":
+ [
+{// 只有一个loop，固定为1
+"loopid":1 
+"looptype":" sensor"
+"roomid":4
+ "aliasname":"空气探测器"
+"responseprimaryid":200（loop的唯一id，64位long类型）
+"errorcode":0
+}
+]
+}
+
+13）修改sparklighting系统空气质量模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request",
+"subaction":" configdevice"
+"moduletype":"sparklighting"
+ "configtype":"modify"
+"deviceloopmap":
+ [
+{
+"primaryid":3
+ "roomid":5
+"aliasname":" 空气探测器modify"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" sparklighting"
+"moduleipaddr":" 192.168.1.50"
+"configtype":"modify"
+"deviceloopmap":
+ [
+{
+"primaryid":3
+ "roomid":5
+"aliasname":" 空气探测器modify"
+"errorcode":0
+}
+]
+}
+
+
+
+14）删除sparklighting系统空气质量模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request",
+"subaction":"configdevice"
+"moduletype":"sparklighting"
+ "configtype":"delete"
+ "deviceloopmap":
+ [
+{
+"primaryid":2
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" sparklighting"
+ "configtype":"delete"
+ "deviceloopmap":
+ [
+{
+"primaryid":2
+"errorcode":0
+}
+]
+}
+
+
+
+15）查询sparklighting 灯光状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{"action":"request",
+"subaction":"readdevice",
+"deviceloopmap":[
+{"maskid":1,"loopid":1,"deviceid":1,"looptype":"light"},
+{"maskid":1,"loopid":2,"deviceid":1,"looptype":"light"}],
+"msgid":"9",
+"moduletype":"sparklighting"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{"action":"response",
+"subaction":"readdevice",
+"deviceloopmap":[
+{"maskid":1,"loopid":1,"deviceid":1,"looptype":"light","status":"on"
+, "openclosepercent":50
+"errorcode":0
+},
+],
+"msgid":"9",
+"moduletype":"sparklighting"
+}
+
+
+16）设置sparklighting 灯光状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{"action":"request","subaction":"setdevice","deviceloopmap":[
+{"maskid":1,"loopid":1,"looptype":"light","openclosepercent":45,"status":"on","deviceid":1}
+],
+"msgid":"10","moduletype":"sparklighting"}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{"action":"response","subaction":"setdevice","deviceloopmap":[
+{"maskid":1,"loopid":1,"looptype":"light","openclosepercent":45,"status":"on","deviceid":1,"errorcode":0}
+],
+"msgid":"10","moduletype":"sparklighting"}
+
+
+
+17）查询sparklighting 窗帘状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" readdevice"
+"moduletype":"sparklighting"
+ "deviceloopmap"
+[
+{
+"maskid":1
+"deviceid":7
+"loopid":1
+"looptype":"curtain"
+},
+{
+"maskid":1
+"deviceid":7
+"loopid":2
+"looptype":"curtain"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+ "action":"response"
+"subaction":" readdevice"
+ "moduletype":" sparklighting"
+ "deviceloopmap"
+[
+{
+"errorcode":0
+"maskid":1
+"deviceid":7
+"loopid":1
+"looptype":"curtain"
+ "status":"opening"
+},
+{
+"errorcode":1
+"maskid":1
+"deviceid":7
+"loopid":2 
+"looptype":"curtain"
+"status":"closing"
+},
+]
+}
+
+
+18）设置sparklighting 窗帘状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{"action":"request","subaction":"setdevice","deviceloopmap":[{"maskid":1,"loopid":1,"looptype":"curtain","status":"opening","deviceid":2}],"msgid":"12","moduletype":"sparklighting"}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{"action":"request","subaction":"setdevice","deviceloopmap":[{"maskid":1,"loopid":1,"looptype":"curtain","status":"opening","deviceid":2,"errorcode":0}],"msgid":"12","moduletype":"sparklighting"}
+
+
+19）查询sparklighting relay状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" readdevice"
+"moduletype":"sparklighting"
+ "deviceloopmap"
+[
+{
+"maskid":1
+"deviceid":7
+"loopid":1
+"looptype":"relay"
+},
+{
+"maskid":1
+"deviceid":7
+"loopid":2
+"looptype":"relay"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+ "action":"response"
+"subaction":" readdevice"
+ "moduletype":" sparklighting"
+ "deviceloopmap"
+[
+{
+"errorcode":0
+"maskid":1
+"deviceid":7
+"loopid":1
+"looptype":"relay"
+ "status":"on"
+},
+{
+"errorcode":1
+"maskid":1
+"deviceid":7
+"loopid":2 
+"looptype":"relay"
+"status":"off"
+},
+]
+}
+
+
+20）设置sparklighting relay状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" setdevice"
+"moduletype":" sparklighting"
+ "deviceloopmap"
+[
+{
+"maskid":1
+"deviceid":7
+"loopid":1
+"looptype":"relay"
+ "status":"on"
+},
+{
+"maskid":1
+"deviceid":7
+"loopid":2
+"looptype":"relay"
+ "status":"off"
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" setdevice"
+ "moduletype":" sparklighting"
+"deviceloopmap"
+[
+{
+"errorcode":0
+"maskid":1
+"deviceid":7
+"loopid":1
+"looptype":"relay"
+},
+{
+"errorcode":0
+"maskid":1
+"deviceid":7
+"loopid":2
+"looptype":"relay"
+}
+]
+}
+
+
+
+21）查询sparklighting 空气质量状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" readdevice"
+"moduletype":"sparklighting"
+ "deviceloopmap"
+[
+{
+"maskid":1
+"deviceid":7
+"loopid":1 // 对于空气质量模块来说， loopid始终为1
+"looptype":"sensor"
+},
+{
+"maskid":1
+"deviceid":6
+"loopid":1// 对于空气质量模块来说， loopid始终为1
+"looptype":"sensor"
+}
+]
+}
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+x
+{
+"msgid":"2387r958273894"                                                                                                  
+ "action":"response"
+"subaction":" readdevice"
+ "moduletype":" sparklighting"
+ "deviceloopmap"
+[
+{
+"errorcode":0
+"maskid":1
+"deviceid":7
+"loopid":1 // 对于空气质量模块来说， loopid始终为1
+"looptype":"sensor"
+"currentluminance":"750"
+"currentairqual":"clean/slight/moderate/serious"
+},
+{
+"errorcode":1
+"maskid":1
+"deviceid":6
+"loopid":1 // 对于空气质量模块来说， loopid始终为1
+"looptype":"sensor"
+},
+]
+}
+
+5. 315M433M配置及控制
+1）配置315M433M小模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule"
+"moduletype":"315M433M"
+"modulemacaddr":"12.23.45.65.67.86"
+"moduleipaddr":"192.168.1.50"
+"configtype":"add"
+"aliasname":"房间"
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configmodule"
+"errorcode":0
+"moduletype":" 315M433M"
+"modulemacaddr":"12.23.45.65.67.86"
+"moduleipaddr":"192.168.1.50"
+"configtype":"add"
+"aliasname":"maia设备"
+"responseprimaryid":199（loop的唯一id，64位long类型）
+}
+
+
+2）修改315M433M小模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule"
+"moduletype":"315M433M"
+ "primaryid":3
+ "configtype":"modify"
+"aliasname":" maia设备modify"
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configmodule"
+"errorcode":0
+"moduletype":" 315M433M"
+"primaryid":3
+ "configtype":"modify"
+"aliasname":" maia设备modify"
+}
+
+
+3）删除315M433M小模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule"
+"moduletype":"315M433M"
+"primaryid":3
+ "configtype":"delete"
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configmodule"
+"errorcode":0
+"moduletype":" 315M433M"
+"primaryid":3
+ "configtype":"delete"
+}
+
+
+
+4）配置maia2小模块灯光
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request",
+"subaction":" configdevice",
+"moduletype":" 315M433M",
+"primaryid":100（外围设备表的id）
+ "configtype":"add"
+" devicetype":"maia2"
+ "deviceid":12345678
+ "deviceloopmap"
+[
+{
+"loopid":1
+"looptype":"light"
+"roomid":3
+ "aliasname":"灯光1"
+},
+{
+"loopid":2
+"looptype":"light"
+"roomid":3
+ "aliasname":"灯光2"
+},
+]
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" 315M433M"
+"primaryid":100
+ "configtype":"add"
+"devicetype":"maia2"
+ "deviceid": 12345678
+"deviceloopmap"
+[
+{
+"loopid":1
+"looptype":"light"
+"roomid":3
+ "aliasname":"灯光1"
+ "errorcode":0
+"responseprimaryid":199（loop的唯一id，64位long类型）
+},
+{	
+"loopid":2
+"looptype":"light"
+"roomid":3
+ "aliasname":"灯光2"
+ "errorcode":0
+"responseprimaryid":200（loop的唯一id，64位long类型）
+},
+]
+}
+
+
+5）修改maia2小模块灯光
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request",
+"subaction":" configdevice",
+"moduletype":" 315M433M",
+ "configtype":"modify"
+ "deviceloopmap"
+[
+{
+"primaryid":3
+ "roomid":1
+"aliasname":"灯光1modify"
+},
+{
+"primaryid":4
+ "roomid":1
+"aliasname":"灯光2modify"
+},
+]
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" 315M433M"
+ "configtype":"add"
+ "deviceloopmap"
+[
+{
+"primaryid":3
+"roomid":1
+ "aliasname":"灯光1modify"
+ "errorcode":0
+},
+{	
+"primaryid":4
+ "roomid":1
+"aliasname":"灯光2modify"
+ "errorcode":0
+},
+]
+}
+
+
+6）删除maia2小模块灯光
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request",
+"subaction":" configdevice",
+"moduletype":" 315M433M",
+ "configtype":"delete"
+ "deviceloopmap"
+[
+{
+"primaryid":3
+},
+{
+"primaryid":4
+},
+]
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" 315M433M"
+ "configtype":"delete"
+ "deviceloopmap"
+[
+{
+ "primaryid":3
+ "errorcode":0
+},
+{	
+ "primaryid":4
+ "errorcode":0
+},
+]
+}
+
+
+7）配置maia2窗帘
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request",
+"subaction":" configdevice",
+"moduletype":" 315M433M",
+"primaryid":100（外围设备表的id）
+ "configtype":"add"
+ "devicetype":"maia2"
+"deviceid": 12345678
+"deviceloopmap":
+[
+{
+"loopid":1
+"looptype":"curtain"
+"roomid":2
+ "aliasname":"窗帘1"
+},
+{
+"loopid":2
+"looptype":"curtain"
+"roomid":2
+ "aliasname":"窗帘2"
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" 315M433M"
+"moduletype":" maia2"
+"primaryid":100
+ "configtype":"add"
+"devicetype":"maia2"
+ "deviceid": 12345678
+"deviceloopmap"
+[
+{
+"loopid":1
+"looptype":"curtain"
+"roomid":2
+ "aliasname":"窗帘1"
+ "errorcode":0
+"responseprimaryid":199（loop的唯一id，64位long类型）
+},
+{	
+"loopid":2
+"looptype":"curtain"
+"roomid":2
+ "aliasname":"窗帘2"
+ "errorcode":0
+"responseprimaryid":200（loop的唯一id，64位long类型）
+},
+]
+}
+
+
+8）修改maia2窗帘
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request",
+"subaction":"configdevice",
+"moduletype":" 315M433M",
+ "configtype":"modify"
+ "deviceloopmap":
+[
+{
+"primaryid":4
+ "roomid":1
+"aliasname":"窗帘1modify"
+},
+{
+"primaryid":5
+ "roomid":2
+"aliasname":"窗帘2modify"
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" 315M433M"
+ "configtype":"modify"
+"devicetype":"maia2"
+ "deviceloopmap"
+[
+{
+"primaryid":4
+ "roomid":1
+aliasname":"窗帘1modify"
+ "errorcode":0
+},
+{	
+"primaryid":5
+ "roomid":2
+"aliasname":"窗帘2modify"
+ "errorcode":0
+},
+]
+}
+
+
+9）删除maia2窗帘
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request",
+"subaction":" configdevice",
+"moduletype":" 315M433M",
+ "configtype":"delete"
+ "deviceloopmap":
+[
+{
+"primaryid":3
+},
+{
+ "primaryid":4
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" 315M433M"
+ "configtype":"delete"
+ "deviceloopmap"
+[
+{
+"primaryid":3
+ "errorcode":0
+},
+{	
+"primaryid":4
+ "errorcode":0
+},
+]
+}
+
+
+
+10）查询maia2灯光状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" readdevice"
+"moduletype":" 315M433M"
+ "devicetype":"maia2"
+ "deviceloopmap":
+[
+{
+"modulemacaddr":"12.23.45.65.67.86"
+"deviceid": 12345678
+"loopid":1
+"looptype":"light"
+},
+{
+"modulemacaddr":"12.23.45.65.67.86"
+"deviceid": 12345678
+"loopid":2
+"looptype":"light"
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+
+body
+{
+"msgid":"2387r958273894"
+ "action":"response"
+"subaction":" readdevice"
+ "moduletype":" 315M433M"
+ "devicetype":"maia2"
+ "deviceloopmap":
+[
+{
+"errorcode":0
+"modulemacaddr":"12.23.45.65.67.86"
+"deviceid": 12345678
+"loopid":1
+"looptype":"light"
+ "status":"on"
+"openclosepercent":50
+},
+{	
+"errorcode":0
+"modulemacaddr":"12.23.45.65.67.86"
+"deviceid": 12345678
+"loopid":2
+"looptype":"light"
+ "status":"off"
+"openclosepercent":0
+},
+]
+}
+
+
+11）设置maia2灯光状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" setdevice"
+"moduletype":" 315M433M"
+ "devicetype":"maia2"
+ "deviceloopmap":
+[
+{
+"modulemacaddr":"12.23.45.65.67.86"
+"deviceid": 12345678
+ "loopid":1
+"looptype":"light"
+"status":"on"
+"openclosepercent":50
+},
+{	
+"modulemacaddr":"12.23.45.65.67.86"
+"deviceid": 12345678
+ "loopid":2
+"looptype":"light"
+"status":"off"
+"openclosepercent":0
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" setdevice"
+ "moduletype":" 315M433M"
+ "devicetype":"maia2"
+ "deviceloopmap":
+[
+{
+"errorcode":0
+"modulemacaddr":"12.23.45.65.67.86"
+"deviceid": 12345678
+"loopid":1
+"looptype":"light"
+},
+{	
+"errorcode":1
+"modulemacaddr":"12.23.45.65.67.86"
+"deviceid": 12345678
+"loopid":2
+"looptype":"light"
+},
+]
+}
+
+
+12）查询maia2窗帘状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" readdevice"
+"moduletype":" 315M433M"
+ "devicetype":"maia2"
+"deviceloopmap":
+[
+{
+"modulemacaddr":"12.23.45.65.67.86"
+"deviceid": 12345678
+ "loopid":1
+"looptype":"curtain"
+},
+{	
+"modulemacaddr":"12.23.45.65.67.86"
+"deviceid": 12345678
+ "loopid":"2"
+"looptype":"curtain"
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+ "action":"response"
+"subaction":" readdevice"
+ "moduletype":" 315M433M"
+ "devicetype":"maia2"
+ "deviceloopmap":
+[
+{
+"errorcode":0
+"modulemacaddr":"12.23.45.65.67.86"
+"deviceid": 12345678
+"loopid":1
+"looptype":"curtain"
+ "status":" opening"
+},
+{	
+"errorcode":1
+"modulemacaddr":"12.23.45.65.67.86"
+"deviceid": 12345678
+"loopid":2
+"looptype":"curtain"
+"status":" opening"
+},
+]
+}
+
+
+13）设置maia2窗帘状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" setdevice"
+"moduletype":" 315M433M"
+ "devicetype":"maia2"
+ "deviceloopmap":
+[
+{
+"modulemacaddr":"12.23.45.65.67.86"
+"deviceid": 12345678
+"loopid":1
+"looptype":"curtain"
+ "status":"stopped"
+},
+{
+"modulemacaddr":"12.23.45.65.67.86"
+"deviceid": 12345678
+"loopid":2
+"looptype":"curtain"
+ "status":"closing"
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" setdevice"
+ "moduletype":" 315M433M"
+ "devicetype":"maia2"
+ "deviceloopmap":
+[
+{
+"errorcode":0
+"modulemacaddr":"12.23.45.65.67.86"
+"deviceid": 12345678
+"loopid":1
+"looptype":"curtain"
+},
+{	
+"errorcode":0
+"modulemacaddr":"12.23.45.65.67.86"
+"deviceid": 12345678
+"loopid":2
+"looptype":"curtain"
+},
+]
+}
+
+
+14）配置433M红外sensor
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request",
+"subaction":" configdevice",
+"moduletype":"315M433M"
+"primaryid":100（外围设备表的id）
+ "configtype":"add"
+"devicetype":"sensor"
+"deviceloopmap":
+[
+{
+ "loopid":1111111
+"looptype":" 5800-PIR-AP"
+"zonetype":"delay"
+"alarmtype":" fire"
+"alarmtimer":20
+"roomid":1
+ "aliasname":"人员探测"
+ "alarmenable":"on
+},
+{	
+"loopid":22222222
+"looptype":" 5816EU"
+"zonetype":"instant"
+"alarmtype":" gas"
+"alarmtimer":0
+ "roomid":2
+
+"aliasname":"人员探测"
+ "alarmenable":"on
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response",
+"subaction":" configdevice",
+"moduletype":"315M433M"
+"primaryid":100
+ "devicetype":"sensor"
+"deviceloopmap":
+[
+{
+ "loopid":1111111
+"errorcode":0
+"looptype":" 5800-PIR-AP"
+"zonetype":"delay"
+"alarmtype":" fire"
+"alarmtimer":20
+"roomid":1
+ "aliasname":"人员探测"
+"responseprimaryid":199（loop的唯一id，64位long类型）
+},
+{	
+"loopid":22222222
+"errorcode":0
+"looptype":" 5816EU"
+"zonetype":"instant"
+"alarmtype":" gas"
+"alarmtimer":0
+"roomid":2
+ "aliasname":"人员探测"
+"responseprimaryid":199（loop的唯一id，64位long类型）
+},
+]
+}
+
+
+15）修改433M红外sensor
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request",
+"subaction":" configdevice",
+"moduletype":"315M433M"
+ "configtype":"modify"
+ "deviceloopmap":
+[
+{
+"primaryid":4
+ "roomid":3
+ "aliasname":"人员探测modify"
+"alarmenable":"on"
+},
+{	
+"primaryid":5
+ "roomid":4
+"aliasname":"人员探测modify"
+"alarmenable":"on"
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response",
+"subaction":" configdevice",
+"moduletype":"315M433M"
+ "deviceloopmap":
+[
+{
+"primaryid":4
+ "errorcode":0
+ "roomid":3
+"aliasname":"人员探测modify"
+},
+{	
+"primaryid":5
+ "errorcode":0
+ "roomid":4
+"aliasname":"人员探测modify"
+},
+]
+}
+
+
+16）删除433M红外sensor
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request",
+"subaction":" configdevice",
+"moduletype":"315M433M"
+ "deviceloopmap":
+[
+{
+"primaryid":3
+},
+{	
+"primaryid":4
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response",
+"subaction":" configdevice",
+"moduletype":"315M433M"
+ "deviceloopmap":
+[
+{
+"primaryid":3
+ "errorcode":0
+},
+{	
+"primaryid":4
+"errorcode":0
+},
+]
+}
+
+
+6.Wired zone配置及控制
+1）配置wired zone模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" configmodule"
+"moduletype":" wiredzone"
+"modulemacaddr":"12.23.45.65.67.86"
+"moduleipaddr":"192.168.1.70"
+"configtype":"add"
+"aliasname":"有线防区"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configmodule"
+"errorcode":0
+"moduletype":" wiredzone"
+"modulemacaddr":"12.23.45.65.67.86"
+"moduleipaddr":"192.168.1.70"
+"configtype":"add"
+"aliasname":"有线防区"
+"responseprimaryid":199（loop的唯一id，64位long类型）
+}
+
+
+2）修改wired zone模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" configmodule"
+"moduletype":" wiredzone"
+"primaryid":4
+ "configtype":"modify"
+"aliasname":"有线防区modify"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configmodule"
+"errorcode":0
+"moduletype":" wiredzone"
+"primaryid":4
+ "configtype":" modify"
+"aliasname":"有线防区modify"
+}
+
+
+3）删除wired zone模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" configmodule"
+"moduletype":" wiredzone"
+"primaryid":3
+ "configtype":"delete"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configmodule"
+"errorcode":0
+"moduletype":" wiredzone"
+"primaryid":3
+ "configtype":" delete"
+}
+
+
+4）	配置wired zone防区
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+subaction":" configdevice"
+"moduletype":" wiredzone"
+"primaryid":100（外围设备表的id）
+ "configtype":"add"
+"deviceloopmap":
+[
+{
+"loopid":1
+"roomid":1
+ "aliasname":"主卧防区1"
+"zonetype":"instant"
+"alarmtype":" help"
+"alarmtimer":0
+"alarmenable":"on"
+},
+{
+"loopid":2
+"roomid":1
+ "aliasname":"主卧防区"
+"zonetype":"delay"
+"alarmtype":" thief"
+"alarmtimer":20
+"alarmenable":"on"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+ "moduletype":" wiredzone"
+"primaryid":100
+ "configtype":"add"
+"deviceloopmap":
+[
+{
+"loopid":1
+"errorcode":0
+"roomid":1
+ "aliasname":"主卧防区1"
+"zonetype":"instant"
+alarmtype":" help"
+"alarmtimer":0
+"alarmenable":"on"
+"responseprimaryid":199（loop的唯一id，64位long类型）
+{
+"loopid":2
+"errorcode":0
+"roomid":1
+ "aliasname":"主卧防区2"
+"zonetype":"delay"
+"alarmtype":" thief"
+"alarmtimer":20
+"alarmenable":"on"
+"responseprimaryid":200（loop的唯一id，64位long类型）
+}
+]
+}
+
+
+5）修改wired zone防区
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+subaction":" configdevice"
+"moduletype":" wiredzone"
+ "configtype":"modify"
+"deviceloopmap":
+[
+{
+"primaryid":4
+ "roomid":3
+"aliasname":"主卧防区1 modify"
+"alarmenable":"on"
+},
+{
+"primaryid":5
+ "roomid":3
+"aliasname":"主卧防区modify"
+"alarmenable":"on"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+ "moduletype":" wiredzone"
+ "configtype":" modify"
+"deviceloopmap":
+[
+{
+"primaryid":4
+ "errorcode":0
+"roomid":3
+ "aliasname":"主卧防区1 modify"
+"alarmenable":"on"
+
+{
+"primaryid":5
+ "errorcode":0
+"roomid":3
+ "aliasname":"主卧防区2 modify"
+"alarmenable":"on"
+}
+]
+}
+
+
+6）删除wired zone防区
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+subaction":" configdevice"
+"moduletype":" wiredzone"
+ "configtype":"delete"
+"deviceloopmap":
+[
+{
+"primaryid":3
+},
+{
+"primaryid":4
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+ "moduletype":" wiredzone"
+ "configtype":" delete"
+"deviceloopmap":
+[
+{
+"primaryid":3
+ "errorcode":0
+{
+"primaryid":4
+"errorcode":0
+}
+]
+}
+
+
+7）撤布防防区
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+subaction":" setdevice"
+"moduletype":" alarmzone"
+"isarm":"arm" 
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" setdevice"
+"moduletype":" alarmzone"
+"isarm":"arm" 
+"errorcode":0
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule"
+"moduletype":"relay"
+"modulemacaddr":"12.23.45.65.67.86"
+"moduleipaddr":"192.168.1.50"
+"configtype":"add"
+"aliasname":"relay设备"
+}
+
+
+7.relay配置及控制
+1）配置relay小模块
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configmodule"
+"configtype":"add"
+"errorcode":0
+"moduletype":" relay"
+"modulemacaddr":"12.23.45.65.67.86"
+"aliasname":"relay设备"
+"responseprimaryid":199（loop的唯一id，64位long类型）
+}
+
+
+2）修改relay小模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule"
+"moduletype":"relay"
+"primaryid":4
+ "configtype":"modify"
+"aliasname":"relay设备modify"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configmodule"
+"errorcode":0
+"configtype":"modify"
+ "moduletype":" relay"
+"primaryid":4
+ "aliasname":"relay设备modify"
+}
+
+
+3）删除relay小模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule"
+"moduletype":"relay"
+"primaryid":3
+ "configtype":"delete"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configmodule"
+"errorcode":0
+"configtype":"delete"
+ "moduletype":" relay"
+"primaryid":3
+}
+
+
+4）配置relay回路
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"request",
+"subaction":" configdevice"
+"moduletype":" relay"
+"primaryid":100（外围设备表的id）
+ "configtype":"add"
+"deviceloopmap"
+[
+{
+"loopid":1
+"time":5
+"roomid":3
+ "aliasname":"灯光"
+},
+{
+"loopid":2
+"time":5
+"roomid":3
+ "aliasname":"窗帘"
+},
+]
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" relay"
+"primaryid":100
+ "configtype":"add"
+ "deviceloopmap"
+[
+{
+"loopid":1
+"errorcode":0
+"time":5
+"roomid":3
+ "aliasname":"灯光"
+"responseprimaryid":199（loop的唯一id，64位long类型）
+},
+{
+"loopid":2
+"errorcode":0
+"time":5
+"roomid":3
+ "aliasname":"窗帘"
+"responseprimaryid":200（loop的唯一id，64位long类型）
+},
+]
+}
+
+
+5）修改relay回路
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"request",
+"subaction":" configdevice"
+"moduletype":" relay"
+ "configtype":"modify"
+"deviceloopmap"
+[
+{
+"primaryid":4
+ "roomid":2
+ "aliasname":"灯光modify"
+},
+{
+"primaryid":5
+ "roomid":2
+"aliasname":"窗帘modify"
+},
+]
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" relay"
+ "configtype":" modify"
+ "deviceloopmap"
+[
+{
+"primaryid":4
+ "errorcode":0
+ "roomid":2
+"aliasname":"灯光modify"
+},
+{
+"primaryid":5
+"errorcode":0
+ "roomid":2
+"aliasname":"窗帘modify"
+},
+]
+}
+
+
+6）删除relay回路
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"request",
+"subaction":" configdevice"
+"moduletype":" relay"
+ "configtype":"delete"
+"deviceloopmap"
+[
+{
+"primaryid":3
+},
+{
+"primaryid":4
+},
+]
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" relay"
+ "configtype":" delete"
+ "deviceloopmap"
+[
+{
+"primaryid":3
+"errorcode":0
+},
+{
+"primaryid":4
+"errorcode":0
+},
+]
+}
+
+
+7）设置relay回路状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" setdevice"
+"moduletype":" relay"
+ "deviceloopmap"
+[
+{
+"modulemacaddr":"12.23.45.65.67.86"
+"loopid":1
+"status":"off"
+"time":0
+},
+{
+"modulemacaddr":"12.23.45.65.67.86"
+"loopid":2
+"status":"on"
+"time":5
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+ "action":"response"
+"subaction":" setdevice"
+ "moduletype":" relay"
+"deviceloopmap"
+[
+{
+"modulemacaddr":"12.23.45.65.67.86"
+"loopid":1
+"errorcode":0
+"status":"off"
+"time":0
+},
+{
+"modulemacaddr":"12.23.45.65.67.86"
+"loopid":2
+"errorcode":0
+"status":"on"
+"time":5
+},
+]
+}
+
+
+8）查询relay回路状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" readdevice"
+"moduletype":" relay"
+ "deviceloopmap"
+[
+{
+"modulemacaddr":"12.23.45.65.67.86"
+"loopid":1
+},
+{
+"modulemacaddr":"12.23.45.65.67.86"
+"loopid":2
+},
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+ "action":"response"
+"subaction":" readdevice"
+ "moduletype":" relay"
+"deviceloopmap"
+[
+{
+"modulemacaddr":"12.23.45.65.67.86"
+"loopid":1
+"errorcode":0
+"status":"off"
+},
+{
+"modulemacaddr":"12.23.45.65.67.86"
+"loopid":2
+"errorcode":0
+"status":"off"
+},
+]
+}
+
+
+9）relay回路状态变化通知
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+ "action":"event"
+"subaction":" setdevice"
+"moduletype":" relay"
+"deviceloopmap"
+[
+{
+"modulemacaddr":"12.23.45.65.67.86"
+"loopid":1
+ "status":"off"
+},
+{
+"modulemacaddr":"12.23.45.65.67.86"
+"loopid":2
+ "status":"off"
+},
+]
+}
+
+
+
+
+10）添加新风
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"request",
+"subaction":"configdevice",
+"moduletype":"ventilation",
+"configtype":"add",
+"aliasname":"新风1",
+"roomid":1,
+"controltype":"relay",
+"power":{"moduletype":"relay", "primaryid":1}, // on/off
+"fanspeed":[
+	{"moduletype":"relay", "primaryid":2}, // fan speed high
+	{"moduletype":"relay", "primaryid":3},  // fan speed medial
+	{"moduletype":"relay", "primaryid":4}
+	]  // fan speed low
+"cycletype":
+        {"moduletype":"relay", "primaryid":5}, // inner/outsider cycle
+"humidity":
+        {"moduletype":"relay", "primaryid":6}, // humidity，加湿
+"dehumidity":
+        {"moduletype":"relay", "primaryid":7} // dehumidity，除湿
+}
+
+
+
+	
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"response",
+"subaction":"configdevice",
+"moduletype":"ventilation",
+"configtype":"add",
+"aliasname":"新风1",
+"roomid":1,
+"controltype":"relay",
+"power":{"moduletype":"relay", "primaryid":1}, // on/off
+"responseprimaryid":100,
+"errodcode":0
+"fanspeed":[
+	{"moduletype":"relay", "primaryid":2}, // fan speed high
+	{"moduletype":"relay", "primaryid":3},  // fan speed medial
+	{"moduletype":"relay", "primaryid":4}
+	]  // fan speed low
+"cycletype":
+        {"moduletype":"relay", "primaryid":5}, // inner/outsider cycle
+"humidity":
+        {"moduletype":"relay", "primaryid":6}, // humidity，加湿
+"dehumidity":
+        {"moduletype":"relay", "primaryid":7} // dehumidity，除湿
+}
+
+
+
+11）编辑新风
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"request",
+"subaction":"configdevice",
+"moduletype":"ventilation",
+"configtype":"modify",
+"aliasname":"新风",
+"controltype":"relay",
+"roomid":1,
+"primaryid":100
+}
+
+
+
+	
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"response",
+"subaction":"configdevice",
+"moduletype":"ventilation",
+"configtype":"modify",
+"aliasname":"新风",
+"controltype":"relay",
+"roomid":1,
+"primaryid":100,
+"errodcode":0
+}
+
+
+
+
+12）删除新风
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"request",
+"subaction":"configdevice",
+"moduletype":"ventilation",
+"configtype":"delete",
+"controltype":"relay",
+"primaryid":100
+}
+
+
+
+	
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"response",
+"subaction":"configdevice",
+"moduletype":"ventilation",
+"configtype":"delete",
+"primaryid":100,
+"controltype":"relay",
+"errodcode":0
+}
+
+
+
+
+8.wifi-air配置及控制
+1）配置air小模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"request"
+"subaction":" configdevice"
+"moduletype":"air"
+"configtype":"add"
+"modulemacaddr":"12.23.45.65.67.86"
+"moduleipaddr":"192.168.1.50"
+aliasname":"air设备"
+"airtype":"main"
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"response"
+"subaction":" configdevice"
+"errorcode":"0"
+"moduletype":" air"
+"configtype":"add"
+"modulemacaddr":"12.23.45.65.67.86"
+"aliasname":"air设备"
+"airtype":"main"
+"responseprimaryid":199（loop的唯一id，64位long类型）
+}
+
+
+2）修改air小模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"request"
+"subaction":" configdevice"
+"moduletype":"air"
+"configtype":"modify"
+"primaryid":4
+ "aliasname":"air设备modify"
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"response"
+"subaction":" configdevice"
+"errorcode":"0"
+"configtype":"modify"
+"moduletype":" air"
+"primaryid":4
+ "aliasname":"air设备modify"
+}
+
+
+3）删除air小模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"request"
+"subaction":" configdevice"
+"moduletype":"air"
+"configtype":"delete"
+"primaryid":3
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"response"
+"subaction":" configdevice"
+"errorcode":"0"
+"configtype":"delete"
+"moduletype":" air"
+"primaryid":3
+}
+
+
+4）查询air
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"request"
+"subaction":" readdevice"
+"moduletype":" air"
+"modulemacaddr":"12.23.45.65.67.86"
+ "currenttime":""
+"currentpm2_5	":""
+}
+
+
+
+
+
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+ "action":"response"
+"subaction":" readdevice"
+"errorcode":"0"
+"moduletype":" air"
+"Modulemacaddr":"12.23.45.65.67.86"
+"currenttime":"13:22"
+"currentpm2_5	":"100"
+}
+
+
+5）状态变化通知
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"event"
+"subaction":" readdevice"
+ "moduletype":" air"
+"modulemacaddr":"12.23.45.65.67.86"
+"currentco2":"200"
+"currenthumid":"40"
+}
+
+
+
+9.ipvdp配置及控制
+1）配置IPVDP信息
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule"
+"moduletype":" ipvdp"
+ "moduleipaddr":"192.168.1.60"
+"subphoneid":"2"
+"subphonepwd":"12321321"
+"hnsserveraddr":"192.168.1.170"
+"configtype":"add"
+"aliasname":"ipvdp"
+"ipvdproomloop":[
+{
+"ipvdpname":"ipvdp8",（ipvdp8为主机）
+"roomid":3
+},
+{
+"ipvdpname":"ipvdp1",
+"roomid":1
+},
+….
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configmodule"
+"moduletype":" ipvdp"
+ "moduleipaddr":"192.168.1.60"
+"subphoneid":"2"
+"subphonepwd":"12321321"
+ "hnsserveraddr":"192.168.1.170"
+"configtype":"add"
+"aliasname":"ipvdp"
+"errorcode":0
+"ipvdproomloop":[
+{
+"ipvdpname":"ipvdp8",（ipvdp8为主机）
+"roomid":3
+ "errorcode":0
+"responseprimaryid":1
+},
+{
+"ipvdpname":"ipvdp1",
+"roomid":1
+ "errorcode":0
+"responseprimaryid":2
+},
+….
+]
+
+"responseprimaryid":199（loop的唯一id，64位long类型）
+}
+
+
+
+2）修改ipvdp信息
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" configmodule"
+"moduletype":" ipvdp"
+"primaryid":4
+ "configtype":"modify"
+"aliasname":"IPVDP修改"
+"moduleipaddr":"192.168.1.60"
+"subphoneid":"2"
+"subphonepwd":"12321321"
+"hnsserveraddr":"192.168.1.170"
+"ipvdproomloop":[
+{
+"configtype":"modify"
+ "roomid":3
+ "primaryid":1
+},
+{
+"configtype":"delete"
+ "primaryid":2
+},
+{
+"configtype":"add"
+"ipvdpname":"ipvdp1",
+"roomid":1
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" configmodule"
+"moduletype":" ipvdp"
+"primaryid":4
+ "configtype":"modify"
+"aliasname":"IPVDP修改"
+"moduleipaddr":"192.168.1.60"
+"subphoneid":"2"
+"subphonepwd":"12321321"
+"hnsserveraddr":"192.168.1.170"
+"ipvdproomloop":[
+{
+"configtype":"modify"
+ "roomid":3
+ "primaryid":1
+"errorcode":0
+},
+{
+"configtype":"delete"
+ "primaryid":2
+"errorcode":0
+},
+{
+"configtype":"add"
+"ipvdpname":"ipvdp1",
+"roomid":1
+ "errorcode":0
+"responseprimaryid":2
+}
+]
+}
+
+
+
+3）删除IPVDP
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" configmodule"
+"moduletype":" ipvdp"
+"primaryid":3
+ "configtype":"delete"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configmodule"
+ "moduletype":" ipvdp"
+"primaryid":3
+ "configtype":" delete"
+"errorcode":0
+}
+
+
+
+4）配置ipvdp防区
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+subaction":" configdevice"
+"moduletype":" ipvdp"
+"primaryid":100（外围设备表的id）
+ "configtype":"add"
+"deviceloopmap":
+[
+{
+"loopid":1
+"roomid":1
+ "aliasname":"主卧防区1"
+"zonetype":"instant"
+"alarmtype":" help"
+"alarmtimer":0
+"alarmenable":"on"
+},
+{
+"loopid":2
+"roomid":1
+ "aliasname":"主卧防区"
+"zonetype":"delay"
+"alarmtype":" thief"
+"alarmtimer":20
+"alarmenable":"on"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+ "moduletype":" ipvdp"
+"primaryid":100
+ "configtype":"add"
+"deviceloopmap":
+[
+{
+"loopid":1
+"errorcode":0
+"roomid":1
+ "aliasname":"主卧防区1"
+"zonetype":"instant"
+alarmtype":" help"
+"alarmtimer":0
+"alarmenable":"on"
+"responseprimaryid":199（loop的唯一id，64位long类型）
+{
+"loopid":2
+"errorcode":0
+"roomid":1
+ "aliasname":"主卧防区2"
+"zonetype":"delay"
+"alarmtype":" thief"
+"alarmtimer":20
+"alarmenable":"on"
+"responseprimaryid":200（loop的唯一id，64位long类型）
+}
+]
+}
+
+
+
+5）修改ipvdp防区
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+subaction":" configdevice"
+"moduletype":" ipvdp"
+ "configtype":"modify"
+"deviceloopmap":
+[
+{
+"primaryid":4
+ "roomid":2
+"aliasname":"主卧防区1 modify"
+"alarmenable":"on"
+},
+{
+"primaryid":5
+"roomid":2
+ "aliasname":"主卧防区modify"
+"alarmenable":"on"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+ "moduletype":" ipvdp"
+ "configtype":" modify"
+"deviceloopmap":
+[
+{
+"primaryid":4
+ "errorcode":0
+"roomid":2
+ "aliasname":"主卧防区1 modify"
+"alarmenable":"on"
+
+{
+"primaryid":5
+ "errorcode":0
+"roomid":2
+"aliasname":"主卧防区2 modify"
+"alarmenable":"on"
+}
+]
+}
+
+
+
+6）删除ipvdp防区
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+subaction":" configdevice"
+"moduletype":" ipvdp"
+ "configtype":"delete"
+"deviceloopmap":
+[
+{
+"primaryid":3
+},
+{
+"primaryid":4
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+ "moduletype":" ipvdp"
+ "configtype":" delete"
+"deviceloopmap":
+[
+{
+"primaryid":3
+ "errorcode":0
+{
+"primaryid":4
+"errorcode":0
+}
+]
+}
+
+
+
+7）通话
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"event"
+"subaction":" call"
+"moduletype":" ipvdp"
+ "callmsg":"incomingcall"
+"calltype":"neighbour"
+"videoport":11111
+"videocodectype":"h.264"
+"audioport":2222
+"audiocodectype":"pcma"
+"videoratio":"320*240"
+"uuid":"87uhiuo2"
+"aliasname":"101-203"
+"callsessionid":"kjiou99"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":"call"
+"moduletype":"ipvdp"
+ "callmsg":"takecall"
+"videoport":11111
+"videocodectype":"h.264"
+"audioport":2222
+"audiocodectype":"pcma"
+"videoratio":"320*240"
+"uuid":"uoi8u89u"
+"takecallipaddr":"192.168.3.2"
+"callsessionid":"kjiou99"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" call"
+"moduletype":" ipvdp"
+ "callmsg":"takecall"
+"takecallipaddr":"192.168.3.2"
+"callsessionid":"kjiou99"
+ "errorcode":0
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"event"
+"subaction":" call"
+"moduletype":" ipvdp"
+ "callmsg":"terminatecall"
+"callsessionid":"kjiou99"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"event"
+"subaction":" call"
+"moduletype":" ipvdp"
+ "callmsg":"opendoor"
+"callsessionid":"kjiou99"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"event"
+"subaction":" call"
+"moduletype":" ipvdp"
+ "callmsg":"elevator"
+"callsessionid":"kjiou99"
+}
+
+
+
+8）门锁信息-开门记录
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"event ",
+"subaction":"dooropeninfo",
+"moduletype":"ipvdplock",
+ "loopid":"1", // frontdoor:1, backdoor:2
+"aliasname":"frontdoor",
+"dooropenway":"password",
+"dooropentime":"2016-04-20 14:00:13",
+"dooropenrole":"woman",
+"dooropenid":"11"
+ }
+
+
+10.IPC配置及控制
+1）IPC配置
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"request",
+"subaction":" configmodule",
+"moduletype":" ipc",
+"configtype":"add"
+"moduleipaddr":"192.168.1.41",
+"moduleport": 554,
+"configtype":"add",
+"ipctype":"super hd/phoenix",
+"mainstream":" ch01.264?ptype=udp",
+"substream":" ch01.264?ptype=udp",
+"videowidth":1280,
+"videoheight":720,
+"codectype":"H264",
+"ipcusername":"admin",
+"ipcpassword":"123456",
+"roomid":1
+ "aliasname":"主卧监控"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"response",
+"subaction":" configmodule",
+"moduletype":" ipc",
+"configtype":"add"
+"moduleipaddr":"192.168.1.41",
+"moduleport": 554,
+"configtype":"add/delete/ modify",
+"ipctype":"super hd/phoenix",
+"ipcurl":" ch01.264?ptype=udp",
+"ipcusername":"admin",
+"ipcpassword":"123456",
+"roomid":1
+ "aliasname":"主卧监控",
+"errorcode":0
+"responseprimaryid":199（loop的唯一id，64位long类型）
+"subresponseprimaryid":199（IPC STREAM INFO的id）
+}
+
+
+2）IPC修改
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"request",
+"subaction":" configmodule",
+ "moduletype":" ipc",
+"primaryid":4
+ "configtype":"modify",
+ "roomid":2
+"aliasname":"主卧监控modify"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"response",
+"subaction":" configmodule",
+ "moduletype":" ipc",
+"primaryid":4
+ "configtype":"modify",
+ "roomid":2
+"aliasname":"主卧监控modify",
+"errorcode":0
+}
+
+
+3）IPC删除
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"request",
+"subaction":" configmodule",
+ "moduletype":" ipc",
+"primaryid":3
+ "configtype":"delete",
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"response",
+"subaction":" configmodule",
+ "moduletype":" ipc",
+"primaryid":3
+ "configtype":"delete",
+ "errorcode":0
+}
+
+
+4）IPC查看
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"request",
+"subaction":" ipcmonitor",
+"moduletype":" ipc",
+"moduleipaddr":"192.168.1.41",
+"moduleport": 554,
+"ipcurl":" ch01.264?ptype=udp",
+"uuuid":"iusoi98786",
+"phoneip":"192.168.1.100",
+"status":"on"
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"response",
+"subaction":" ipcmonitor",
+"moduletype":" ipc",
+"moduleipaddr":"192.168.1.41",
+"moduleport": 554,
+"ipcurl":" ch01.264?ptype=udp",
+"uuuid":"iusoi98786",
+"status":"on",
+"errorcode":"0"
+}
+
+
+5）结束IPC查看
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"request",
+"subaction":" ipcmonitor",
+"moduletype":" ipc",
+"moduleipaddr":"192.168.1.41",
+"moduleport": 554,
+"ipcurl":" ch01.264?ptype=udp",
+"uuuid":"iusoi98786",
+"status":"off"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"response",
+"subaction":" ipcmonitor",
+"moduletype":" ipc",
+"moduleipaddr":"192.168.1.41",
+"moduleport": 554,
+"ipcurl":" ch01.264?ptype=udp",
+"uuuid":"iusoi98786",
+"status":"off",
+"errorcode":"0"
+}
+
+
+
+6）获取IPC参数（暂不支持）
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"request",
+"subaction":" ipcmonitor",
+"moduletype":" ipc",
+"moduleipaddr":"192.168.1.41",
+"moduleport": 554,
+"ipcurl":" ch01.264?ptype=udp"
+"status":"param"
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"response",
+"subaction":" ipcmonitor",
+"moduletype":" ipc",
+"moduleipaddr":"192.168.1.41",
+"moduleport": 554,
+"ipcurl":" ch01.264?ptype=udp",
+"videowidth":1280,
+"videoheight":720,
+"codectype":"H264",
+"status":"param",
+"errorcode":"0"
+}
+
+
+
+11. 安防
+1）系统报警事件
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+ "action":"event"
+ "subaction":" alarminfo"
+ "moduleAddr":"12.23.45.65.67.86"
+ "moduleType":" wiredzone"
+"loopId":"1"
+"roomName":"主卧"
+"loopName":"主卧窗户"
+"timeStamp":"2016-01-15T12:30:00Z"
+"messageId":"50"
+"recordingVideo": 1/0, // 1表示有联动录像，0表示没有
+}
+
+
+
+A）	当moduletype为 wired zone、wireless zone时，moduleAddr为模块mac address；
+B）	当moduletype为sparklighting、ipvdp时，moduleAddr为模块moduleipaddr；
+C）	不同的moduletype，其loopid含义不同，如下：
+a.	Wired zone：loopid此时代表其下8个回路；
+b.	Wireless zone：loopid此时代表各个sensor的serial number；
+c.	Ipvdp：loopid此时代表ipvdp系统中虚拟回路值，约定硬件上GPIO口：
+i.	B1~B6 对应6个防区，其loopid依次为1~6；
+ii.	E1,E2 共用Emergency1报警，其loopid为7；
+iii.	求助触摸按键对应Emergency2报警，其loopid为8；
+iv.	Fire对应火灾报警，其loopid为9；
+v.	Gas对应煤气报警，其loopid为10；
+d.	Sparklighting：loopid此时代表sparklighting系统中吸顶红外探头的deviceid值；
+2）系统撤布防状态事件
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+ "action":"event"
+ "subaction":"systemsecuritystate"
+ "armstatus": 0 // 撤布防状态, 0表示撤防，1表示布防
+ "scenarioid":102 //成功执行撤布防的场景号
+ "aliasname":"scenario_away" // 成功执行撤布防的场景名字
+}
+
+
+
+3）获取当前系统布防防区状态
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+ "action":"request"
+ "subaction":"getsecuritystatus"
+ "moduletype":"security"
+ "msgid":"2387r958273894"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"response",
+"subaction":"getsecuritystatus",
+"moduletype":security" ,
+"msgid":"2387r958273894",
+"errorcode":0,
+ "alarmzoneloopmap": [
+       {
+              "moduletype":"wiredzone",
+              "modulemacaddr":"aa:bb:cc:dd:ee:ff",
+              "loopid":1,
+              "alias":"煤气探头",
+              "zonestatusmap": [
+                   {
+                             "keytype":"help",
+                             "keyvalue":"trigger",
+
+                             "messageId":"50"
+                  },
+                  {
+                             "keytype":" temper",
+                             "keyvalue":"trigger",
+                             "messageId":"60"
+                  }
+                        ………..
+              ],
+       },
+                ………….
+  ]
+}
+
+
+
+12.防打扰
+1）防打扰设置
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"request",
+"subaction":"configmodule",
+"moduletype":"nodisturb" ,
+"msgid":"2387r958273894",
+"status":"on/off",
+"starttime":"19:00",
+"endtime":"21:00"
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"response",
+"subaction":"configmodule",
+"moduletype":"nodisturb" ,
+"msgid":"2387r958273894",
+"status":"on/off",
+"starttime":"19:00",
+"endtime":"21:00",
+"errorcode":0
+ }
+
+
+
+13.upgrade
+1）cube升级
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" upgrade"
+"moduletype":" cube" 
+"upgradecmd":" startupgrade"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":" response"
+"subaction":" upgrade"
+"moduletype":" cube" 
+"upgradecmd":" startupgrade"
+ "errorcode":0
+}
+
+
+
+2）module升级
+直接升级，不用通知用户有新版本。
+升级提示跟Cube Base一起。升级版是个Cube系统整体的升级包。
+3）升级提示
+通知手机App有新版本可以升级。
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":" event",
+"subaction":"upgrade",
+"moduletype":" cube",
+"upgradecmd":" newversion",
+"version":"0.0.1.1234",
+"releasedate":"2016-01-29",
+"forceupgrade":"yes/no",
+"description": "fix bugs, add new features"
+ }
+
+
+forceupgrade，是否强制升级
+4）查询cube是否有新版本
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"request",
+"subaction":"upgrade",
+"moduletype":" cube",
+"upgradecmd":" newversion"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"response",
+"subaction":"upgrade",
+"moduletype":" cube",
+"upgradecmd":" newversion",
+"version":"0.0.1.1234",
+"releasedate":"2016-01-29",
+"forceupgrade":"yes/no",
+ "description": "fix bugs, add new features",
+"errorcode":0
+}
+
+
+forceupgrade，是否强制升级
+14.HDMI
+1）HDMI控制
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"event"
+"subaction":" hdmicontrol"
+ "keytype":"up"
+}
+
+
+
+15.Backaudio配置及控制
+1）Backaudio设备配置
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule""
+"moduletype":" backaudio"
+"configtype":"add"
+ "moduleserialnum":"afe3134"
+ "aliasname":"家庭影音"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule""
+"moduletype":" backaudio"
+"configtype":" modify"
+ "moduleserialnum":"afe3134"
+  "aliasname":"家庭影音"
+ "errorcode":"0"
+"responseprimaryid":199（loop的唯一id，64位long类型）
+ }
+
+
+2）修改Backaudio设备
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule""
+"moduletype":" backaudio"
+"configtype":"modify"
+"primaryid":4
+ "aliasname":"家庭影音modify"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule""
+"moduletype":" backaudio"
+"configtype":" modify"
+"primaryid":4
+  "aliasname":"家庭影音modify"
+ "errorcode":"0"
+ }
+
+
+3）删除Backaudio设备
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule"
+"moduletype":" backaudio"
+"configtype":"delete"
+"primaryid":3
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule"
+"moduletype":" backaudio"
+"configtype":" delete"
+"primaryid":3
+ "errorcode":"0"
+ }
+
+
+4）配置Backaudio回路
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":"configdevice"
+"moduletype":" backaudio"
+ "configtype":"add"
+"primaryid":100（backaudio设备表的id）
+ "deviceloopmap":
+[
+{
+"loopid":1
+"roomid":1
+ "aliasname":"背景音乐"
+},
+{
+"loopid":2
+"roomid":3
+ "aliasname":"背景音乐"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":"configdevice"
+"moduletype":" backaudio"
+"configtype":"add"
+"primaryid":100
+ "deviceloopmap":
+[
+{
+"loopid":1
+"roomid":1
+ "aliasname":"背景音乐"
+ "errorcode":0
+"responseprimaryid":199（loop的唯一id，64位long类型）
+},
+{
+"portid":2
+"roomid":3
+ "aliasname":"背景音乐"
+"errorcode":0
+"responseprimaryid":200（loop的唯一id，64位long类型）
+}
+]
+ }
+
+
+5）修改Backaudio回路
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":"configdevice"
+"moduletype":" backaudio"
+ "configtype":"modify"
+ "deviceloopmap":
+[
+{
+"primaryid":4
+ "roomid":2
+"aliasname":"背景音乐modify"
+},
+{
+"primaryid":5
+"roomid":2
+ "aliasname":"背景音乐modify"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":"configdevice"
+"moduletype":" backaudio"
+"configtype":"modify"
+ "deviceloopmap":
+[
+{
+"primaryid":4
+ "roomid":2
+"aliasname":"背景音乐modify"
+ "errorcode":0
+},
+{
+"primaryid":5
+"roomid":2
+ "aliasname":"背景音乐modify"
+"errorcode":0
+}
+]
+ }
+
+
+6）删除Backaudio回路
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":"configdevice"
+"moduletype":" backaudio"
+ "configtype":"delete"
+ "deviceloopmap":
+[
+{
+"primaryid":3
+},
+{
+"primaryid":4
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":"configdevice"
+"moduletype":" backaudio"
+"configtype":"delete"
+ "deviceloopmap":
+[
+{
+"primaryid":3
+ "errorcode":0
+},
+{
+"primaryid":4
+ "errorcode":0
+}
+]
+ }
+
+
+7）backaudio控制
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":"setdevice"
+"moduletype":" backaudio"
+"moduleserialnum":"afe3134"
+"loopid":1
+"keytypeloop"
+[
+{
+"keytype":"volume"
+"keyvalue":"22"
+}
+]
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":"setdevice"
+"moduletype":" backaudio"
+"moduleserialnum":"afe3134"
+"loopid":1
+"keytypeloop"
+[
+{
+"keytype":"volume"
+"keyvalue":"22"
+"errorcode":0
+}
+]
+}
+  }
+
+
+
+协议
+Keytype
+Keyvalue
+设置backaudio主机别名
+aliasname
+"BackAudioFloor1"
+打开/关闭backaudio通道
+power
+"on/off"
+设置backaudio通道音量
+volume
+"22"
+播放/暂停backaudio 通道
+playstatus
+"play/pause"
+设置backaudio 通道单曲循环
+singlecycle
+"on/off"
+设置backaudio 通道音乐来源
+source
+"mp3/fm/cloud…"
+backaudio 通道音乐切歌
+switchsong
+"next/previous"
+backaudio 通道静音
+mute
+"on/off"
+8）backaudio查询
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":"readdevice"
+"moduletype":" backaudio"
+"moduleserialnum":"afe3134"
+"loopid":1
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":"setdevice"
+"moduletype":" backaudio"
+"moduleserialnum":"afe3134"
+"loopid":1
+ "errorcode":0
+"keytypeloop"
+[
+{
+"keytype":"source"
+"keyvalue":"***"
+}
+{
+"keytype":"mute"
+"keyvalue":"on"
+}
+]
+  }
+
+
+9）backaudio通知
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+ "action":"event"
+ "subaction":"backaudioinfo"
+ "moduletype":" backaudio"
+"moduleserialnum":"afe3134"
+"loopid":1
+"keytypeloop"
+[
+{
+"keytype":"source"
+"keyvalue":"***"
+}
+]
+ }
+
+
+
+16.IR配置及控制
+1）Wifi ir模块配置
+添加和修改："configtype":" add/ modify"
+ircommand: 控制(send)/对码(study)/配置wifi(wificonfig)/add/delete/save
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"request",
+"subaction":" configmodule",
+"configtype":"add",
+"ircommand":"add",
+"moduletype":" ir",
+ "modulemacaddr":"12:23:45:65:67:89",
+ "moduleipaddr":"192.168.1.45",
+"aliasname":"红外设备",
+"wifiirtype":"SP2",
+"wifiirname":"智能插座",
+"wifiirlock":0,
+"wifiirpassword":987961777,
+"wifiirid":0,
+"wifiirsubdevice":0,
+"wifiirkey":"097628343fe99e23765c1513accf8b02"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"response",
+"subaction":" configmodule",
+"configtype":"add",
+"ircommand":"add",
+"moduletype":" ir",
+  "modulemacaddr":"12:23:45:65:67:89",
+"aliasname":"红外设备",
+"moduleipaddr":"192.168.1.45",
+"aliasname":"红外设备",
+"wifiirtype":"SP2",
+"wifiirname":"智能插座",
+"wifiirlock":0,
+"wifiirpassword":987961777,
+"wifiirid":0,
+"wifiirsubdevice":0,
+"wifiirkey":"097628343fe99e23765c1513accf8b02",
+"responseprimaryid":199（loop的唯一id，64位long类型）
+"subresponseprimaryid":199（Wifi IR Info的id）
+"errorcode":"0"
+ }
+
+
+2）修改Wifi ir模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"request",
+"subaction":" configmodule",
+"configtype":"modify",
+ "moduletype":" ir",
+"primaryid":4
+ "aliasname":"红外设备modify",
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"response",
+"subaction":" configmodule",
+"configtype":"modify",
+ "moduletype":" ir",
+"primaryid":4
+ "aliasname":"红外设备modify",
+ "errorcode":"0"
+ }
+
+
+3）删除Wifi IR模块 
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+ "action":"request",
+"subaction":" configmodule",
+"configtype":"delete",
+ "moduletype":"ir",
+"primaryid":3
+}
+
+
+
+Head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+Body
+{                                                         
+"msgid":"2387r958273894",
+"action":"response",
+"subaction":" configmodule",
+"configtype":"delete",
+ "moduletype":" ir",
+"primaryid":3
+ "errorcode":0
+}
+
+
+4）Wifi IR 控制
+Command: 控制(send)/对码(study)/配置wifi(wificonfig)/add/delete
+Head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+ "action":"request",
+"subaction":" setdevice",
+"ircommand":"send",
+"moduletype":"ir",
+"name":"关机",//手机上button的名字
+"imagename":"image_poweroff" ",//手机上button的图片
+ "modulemacaddr":"12:23:45:65:67:89",
+"wifiirdata":[
+{"data":" 26006c01a6470c3b0c170c170d170c3b0c170d170c"},
+{"data":" 26006c01a6470c3b0c170c170d170c3b0c170d170c"}
+]
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+ "action":" response",
+"subaction":" setdevice",
+"ircommand":"send",
+"name":"关机",//手机上button的名字
+"imagename":"image_poweroff" ",//手机上button的图片
+"moduletype":"ir",
+ "modulemacaddr":"12:23:45:65:67:89",
+"errorcode":0
+ }
+
+
+5）Wifi IR 对码
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+ "action":"request",
+"subaction":" setdevice",
+"ircommand":"study",
+"moduletype":"ir",
+ "modulemacaddr":"12:23:45:65:67:89"
+"name":"关机",//手机上button的名字
+"imagename":"image_poweroff" ",//手机上button的图片
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+ "action":" response",
+"subaction":" setdevice",
+"ircommand":" study",
+"moduletype":"ir",
+ "modulemacaddr":"12:23:45:65:67:89",
+"name":"关机",//手机上button的名字
+"imagename":"image_poweroff" ",//手机上button的图片
+"wifiirdata":[
+{"data":" 26006c01a6470c3b0c170c170d170c3b0c170d170c"},
+{"data":" 26006c01a6470c3b0c170c170d170c3b0c170d170c"}
+]
+"errorcode":0
+ }
+
+
+
+6）Wifi IR保存遥控器（loop）
+对码完成后，保存该遥控器。
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+ "action":" request",
+"subaction":" configdevice",
+"moduletype":"ir",
+"configtype":"add",
+"ircommand":" save",
+"primaryid":100（外围设备表的id）
+ "aliasname":"空调遥控",
+"roomid":3
+ "type":"dvd/tv/air-condition",
+"codeloopmap":[
+{
+"name":"关机",//手机上button的名字
+"imagename":"image_poweroff" ",//手机上button的图片
+"wifiirdata":[{"data":" 26006c01a6470c3b0c170c170d170c3b0c170d170c"},{"data":" 26006c01a6470c3b0c170c170d170c3b0c170d170c"}]
+},
+{
+"name":"制冷26度",
+"imagename":" 制冷26度",
+"wifiirdata":[{"data":" 26006c01a6470c3b0c170c170d170c3b0c170d170c"},{"data":" 26006c01a6470c3b0c170c170d170c3b0c170d170c"}]
+},
+……]
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+ "action":" response",
+"subaction":" configdevice",
+"moduletype":"ir",
+"configtype":"add",
+"ircommand":" save",
+"primaryid":100
+ "loopname":"空调遥控",
+"roomid":3
+ "type":"air",
+"responseprimaryid":199（loop的唯一id，64位long类型）
+ "codeloopmap":[
+{
+"name":"关机",//手机上button的名字
+"imagename":"image_poweroff" ",//手机上button的图片
+"errorcode":0,
+"responseprimaryid":1（loop的唯一id，64位long类型）
+"wifiirdata":[{"data":" 26006c01a6470c3b0c170c170d170c3b0c170d170c"},{"data":" 26006c01a6470c3b0c170c170d170c3b0c170d170c"}]
+},
+{
+"name":"制冷26度",
+"imagename":"image_" ",//手机上button的图片
+"errorcode":0,
+"responseprimaryid":2（loop的唯一id，64位long类型）
+"wifiirdata":[{"data":" 26006c01a6470c3b0c170c170d170c3b0c170d170c"},{"data":" 26006c01a6470c3b0c170c170d170c3b0c170d170c"}]
+},
+……],
+"errorcode":0
+ }
+
+
+7）Wifi IR快速网络配置
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+ "action":"request",
+"subaction":" setdevice",
+"ircommand":"wificonfig",
+"moduletype":"ir",
+"wifissid":"HomeSystem",
+"wifipassword":"1234567890"
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+ "action":" response",
+"subaction":" setdevice",
+"ircommand":"wificonfig",
+"moduletype":"ir",
+"errorcode":0
+ }
+
+
+8）修改遥控器（loop）
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+ "action":" request",
+"subaction":" configdevice",
+"moduletype":"ir",
+"configtype":"modify",
+ "aliasname":"空调遥控modify",
+"roomid":1
+ "primaryid":100
+  }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+ "action":"response",
+"subaction":" configdevice",
+"moduletype":"ir",
+"configtype":"modify",
+ "aliasname":"空调遥控modify",
+"roomid":1
+ "errorcode":0
+"primaryid":100
+  }
+
+
+
+9）删除遥控器（loop）
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":"configdevice"
+"moduletype":" ir"
+ "configtype":"delete"
+ "deviceloopmap":
+[
+{
+"primaryid":3
+},
+{
+"primaryid":4
+}
+]
+}
+
+
+
+
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":"configdevice"
+"moduletype":" ir"
+ "configtype":"delete"
+ "deviceloopmap":
+[
+{
+"primaryid":3
+"errorcode":0
+},
+{
+"primaryid":4
+"errorcode":0
+}
+]
+}
+
+
+
+17.场景scenario配置及控制
+1）scenario配置
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" configdevice"
+"moduletype":" scenario"
+"configtype":"add"
+"aliasname":"睡眠"
+"imagename":"imagename1"
+scenarioloopmap
+[
+{
+"primaryid":1000
+"moduletype":"relay"
+ "actioninfo":
+{
+"status:on, 
+"openclosepercent":50,
+ "status":" opening"
+
+},
+},
+{
+"primaryid":1000
+"moduletype":"wiredzone"
+"isarm":" arm"
+ },
+{
+"primaryid":1000
+"moduletype":" backaudio"
+ "actioninfo":
+{
+//针对backaudio
+"controlmap":[
+{
+"keytype":"volumn"
+"keyvalue":22
+},
+{
+"keytype":"power"
+"keyvalue":"on"
+},
+]
+}
+},
+{
+ "uuid":"0801",
+ "actioninfo":
+{
+settemp":23
+ "mode":"cooling"
+"fanspeed":"high"	
+"status":"on"
+},
+},
+
+{
+"primaryid":1002
+"moduletype":"bacnet"
+ "actioninfo":
+{
+settemp":25
+ "mode":"cooling"
+"fanspeed":"high"	
+"status":"on"
+},
+},
+
+
+
+//485新风
+{
+"uuid":"0081",
+"actioninfo":
+{
+power":on
+ "mode":" humidity"
+"fanspeed":"high"	
+"cycletype":" inner"
+},
+},
+
+//relay新风
+{
+"primaryid":1
+"moduletype":" ventilation"
+ "actioninfo":
+{
+power":on
+ "mode":" humidity"
+"fanspeed":"high"	
+"cycletype":" inner"
+},
+},
+
+
+
+
+…….
+]
+}
+
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" configdevice"
+"moduletype":" scenario"
+"configtype":"add"
+"aliasname":"睡眠"
+"imagename":"imagename1"
+scenarioloopmap
+[
+{
+"primaryid":1000
+"moduletype":"relay"
+"errorcode":0
+"responseprimaryid":100
+ "actioninfo":
+{
+"status:on, 
+"openclosepercent":50,
+ "status":" opening"
+},
+},
+{
+"primaryid":1000
+"moduletype":"wiredzone"
+"isarm":" arm"
+"errorcode":0
+"responseprimaryid":100
+ },
+{
+"primaryid":1000
+"moduletype":" backaudio"
+"errorcode":0
+"responseprimaryid":100
+ "actioninfo":
+{
+//针对backaudio
+"controlmap":[
+{
+"keytype":"volumn"
+"keyvalue":22
+},
+{
+"keytype":"power"
+"keyvalue":"on"
+},
+]
+}
+},
+
+{
+  
+"uuid":"0081",
+"errorcode":0
+"responseprimaryid":100
+ "actioninfo":
+{
+settemp":23
+ "mode":"cooling"
+"fanspeed":"high"	
+"status":"on"
+},
+},
+
+{
+"primaryid":1002
+"moduletype":"bacnet"
+"errorcode":0
+"responseprimaryid":100
+ "actioninfo":
+{
+settemp":25
+ "mode":"cooling"
+"fanspeed":"high"	
+"status":"on"
+},
+},
+//485新风
+{
+"uuid":"0081",
+ "errorcode":0
+"responseprimaryid":100
+ "actioninfo":
+{
+power":on
+ "mode":" humidity"
+"fanspeed":"high"	
+"cycletype":" inner"
+},
+},
+
+//relay新风
+{
+"primaryid":1
+"moduletype":" ventilation"
+"errorcode":0
+"responseprimaryid":101
+ "actioninfo":
+{
+power":on
+ "mode":" humidity"
+"fanspeed":"high"	
+"cycletype":" inner"
+},
+},
+…….
+]
+}
+
+
+2）修改scenario配置
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction": configdevice"
+"moduletype":"scenario"
+"scenarioid":100
+"configtype":"modify"
+"aliasname":"睡眠modify"
+"imagename":"imagename1modify"
+scenarioloopmap
+[
+{
+"primaryid":1000
+"moduletype":"relay"
+"configtype":"modify/add"
+ "actioninfo":
+{
+ "openclosepercent":50,
+ "status":" opening"
+},
+},	
+{
+"primaryid":1000
+"configtype":"modify/add"
+"moduletype":"wiredzone"
+"isarm":" arm"
+ },
+{
+"primaryid":1000
+"moduletype":" backaudio"
+"configtype":"modify/add"
+ "actioninfo":
+{
+//针对backaudio
+"controlmap":[
+{
+"keytype":"volumn"
+"keyvalue":22
+},
+]
+}
+},
+{
+"primaryid":1000
+"moduletype":" relay"
+"configtype":"delete"
+ ]
+}
+},
+
+{
+  "uuid":"0081",
+"configtype":"modify/add"
+ "actioninfo":
+{
+settemp":23
+ "mode":"cooling"
+"fanspeed":"high"	
+"status":"on"
+},
+},
+
+{
+"primaryid":1002
+"moduletype":"bacnet"
+"configtype":"modify/add"
+ "actioninfo":
+{
+settemp":25
+ "mode":"cooling"
+"fanspeed":"high"	
+"status":"on"
+},
+},
+…….
+]
+}
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction": configdevice"
+"scenarioid":100
+"moduletype":"scenario"
+"configtype":"modify"
+"aliasname":"睡眠modify"
+"imagename":"imagename1modify"
+scenarioloopmap
+[
+{
+"primaryid":1000
+"moduletype":"relay"
+"configtype":"modify/add"
+"errorcode":0
+ "actioninfo":
+{
+ "openclosepercent":50,
+ "status":" opening"
+},
+},	
+{
+"primaryid":1000
+"configtype":"modify/add"
+"errorcode":0
+"moduletype":"wiredzone"
+"isarm":" arm"
+ },
+{
+"primaryid":1000
+"moduletype":" backaudio"
+"configtype":"modify/add"
+"errorcode":0
+ "actioninfo":
+{
+//针对backaudio
+"controlmap":[
+{
+"keytype":"volumn"
+"keyvalue":22
+},
+]
+}
+},
+{
+"primaryid":1000
+"moduletype":" relay"
+"errorcode":0
+"configtype":"delete"
+ ]
+}
+},
+
+{
+ "uuid":"0081",
+"configtype":"modify/add"
+ "actioninfo":
+{
+settemp":23
+ "mode":"cooling"
+"fanspeed":"high"	
+"status":"on"
+},
+},
+
+{
+"primaryid":1002
+"moduletype":"bacnet"
+"configtype":"modify/add"
+ "actioninfo":
+{
+settemp":25
+ "mode":"cooling"
+"fanspeed":"high"	
+"status":"on"
+},
+},
+…….
+]
+}
+
+
+3）删除scenario
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" configdevice"
+"moduletype":" scenario"
+"configtype":"delete"
+ "scenarioid":100
+}
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" scenario"
+"configtype":"delete"
+ "scenarioid":100
+"errorcode":0
+}
+4）scenario控制
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" setdevice"
+"moduletype":" scenario"
+"scenarioid":10
+"securitypwd":"1123445"
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" setdevice"
+"moduletype":" scenario"
+"scenarioid":10
+ "errorcode":300
+ "alarmzoneloopmap": [
+       {
+              "moduletype":"wiredzone",
+              "modulemacaddr":"aa:bb:cc:dd:ee:ff",
+              "loopid":1,
+              "alias":"红外探头",
+              "zonestatusmap": [
+                   {
+                             "keytype":"help",
+                             "keyvalue":"trigger",
+                             "messageId":"50"
+                  },
+                  {
+                             "keytype":"temper",
+                             "keyvalue":"trigger",
+                             "messageId":"60"
+                  }
+                        ………..
+              ],
+       },
+                ………….
+  ]
+}
+
+
+	
+18.场景联动
+1）场景联动规则配置
+Head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+Body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" configdevice"
+"moduletype":" scenariotrigger"
+"configtype":"add",
+"status": "on/off",
+"delaytime":120, // seconds
+"availabletime":{
+        "status":"on/off",
+        "starttime":"07:00 am",
+        "endtime":"10:00 am",
+        "frequency":"everydata/everyworkday",
+},
+"triggertype":"trigger",
+"aliasname":"Rule Name XXXX",
+ "description":"这是第一个联动规则",
+ "condition":[
+        {
+                "moduletype":"sparklighting",
+                "primaryid":199,（loop的primaryid）
+                "actioninfo":
+                {
+                     "type":"valuelowerthan/valuehigherthan/alarm/event",
+                      "                 keytype":"temperature/pm2_5/humidity/batterylow/fire/help/gas/thief",
+                      "keyvalue":"20/trigger"
+                  },
+        },
+                 {
+                   "moduletype":"ipvdp",
+                    "primaryid":6, （loop的primaryid）
+                    "actioninfo"
+                     {
+                            "type":" alarm ",
+                             "keytype":" fire",
+                              "keyvalue":"trigger"
+                   }
+       },
+        {
+                   "moduletype":"roomname",
+                    "roomid":2,
+                    "actioninfo"
+                     {
+                            "type":" valuelowerthan ",
+                             "keytype":" temperature ",
+                              "keyvalue":"25"
+                   }
+      },
+],
+"triggeraction":[
+        {
+               "type":"scenariocontrol",
+                 "actioninfo":{
+                             "scenarioid":1,
+                               "securitypwd":"1123445",
+                   }
+        },
+          {
+               "type":"scenariocontrol",
+                 "actioninfo":{
+                             "scenarioid":2,
+                               "securitypwd":"1123445",
+                   }
+        },
+        {
+                 "type":"devicecontrol",
+                 "deviceloopmap":[
+                          {
+                                "moduletype":"relay",
+                                 "primaryid":1000,
+                               "actioninfo"
+                                {
+                                          "status":"on",
+                                           "openclosepercent":50
+                                  }
+                         },
+                         {
+                                "moduletype":"ipc",
+                                 "primaryid":1000,(ipc stream info 的primaryid)
+                         },
+                           {
+                                   "uuid":"0081",
+                                  "actioninfo":
+                                   {
+                                       settemp":23
+                                        "mode":"cooling"
+                                        "fanspeed":"high"	
+                                        "status":"on"
+                                       },
+                                 },
+
+                               {
+                                  "primaryid":1002
+                                  "moduletype":"bacnet"
+                                  "actioninfo":
+                                 {
+                                 settemp":25
+                                  "mode":"cooling"
+                                  "fanspeed":"high"	
+                                  "status":"on"
+                                 },
+                                 },
+                                 //485新风
+{
+                         "uuid":"0081",
+ "actioninfo":
+{
+power":on
+ "mode":" humidity"
+"fanspeed":"high"	
+"cycletype":" inner"
+},
+},
+
+//relay新风
+{
+"primaryid":1
+"moduletype":" ventilation"
+ "actioninfo":
+{
+power":on
+ "mode":" humidity"
+"fanspeed":"high"	
+"cycletype":" inner"
+},
+},
+
+                          {
+                                      .....
+                           },
+                        …..
+                      ],
+           },
+]
+ }
+
+
+
+Head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+Body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" scenariotrigger"
+"configtype":"add",
+"responseprimaryid":100
+"status": "on/off",
+"delaytime":120, // seconds
+"availabletime":{
+        "status":"on/off",
+        "starttime":"07:00 am",
+        "endtime":"10:00 am",
+        "frequency":"everydata/everyworkday",
+},
+"triggertype":"trigger",
+"aliasname":"Rule Name XXXX",
+ "description":"这是第一个联动规则",
+ "condition":[
+        {
+                "moduletype":"sparklighting",
+                "primaryid":199,（loop的primaryid）
+                "responseprimaryid":100
+                "actioninfo":
+                {
+                     "type":"valuelowerthan/valuehigherthan/alarm/event",
+                      "keytype":"temperature/batterylow/alarm",
+                      "keyvalue":"20/trigger"
+                  },
+
+                  "errodcode":0
+        },
+                 {
+                   "moduletype":"ipvdp",
+                    "primaryid":6, （loop的primaryid）
+                    "actioninfo"
+                     {
+                            "type":" alarm ",
+                             "keytype":" alarm",
+                              "keyvalue":"trigger"
+                   }
+                errodcode":0
+       },
+        {
+                   "moduletype":"roomname",
+                    "roomid":2,
+                    "actioninfo"
+                     {
+                            "type":" valuelowerthan ",
+                             "keytype":" temperature ",
+                              "keyvalue":"trigger"
+                   }
+                   errodcode":0
+      },
+],
+"triggeraction":[
+        {
+               "type":"scenariocontrol",
+                "responseprimaryid":100
+                 "actioninfo":{
+                             "scenarioid":1,
+                               "securitypwd":"1123445",
+                   }
+                  "errodcode":0
+        },
+          {
+               "type":"scenariocontrol",
+                "responseprimaryid":101
+                 "actioninfo":{
+                             "scenarioid":2,
+                               "securitypwd":"1123445",
+                   }
+                  "errodcode":0
+        },
+        {
+                 "type":"devicecontrol",
+                 "deviceloopmap":[
+                          {
+                                "moduletype":"relay",
+                                 "primaryid":1000,
+                               "responseprimaryid":1111
+                               "actioninfo"
+                                {
+                                          "status":"on",
+                                           "openclosepercent":50
+                                  }
+                               }
+                              {
+                                  "uuid":"0081",
+                                  "actioninfo":
+                                   {
+                                       settemp":23
+                                        "mode":"cooling"
+                                        "fanspeed":"high"	
+                                        "status":"on"
+                                       },
+                                responseprimaryid":1111
+                                 },
+
+                               {
+                                  "primaryid":1002
+                                  "moduletype":"bacnet"
+                                  "actioninfo":
+                                 {
+                                 settemp":25
+                                  "mode":"cooling"
+                                  "fanspeed":"high"	
+                                  "status":"on"
+                                 },
+                           responseprimaryid":1111
+                                 },
+                         },
+                                 
+//485新风
+{
+                           "uuid":"0081",
+ "errorcode":0
+"responseprimaryid":100
+ "actioninfo":
+{
+power":on
+ "mode":" humidity"
+"fanspeed":"high"	
+"cycletype":" inner"
+},
+},
+
+//relay新风
+{
+"primaryid":1
+"moduletype":" ventilation"
+"errorcode":0
+"responseprimaryid":101
+ "actioninfo":
+{
+power":on
+ "mode":" humidity"
+"fanspeed":"high"	
+"cycletype":" inner"
+},
+},
+                          {
+                                      .....
+                           },
+                        …..
+                      ],
+           },
+]
+ }
+
+
+2）修改场景联动规则
+Head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+Body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" configdevice"
+"moduletype":" scenariotrigger"
+"configtype":"modify",
+"status": "on/off",
+"primaryid":100
+"delaytime":120, // seconds
+"availabletime":{
+        "status":"on/off",
+        "starttime":"07:00 am",
+        "endtime":"10:00 am",
+        "frequency":"everydata/everyworkday",
+},
+"triggertype":"trigger",
+"aliasname":"Rule Name XXXXmodify",
+ "description":"这是第一个联动规则modify",
+ "condition":[
+        {//被修改或增加的device
+                "moduletype":"sparklighting",
+                "primaryid":199,（loop的primaryid）
+                 "configtype":"modify/add"
+                "actioninfo":
+                {
+                     "type":"valuelowerthan/valuehigherthan/alarm/event",
+                      "keytype":"temperature/batterylow/alarm",
+                      "keyvalue":"20/trigger"
+                  },
+        },  
+        //被删除的device
+        {
+                "moduletype":"sparklighting",
+                "primaryid":220,（loop的primaryid）
+                 "configtype":"delete"
+                //删除不用actioninfo
+        },
+        {
+              ………….   // second condition 
+        },
+],
+"triggeraction":[
+//被增加的
+        {
+               "type":"scenariocontrol",
+                  "configtype":"add"
+                 "actioninfo":{
+                             "scenarioid":1,
+                               "securitypwd":"1123445",
+                   }
+        },
+      //被修改的
+        {
+               "type":"scenariocontrol",
+                "primaryid":199,（trigerscenario的id）
+                  "configtype":"modify"
+                 "actioninfo":{
+                             "scenarioid":1,
+                               "securitypwd":"1123445",
+                   }
+        },
+//被删除的
+          {
+               "type":"scenariocontrol",
+                  "configtype":"delete"
+                "primaryid":200,（trigerscenario的id）
+                //删除不用actioninfo
+         },
+        {
+                 "type":"devicecontrol",
+                 "deviceloopmap":[
+                  //被增加或者是修改的的
+                          {
+                                "moduletype":"relay",
+                                 "configtype":"add"
+                                 primaryid":1000,(loop的primaryid)
+                               "actioninfo"
+                                {
+                                          "status":"on",
+                                           "openclosepercent":50
+                                  }
+                         },
+                         //被删除的
+                          {
+                                "moduletype":"relay",
+                                 "primaryid":1000,(loop的primaryid)
+                                 "configtype":"delete"
+                              //删除不用actioninfo
+                          },
+
+                          {
+                                      .....
+                           },
+                        …..
+                      ],
+           },
+]
+ }
+
+
+Head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+Body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" scenariotrigger"
+"configtype":"modify",
+"status": "on/off",
+"primaryid":100
+"delaytime":120, // seconds
+"availabletime":{
+        "status":"on/off",
+        "starttime":"07:00 am",
+        "endtime":"10:00 am",
+        "frequency":"everydata/everyworkday",
+},
+"triggertype":"trigger",
+"aliasname":"Rule Name XXXXmodify",
+ "description":"这是第一个联动规则modify",
+ "condition":[
+        {//被修改或增加的device
+                "moduletype":"sparklighting",
+                "primaryid":199,（loop的primaryid）
+                 "configtype":"modify/add"
+                  "responseprimaryid":200
+                  "errodcode":0
+                "actioninfo":
+                {
+                     "type":"valuelowerthan/valuehigherthan/alarm/event",
+                      "keytype":"temperature/batterylow/alarm",
+                      "keyvalue":"20/trigger"
+                  },
+        },  
+        //被删除的device
+        {
+                "moduletype":"sparklighting",
+                "primaryid":220,（loop的primaryid）
+                 "configtype":"delete"
+                //删除不用actioninfo
+                  "responseprimaryid":200
+                     "errodcode":0
+        },
+        {
+              ………….   // second condition 
+        },
+],
+"triggeraction":[
+      //被增加的
+        {
+               "type":"scenariocontrol",
+                  "configtype":"add"
+                   "errodcode":0
+                  "responseprimaryid":200
+                 "actioninfo":{
+                             "scenarioid":1,
+                               "securitypwd":"1123445",
+                   }
+        },
+
+      //被修改的
+        {
+               "type":"scenariocontrol",
+                "primaryid":199,（trigerscenario的primaryid）
+                  "configtype":"modify" 
+                  "errodcode":0
+                  "responseprimaryid":199
+                 "actioninfo":{
+                             "scenarioid":1,
+                               "securitypwd":"1123445",
+                   }
+        },
+//被删除的
+          {
+               "type":"scenariocontrol",
+                  "configtype":"delete"
+                     "errodcode":0
+                "primaryid":200,（trigerscenario的primaryid）
+                //删除不用actioninfo
+                  "responseprimaryid":200
+         },
+        {
+                 "type":"devicecontrol",
+                 "deviceloopmap":[
+                         //被增加或修改的
+                          {
+                                "moduletype":"relay",
+                                 "primaryid":1000,(loop的primaryid)
+                                  "configtype":"add/modify"
+                                 "responseprimaryid":200
+                                 "errodcode":0
+                               "actioninfo"
+                                {
+                                          "status":"on",
+                                           "openclosepercent":50
+                                  }
+                         },
+                         //被删除的
+                          {
+                                "moduletype":"relay",
+                                 "primaryid":1000,(loop的primaryid)
+                                 "configtype":"delete"
+                                 "errodcode":0
+                              //删除不用actioninfo
+                                "responseprimaryid":200
+                          },
+
+                          {
+                                      .....
+                           },
+                        …..
+                      ],
+           },
+]
+ }
+
+3）删除联调场景
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":" 2387r958273894",
+ "action":" request",
+"subaction":" configdevice",
+"moduletype":" scenariotrigger",
+"configtype":"delete",
+ "primaryid":1,
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":" 2387r958273894",
+ "action":" response",
+"subaction":" configdevice",
+"moduletype":" scenariotrigger",
+"configtype":"delete",
+"primaryid":1,
+ "errorcode":0,
+}
+
+
+4）获取联动规则
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":" 2387r958273894",
+ "action":"request",
+"subaction":" configdevice",
+"moduletype":" scenariotrigger",
+"primaryid":1,
+}
+
+
+Head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+Body
+{
+"msgid":"2387r958273894",                                                                                                  
+"action":"response",
+"subaction":" configdevice",
+"moduletype":" scenariotrigger",
+"primaryid":1,
+"status": "on/off",
+ "delaytime":120, // seconds
+ "availabletime":{
+             "starttime":"07:00 am",
+            "endtime":"10:00 am",
+            "frequency":"everydata/everyworkday",
+ },
+ "triggertype":"trigger",
+"aliasname":"Rule Name XXXX",
+ "description":"If detects abnormal event, sending message",
+ "condition":[
+        {
+                "moduletype":"sparklighting",
+                "moduleipaddr":"192.168.31.18",
+                "modulemacaddr":"11:22:33:44:55:66",
+                "loopid":1,
+                "type":"valuelowerthan/valuehigherthan/alarm/event",
+                "key":"temperature/batterylowalarm",
+                "value":"20/trigger"
+        },
+        {
+              ………….   // second condition 
+        },
+],
+"triggeraction":[
+        {
+               "type":"scenariocontrol",
+               "scenarioid":1,
+               "securitypwd":"1123445",
+        },
+        {
+                 "type":"devicecontrol",
+                 "deviceloopmap":[
+                          {
+                                 "moduletype":"sparklighting",
+                                 "moduleipaddr":"92.168.1.50",
+                                 "maskid":1,
+                                 "deviceid":6,
+                                 "loopid":1,
+                                 "looptype":"light",
+                                 "status":"on",
+                                 "openclosepercent":50,
+                         },
+                        {
+                                ……
+                          },
+                       ……
+                    ],
+                 
+        },
+]
+ "errorcode":0,
+ }
+
+
+5）Enable/Disable场景联动规则
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":" 2387r958273894",
+ "action":" request",
+"subaction":"configdevice",
+"moduletype":" scenariotrigger",
+"primaryid":1,
+ "switchstatus":"on/off",
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":" 2387r958273894",
+"action":" response",
+"subaction":" configdevice",
+"moduletype":" scenariotrigger",
+"primaryid":1,
+ "status":"on/off",
+ "errorcode":0
+}
+
+
+
+19.schedule规则
+1）schedule规则配置
+Head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+Body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" configdevice"
+"moduletype":" schedulerule"
+"configtype":"add",
+"status": "on/off",
+ "aliasname":"Rule Name XXXX",
+ "description":"If detects abnormal event, sending message",
+"availabletime":{//把这个json对象直接存储到数据库
+            "starttime":"13:30:00",
+            "frequency":"single/everyday/everyworkday/customize",
+            "customizedays":[
+                        {
+                                    "day":"sunday/monday/…"
+                        },
+                        …….
+            ]
+ },
+ "scheduleaction":[ 
+        {
+               "type":"scenariocontrol",
+                "actioninfo":{
+                             "scenarioid":1,
+                              "securitypwd":"1123445",
+                 }
+        },
+        {
+               "type":"scenariocontrol",
+                "actioninfo":{
+                             "scenarioid":2,
+                              "securitypwd":"1123445",
+                 }
+        },
+        {
+                 "type":"devicecontrol",
+                 "deviceloopmap":[
+                          {
+                                 "moduletype":"sparklighting",
+                                 "primaryid":100
+                                 "actioninfo":{
+                                                    "status":"on",
+                                                     "openclosepercent":50,
+                                   } 
+                         },
+                           {
+                                    "uuid":"0081",
+                                  "actioninfo":
+                                   {
+                                       settemp":23
+                                        "mode":"cooling"
+                                        "fanspeed":"high"	
+                                        "status":"on"
+                                       },
+                                 },
+
+                               {
+                                  "primaryid":1002
+                                  "moduletype":"bacnet"
+                                  "actioninfo":
+                                 {
+                                 settemp":25
+                                  "mode":"cooling"
+                                  "fanspeed":"high"	
+                                  "status":"on"
+                                 },
+                                 },
+  //485新风
+{
+                                    "uuid":"0081",
+ "actioninfo":
+{
+power":on
+ "mode":" humidity"
+"fanspeed":"high"	
+"cycletype":" inner"
+},
+},
+
+//relay新风
+{
+"primaryid":1
+"moduletype":" ventilation"
+ "actioninfo":
+{
+power":on
+ "mode":" humidity"
+"fanspeed":"high"	
+"cycletype":" inner"
+},
+},
+
+                        {
+                                ……
+                         },
+                       ……
+                    ],
+                 
+        },
+],
+ }
+
+
+
+Head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+Body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" schedulerule"
+"configtype":"add",
+"primaryid":100
+"status": "on/off",
+ "aliasname":"Rule Name XXXX",
+ "description":"If detects abnormal event, sending message",
+"availabletime":{//把这个json对象直接存储到数据库
+            "starttime":"13:30:00",
+            "frequency":"single/everyday/everyworkday/customize",
+            "customizedays":[
+                        {
+                                    "day":"sunday/monday/…"
+                        },
+                        …….
+            ]
+ },
+ "scheduleaction":[ 
+        {
+               "type":"scenariocontrol",
+                 "responseprimaryid":100
+                "actioninfo":{
+                             "scenarioid":1,
+                              "securitypwd":"1123445",
+                 }
+        },
+        {
+               "type":"scenariocontrol",
+                 "responseprimaryid":101
+                "actioninfo":{
+                             "scenarioid":2,
+                              "securitypwd":"1123445",
+                 }
+        },
+        {
+                 "type":"devicecontrol",
+                 "deviceloopmap":[
+                          {
+                                 "moduletype":"sparklighting",
+                                 "primaryid":100
+                                "responseprimaryid":100
+                                 "actioninfo":{
+                                                    "status":"on",
+                                                     "openclosepercent":50,
+                                   } 
+                         },
+                           {
+                                    "uuid":"0081",
+                                "responseprimaryid":100
+                                  "actioninfo":
+                                   {
+                                       settemp":23
+                                        "mode":"cooling"
+                                        "fanspeed":"high"	
+                                        "status":"on"
+                                       },
+                                 },
+
+                               {
+                                  "primaryid":1002
+                                  "moduletype":"bacnet"
+                                "responseprimaryid":100
+                                  "actioninfo":
+                                 {
+                                 settemp":25
+                                  "mode":"cooling"
+                                  "fanspeed":"high"	
+                                  "status":"on"
+                                 },
+                                 },
+//485新风
+{
+                                    "uuid":"0081",
+ "errorcode":0
+"responseprimaryid":100
+ "actioninfo":
+{
+power":on
+ "mode":" humidity"
+"fanspeed":"high"	
+"cycletype":" inner"
+},
+},
+
+//relay新风
+{
+"primaryid":1
+"moduletype":" ventilation"
+"errorcode":0
+"responseprimaryid":101
+ "actioninfo":
+{
+power":on
+ "mode":" humidity"
+"fanspeed":"high"	
+"cycletype":" inner"
+},
+},
+                        {
+                                ……
+                         },
+                       ……
+                    ],
+                 
+        },
+],
+ }
+
+
+
+2）修改schedule规则
+Head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+Body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" configdevice"
+"moduletype":" schedulerule"
+"configtype":"modify",
+"primaryid":1
+"status": "on/off",
+ "aliasname":"Rule Name XXXX",
+ "description":"If detects abnormal event, sending message",
+"availabletime":{//把这个json对象直接存储到数据库
+            "starttime":"13:30:00",
+            "frequency":"single/everyday/everyworkday/customize",
+            "customizedays":[
+                        {
+                                    "day":"sunday/monday/…"
+                        },
+                        …….
+            ]
+ },
+ "scheduleaction":[ 
+        //被增加的
+        {
+               "type":"scenariocontrol",
+                 "configtype":"add"
+                "actioninfo":{
+                             "scenarioid":1,
+                              "securitypwd":"1123445",
+                 }
+        },
+        //被修改的
+        {
+               "type":"scenariocontrol",
+                "primaryid":1（scedulescenario的primaryid）
+                 "configtype":"modify"
+                "actioninfo":{
+                             "scenarioid":1,
+                              "securitypwd":"1123445",
+                 }
+        },
+        //被删除的
+        {
+               "type":"scenariocontrol",
+                "primaryid":2（scedulescenario的primaryid）
+                 "configtype":"delete"
+        },
+        {
+                 "type":"devicecontrol",
+                 "deviceloopmap":[
+                          {
+                                 "moduletype":"sparklighting",
+                                 "primaryid":100（sceduledevice的primaryid）
+                                 "configtype":"add/modify"
+                                 "actioninfo":{
+                                                    "status":"on",
+                                                     "openclosepercent":50,
+                                   } 
+                         },
+                          {
+                                 "moduletype":"sparklighting",
+                                 "primaryid":101（sceduledevice的primaryid）
+                                 "configtype":"delete"
+                         },
+
+                        {
+                                ……
+                         },
+                       ……
+                    ],
+                 
+        },
+],
+ }
+
+
+
+Head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+Body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" schedulerule"
+"configtype":"modify",
+"primaryid":1
+"status": "on/off",
+ "aliasname":"Rule Name XXXX",
+ "description":"If detects abnormal event, sending message",
+"availabletime":{//把这个json对象直接存储到数据库
+            "starttime":"13:30:00",
+            "frequency":"single/everyday/everyworkday/customize",
+            "customizedays":[
+                        {
+                                    "day":"sunday/monday/…"
+                        },
+                        …….
+            ]
+ },
+ "scheduleaction":[ 
+         //被增加的
+         {
+               "type":"scenariocontrol",
+                 "configtype":"add"
+                "actioninfo":{
+                             "scenarioid":1,
+                              "securitypwd":"1123445",
+                 }
+                  "errodcode":0
+        },
+         //被修改的
+        {
+               "type":"scenariocontrol",
+                "primaryid":1（scedulescenario的primaryid）
+                 "configtype":"modify"
+                "actioninfo":{
+                             "scenarioid":1,
+                              "securitypwd":"1123445",
+                 }
+                  "errodcode":0
+        }
+//被删除的
+        {
+               "type":"scenariocontrol",
+                "primaryid":2（scedulescenario的primaryid）
+                 "configtype":"delete"
+                  "errodcode":0
+
+        },
+        {
+                 "type":"devicecontrol",
+                 "deviceloopmap":[
+                          {
+                                 "moduletype":"sparklighting",
+                                 "primaryid":100（sceduledevice的primaryid）
+                                 "configtype":"add/modify"
+                                 "actioninfo":{
+                                                    "status":"on",
+                                                     "openclosepercent":50,
+                                   } 
+                              "errodcode":0
+                         },
+                          {
+                                 "moduletype":"sparklighting",
+                                 "primaryid":101（sceduledevice的primaryid）
+                                 "configtype":"delete"
+                                  "errodcode":0
+                         },
+
+                        {
+                                ……
+                         },
+                       ……
+                    ],
+                 
+        },
+],
+ }
+
+
+
+3）Schedule规则删除
+Head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+Body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" configdevice"
+"moduletype":" schedulerule"
+"configtype":" delete",
+"primaryid":1,
+}
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":" 2387r958273894",
+ "action":" response",
+"subaction":" configdevice",
+"moduletype":" schedulerule",
+"configtype":"delete",
+"primaryid":1,
+ "errorcode":0
+ }
+
+
+4）Enable/Disable schedule规则
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" configdevice"
+"moduletype":" schedulerule"
+ "primaryid":1,
+"configtype":"modify",
+ "switchstatus":"on/off",
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" schedulerule"
+"primaryid":1,
+ "configtype":"modify",
+ "status":"on/off",
+ "errorcode":0
+}
+
+
+
+
+20. Cube Base事件上报
+1）SD卡/U盘插拔事件
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action": "event"
+"subaction": "cubedevevent"
+"eventtype":" sdcardin/sdcardout/sdcarderr/usbdiskin/usbdiskout/recordfail"
+}
+
+
+
+sdcardin: SD卡插入
+sdcardout:  SD卡弹出
+sdcarderr: SD卡读写出错，SD卡故障
+usbdiskin: U盘插入
+usbdiskout: U盘弹出
+recordfail: 录像失败
+
+2）录像事件
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action": "event"
+"subaction": "cubedevevent"
+"eventtype":"recordfail"
+}
+
+
+
+recordfail: 录像失败
+3）升级事件
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action": "event"
+"subaction": "upgrade"
+"moduletype":"cube"
+"upgradecmd":"result",
+"version":"0.0.1.1234",
+"releasedate":"2016-01-29",
+"errorcode":0
+}
+
+
+
+moduletype: cube/ 485/ 315M433M/ relay/ alarmzone
+errorcode: 
+	509：升级成功
+	508：正在升级
+	500：未知错误
+	501：升级包不正确
+	502：FLASH错误
+	503：硬件故障
+21. room
+1）添加自定义room 
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"request"
+"subaction":" configmodule"
+"moduletype":" room"
+"aliasname":"自定义room1"
+ "configtype":"add"
+"imagename":"room1"
+}
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configmodule"
+"moduletype":" room"
+"aliasname":"自定义room1"
+ "configtype":"add"
+"responseid":1
+"imagename":"room1"
+"errorcode":0
+}
+
+
+
+2）编辑roomname
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request",
+"subaction":"configmodule"
+"moduletype":" room"
+ "configtype":"modify"
+"primaryid":3
+"aliasname":"room1修改"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response",
+"subaction":"configmodule"
+"moduletype":" room"
+ "configtype":"modify"
+"primaryid":3
+"aliasname":"room1修改"
+"errorcode":0
+}
+
+
+3）删除roomname
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+ "action":"request",
+"subaction":" configmodule"
+"moduletype":"room"
+"primaryid":2
+ "configtype":"delete"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{                                                         
+"msgid":"2387r958273894"                                                                                                  
+"action":"response"
+"subaction":" configmodule"
+"errorcode":0
+ "moduletype":" sparklighting"
+"primaryid":2
+ "configtype":"delete"
+}
+
+
+
+22. environment查询
+1）查询某个房间的temperature, humidity,pm2.5 
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" readdevice"
+"moduletype":" room"
+ "roomloopmap"
+[
+{
+"roomid":1
+ "type":" temperature"
+},
+{
+"roomid":2
+ "type":" humidity"
+},
+{
+"roomid":3
+ ""type":" pm2.5" 
+},
+]
+}
+
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" readdevice"
+"moduletype":" room"
+ "roomloopmap"
+[
+{
+"roomid":1
+ "type":" temperature"
+"value":"25"(统一用字符串，以防有些参数无法量化)
+"errorcode":0
+},
+{
+"roomid":2
+ "type":" humidity"
+"value":"100"
+"errorcode":0
+},
+{
+"roomid":3
+ ""type":" pm2.5"
+"value":"55"
+"errorcode":0
+},
+]
+}
+
+
+23. 查看IPC联调报警录像 
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":"playipc"
+"moduletype":"ipc"
+ "moduleipaddr":"192.168.1.50",
+ "timestamp":"2016-04-16T1:20:30Z"
+
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":"playipc"
+"moduletype":"ipc"
+ "moduleipaddr":"192.168.1.50",
+ "timestamp":" 2016-04-07T1:20:30Z"
+ "errorcode":0
+
+
+
+
+24. 配置备份与恢复 
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"request",
+"subaction":" configbackup",
+"moduletype":" cube" ,
+"description":"增加新场景。。。。。"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configbackup",
+"moduletype":" cube" ,
+ "errorcode":0
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"request",
+"subaction":" configrecovery",
+"moduletype":" cube",
+"dataid":"config backup file id"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configrecovery",
+"moduletype":" cube",
+"dataid":"config backup file id"
+ "errorcode":0
+}
+
+
+
+
+25. 语音识别开关(默认关)
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":"configvoicerecognize"
+"moduletype":"cube"
+"status":"on"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":"configvoicerecognize"
+"moduletype":"cube"
+"status":"on"
+"errorcode":0
+}
+
+
+
+26. 获取天气预报，时间，房间情况
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":"ipvdpgetdisplayinfo"
+"moduletype":"ipvdp"
+"displayinfoloop"
+[
+{
+"keytype":"systemtime"
+},
+{
+"keytype":"weatherinfo"
+}
+{
+"keytype":"roomhealthinfo"
+"roomid":1
+}
+]
+
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":"ipvdpgetdisplayinfo"
+"moduletype":"ipvdp"
+"displayinfoloop"
+[
+{
+"keytype":"systemtime"
+"keyvalue":" 1462222321"
+"errorcode":"0"
+},
+{
+"keytype":"weatherinfo"
+"weathertype":"thunderstorm"
+"tempvalue":22
+"humidityvalue":100
+"pm25value":234
+"pm25text":" good"
+"errorcode":"0"
+}
+{
+"keytype":"roomhealthinfo"
+"roomid":1
+"tempvalue":22
+"humidityvalue":100
+"pm25value":234
+"co2Value":222
+"pm25text":" good"
+"co2Text":"good"
+"errorcode":"0"
+}
+]
+}
+
+
+
+27. 通用控制协议
+1）新风控制
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+ "msgid":"2387r958273894",
+ "action":"request",
+ "subaction":"setdevice",
+ "moduletype":"ventilation",
+ "controltype":"relay/485", //default: relay
+ "deviceloopmap":
+[
+    {
+    "primaryid":100,
+    "power":"on/off",
+    "mode":"humidity/dehumidity/auto/off/outside",
+    "fanspeed":"high/low/middle",
+    "cycletype":"inner/outside"
+    },
+]
+}
+备注：
+Relay新风:
+以上字段都会用到，支持单个控制，如只控制风速；也支持全发，即以上字段全发给cube。其中，mode只有humidity和dehumidity。
+485新风:
+只使用primaryid/mode/fanspeed三个字段。
+
+	
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"response",
+"subaction":"setdevice",
+"moduletype":"ventilation",
+"controltype":"relay/485", //default: relay
+"deviceloopmap":
+[
+    {
+    "primaryid":100,
+    "power":"on/off"
+    "mode":"humidity/dehumidity",
+    "fanspeed":"high/low/middle",
+    "cycletype":"inner/outside",
+    "errorcode":0
+    },
+]
+}
+
+
+
+2）新风查询
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"request",
+"subaction":"readdevice",
+"moduletype":"ventilation",
+"controltype":"relay/485", //default: relay
+"deviceloopmap":
+[
+    {
+    "primaryid":100,
+    },
+]
+}
+
+
+
+	
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"response",
+"subaction":"readdevice",
+"moduletype":"ventilation",
+"controltype":"relay/485", //default: relay
+"deviceloopmap":
+[
+    {
+    "primaryid":100,
+    "power":"on/off",
+    "mode":"humidity/dehumidity/auto/off/outside",
+    "fanspeed":"high/low/middle",
+    "cycletype":"inner/outside",   
+    "temperature":"25", //可选
+    "humidity":"60",//可选
+    "co2":"80",//可选
+    "pm25":"300",//可选
+    "errorcode":0
+    },
+]
+}
+备注
+Relay新风:
+除了可选字段，其他都会有返回数据。
+485新风:
+只使用primaryid/mode/fanspeed三个字段。
+
+
+3）空气质量查询
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"request",
+"subaction":"readdevice",
+"moduletype":"enviroinfo",
+"controltype":"iaq/485/sparklighting/bacnet",
+"deviceloopmap":
+[
+    {
+    "primaryid":100
+    },
+]
+}
+
+
+
+	
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894",
+"action":"response",
+"subaction":"enviroinfo",
+"moduletype":"iaq/485/sparklighting/bacnet",
+"deviceloopmap":
+[
+    {
+    "primaryid":100,
+    "temperature":"25", //可选
+    "humidity":"60",//可选
+    "co2":"80",//可选
+    "pm25":"300",//可选
+    "errorcode":0
+    },
+]
+}
+备注
+可选字段，如果设备不支持，可以不填。如果支持，一次性全部获取。
+
+
+28.iaq配置及控制
+1）发现iaq小模块
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+        "Type": "HEJ-IAQ_223344",
+        "IP":" 192.168.1.125 ",
+        "MAC":"00:1f:11:22:33:44",
+        "MAF":"Honeywell",
+        "VER":"2015080912"
+}
+
+
+2）修改iaq小模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule"
+"moduletype":"iaq"
+"primaryid":4
+ "configtype":"modify"
+"aliasname":"iaq设备modify"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configmodule"
+"errorcode":0
+"configtype":"modify"
+ "moduletype":" iaq"
+"primaryid":4
+ "aliasname":"iaq设备modify"
+}
+
+
+3）删除iaq小模块
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"request"
+"subaction":" configmodule"
+"moduletype":"iaq"
+"primaryid":3
+ "configtype":"delete"
+}
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"msgid":"2387r958273894"
+"action":"response"
+"subaction":" configmodule"
+"errorcode":0
+"configtype":"delete"
+ "moduletype":" iaq"
+"primaryid":3
+}
+
+
+4）配置iaq回路(虚拟回路,为了增加房间及名字的概念)
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"request",
+"subaction":" configdevice"
+"moduletype":" iaq"
+"primaryid":100（外围设备表的id）
+ "configtype":"add"
+"deviceloopmap"
+[
+{
+"loopid":1
+ "roomid":1
+ "aliasname":"主卧iaq"
+}
+]
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"response"
+"subaction":" configdevice"
+"moduletype":" iaq"
+"primaryid":100
+ "configtype":"add"
+ "deviceloopmap"
+[
+{
+"loopid":1
+"errorcode":0
+ "roomid":1
+ "aliasname":"主卧iaq"
+"responseprimaryid":1（loop的唯一id，64位long类型）
+}
+]
+}
+
+
+5）修改iaq回路（虚拟回路）
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"request",
+"subaction":"configdevice"
+"moduletype":" iaq"
+ "configtype":"modify"
+"deviceloopmap"
+[
+{
+"primaryid":4
+ "roomid":2
+ "aliasname":"我的次卧iaq"
+}
+]
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"response"
+"subaction":"configdevice"
+"moduletype":" iaq"
+ "configtype":" modify"
+ "deviceloopmap"
+[
+{
+"primaryid":4
+ "errorcode":0
+ "roomid":2
+"aliasname":"我的次卧iaq"
+}
+]
+}
+
+
+6）删除iaq回路
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"request",
+"subaction":" configdevice"
+"moduletype":" iaq"
+ "configtype":"delete"
+"deviceloopmap"
+[
+{
+"primaryid":3
+}
+]
+ }
+
+
+
+head
+PHONE_CUBE_PROTOCOL 0x00  0x********
+body
+{
+"action":"response"
+"subaction":"configdevice"
+"moduletype":" iaq"
+ "configtype":" delete"
+ "deviceloopmap"
+[
+{
+"primaryid":3
+"errorcode":0
+}
+]
+}
+
+
+
+说明：
+1.       协议头24个字节，前19个是字符串常量"PHONE_CUBE_PROTOCOL"，二进制值是50 48 4F 4E 45 5F 43 55 42 45 5F 50 52 4F 54 4F 43 4F 4C，第20个字节表示是否加密，填0即可。第21~24是body长度，第25个开始是文档中的JSON协议。例如心跳，{"msgid":"2387r958273894","action":"request","subaction":"heartbeat"}，包含协议头的完整的二进制数据是：50 48 4F 4E 45 5F 43 55 42 45 5F 50 52 4F 54 4F 43 4F 4C 00 00 00 00 44 7B 22 6D 73 67 69 64 22 3A 22 32 33 38 37 72 39 35 38 32 37 33 38 39 34 22 2C 22 61 63 74 69 6F 6E 22 3A 22 72 65 71 75 65 73 74 22 2C 22 73 75 62 61 63 74 69 6F 6E 22 3A 22 68 65 61 72 74 62 65 61 74 22 7D
+红色是协议头；桔色是否加密；紫色是body部分数据长度，即绿色数据的长度，大端（低地址是高位）；绿色是具体协议内容。
+2.       TCP建立连接后，直接按照协议以上协议发送数据即可。长连接。TCP 端口9000
+3.       msgid没有规则限制，用于APP异步处理时，request跟response对应。例如同时发送开灯和开空调，APP收到response后，对应到相应的request。
+4.       cubeid指cube的二维码，类似于"001F552A0002"这样的字符串。
+5.       心跳超时时间2分钟，如果2分钟内没有收到任何心跳包和消息，连接会断开。收到的任何有效消息都等同于心跳包。如果APP不发送任何消息给Cube，需要维持长连接，需要发送心跳包。
+错误码 说明
+0 成功
+1 协议参数无效
+2 请求超时
+3 操作/控制失败
+4 操作/控制过于频繁
+
+ 100 已登陆并认证通过
+101 用户名或密码错误
+102 未登陆/认证
+
+ 200 无此路设备
+201 设备参数错误
+202 此路设备已存在
+203 设备控制失败
+204 密码错误
+205 未检测到SD卡
+206 设备正在场景/规则中使用
+207 设备超过上限
+208 房间无此设备
+
+ 300 防区异常
+301 安放密码错误
+302 无此场景
+
+ 500 升级异常
+501 升级文件异常
+502 设备存储异常
+503 设备硬件故障
+504 无新版本可升级
+508 正在升级
+509 升级结束
+510 因升级重启系统， 通知
+511 因回复出场设置重启， 通知
+512 恢复配置成功， 通知
+513 恢复配置失败， 通知
+514 备份配置成功， 通知
+515 备份配置失败， 通知
+
+ 600 视频超过数量限制
+601 视频播放出错
+
+ 700 无法读取房间设备数据

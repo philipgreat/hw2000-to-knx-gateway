@@ -1,0 +1,38 @@
+1.      APP登陆cube&心跳
+1)      APP用cubeid登陆cube
+
+7）查询485空调状态
+8）设置485空调状态
+
+12）查询温控器状态
+13）设置温控器状态
+
+7）查询bacnet空调状态
+8）设置bacnet空调状态
+
+15）查询sparklighting 灯光状态
+16）设置sparklighting 灯光状态
+17）查询sparklighting 窗帘状态
+18）设置sparklighting 窗帘状态
+19）查询sparklighting relay状态
+20）设置sparklighting relay状态
+21）查询sparklighting 空气质量状态
+
+7）设置relay回路状态
+8）查询relay回路状态
+
+7）backaudio控制
+8）backaudio查询
+
+4）获取联动规则
+5）Enable/Disable场景联动规则
+
+1）查询某个房间的temperature, humidity,pm2.5
+
+1）新风控制
+2）新风查询
+3）空气质量查询
+
+
+
+
