@@ -1,0 +1,664 @@
+晖晖：
+
+拿回来测试下Cube，认证和取得配置信息都可以运行。你简单核对下跟你的配置是否契合。
+
+- 明天我再测试下控制灯光、窗帘盒场景
+
+
+
+{
+    "moduleversion": "0.3.0",
+    "armstatus": 0,
+    "msgid": "1504463653335",
+    "subaction": "getdeviceconfig",
+    "configdata": [
+        {
+            "cubebase": [
+                {
+                    "_id": 1,
+                    "conf_value": "001F552A0562",
+                    "conf_name": "CUBE_ID"
+                },
+                {
+                    "_id": 2,
+                    "conf_value": "12345",
+                    "conf_name": "CUBE_PWD"
+                },
+                {
+                    "_id": 3,
+                    "conf_value": "homesystem",
+                    "conf_name": "WIFI_SSID"
+                },
+                {
+                    "_id": 4,
+                    "conf_value": "123456",
+                    "conf_name": "WIFI_PWD"
+                },
+                {
+                    "_id": 5,
+                    "conf_value": "WEP2",
+                    "conf_name": "WIFI_ENC_TYPE"
+                },
+                {
+                    "_id": 6,
+                    "conf_value": "192.168.0.100",
+                    "conf_name": "WIFI_IP"
+                },
+                {
+                    "_id": 7,
+                    "conf_value": "255.255.255.0",
+                    "conf_name": "WIFI_MASK"
+                },
+                {
+                    "_id": 8,
+                    "conf_value": "192.168.0.254",
+                    "conf_name": "WIFI_GW"
+                },
+                {
+                    "_id": 9,
+                    "conf_value": "172.16.1.100",
+                    "conf_name": "LAN_IP"
+                },
+                {
+                    "_id": 10,
+                    "conf_value": "255.255.0.0",
+                    "conf_name": "LAN_MASK"
+                },
+                {
+                    "_id": 11,
+                    "conf_value": "172.16.1.254",
+                    "conf_name": "LAN_GW"
+                },
+                {
+                    "_id": 12,
+                    "conf_value": "8.8.8.8",
+                    "conf_name": "DNS_SERVER1"
+                },
+                {
+                    "_id": 13,
+                    "conf_value": "6.6.6.6",
+                    "conf_name": "DNS_SERVER2"
+                },
+                {
+                    "_id": 14,
+                    "conf_value": "0.0.0.0",
+                    "conf_name": "HNS_SERVER_IP"
+                },
+                {
+                    "_id": 15,
+                    "conf_value": "https:\/\/www.",
+                    "conf_name": "CLOUD_SERV1"
+                },
+                {
+                    "_id": 16,
+                    "conf_value": "My Cube",
+                    "conf_name": "NICK_NAME"
+                },
+                {
+                    "_id": 17,
+                    "conf_value": "123",
+                    "conf_name": "BACNET_ID"
+                },
+                {
+                    "_id": 18,
+                    "conf_value": "88",
+                    "conf_name": "CONFIG_VER"
+                },
+                {
+                    "_id": 19,
+                    "conf_value": "123456",
+                    "conf_name": "SECURITYPWD"
+                },
+                {
+                    "_id": 20,
+                    "conf_value": "101",
+                    "conf_name": "CURSCENARIOID"
+                },
+                {
+                    "_id": 21,
+                    "conf_value": "manual",
+                    "conf_name": "ETHMODE"
+                },
+                {
+                    "_id": 22,
+                    "conf_value": "eth1",
+                    "conf_name": "ETHNAME"
+                },
+                {
+                    "_id": 23,
+                    "conf_value": "10.2.2.5",
+                    "conf_name": "ETHIP"
+                },
+                {
+                    "_id": 24,
+                    "conf_value": "255.0.0.0",
+                    "conf_name": "ETHMASK"
+                },
+                {
+                    "_id": 25,
+                    "conf_value": "10.0.0.1",
+                    "conf_name": "ETHGW"
+                },
+                {
+                    "_id": 26,
+                    "conf_value": "10.0.0.1",
+                    "conf_name": "ETHDNS1"
+                },
+                {
+                    "_id": 27,
+                    "conf_value": "10.0.0.2",
+                    "conf_name": "ETHDNS2"
+                }
+            ]
+        },
+        {
+            "peripheraldevice": [
+                {
+                    "port": 9000,
+                    "isonline": 1,
+                    "isconfig": 1,
+                    "mac_addr": "",
+                    "ip_addr": "192.168.0.250",
+                    "_id": 1,
+                    "mask_id": 1,
+                    "name": "Spark Lighting",
+                    "type": 1,
+                    "version": "0.0.1"
+                }
+            ]
+        },
+        {
+            "backaudiodevice": []
+        },
+        {
+            "ipvdproomloop": []
+        },
+        {
+            "sparklightingloopmap": [
+                {
+                    "loop_type": 3,
+                    "sub_dev_id": 2,
+                    "roomid": 6,
+                    "loop_id": 1,
+                    "sub_dev_type": "HBLS-R0810",
+                    "_id": 1,
+                    "dev_id": 1,
+                    "room_name": "客厅",
+                    "loop_name": "relay 1",
+                    "is_enable": 1
+                },
+                {
+                    "loop_type": 3,
+                    "sub_dev_id": 2,
+                    "roomid": 6,
+                    "loop_id": 2,
+                    "sub_dev_type": "HBLS-R0810",
+                    "_id": 2,
+                    "dev_id": 1,
+                    "room_name": "客厅",
+                    "loop_name": "relay 2",
+                    "is_enable": 1
+                },
+                {
+                    "loop_type": 3,
+                    "sub_dev_id": 2,
+                    "roomid": 6,
+                    "loop_id": 3,
+                    "sub_dev_type": "HBLS-R0810",
+                    "_id": 3,
+                    "dev_id": 1,
+                    "room_name": "客厅",
+                    "loop_name": "relay 3",
+                    "is_enable": 1
+                },
+                {
+                    "loop_type": 3,
+                    "sub_dev_id": 2,
+                    "roomid": 1,
+                    "loop_id": 4,
+                    "sub_dev_type": "HBLS-R0810",
+                    "_id": 4,
+                    "dev_id": 1,
+                    "room_name": "主卧",
+                    "loop_name": "relay 4",
+                    "is_enable": 1
+                },
+                {
+                    "loop_type": 3,
+                    "sub_dev_id": 2,
+                    "roomid": 1,
+                    "loop_id": 5,
+                    "sub_dev_type": "HBLS-R0810",
+                    "_id": 5,
+                    "dev_id": 1,
+                    "room_name": "主卧",
+                    "loop_name": "relay 5",
+                    "is_enable": 1
+                },
+                {
+                    "loop_type": 3,
+                    "sub_dev_id": 2,
+                    "roomid": 1,
+                    "loop_id": 6,
+                    "sub_dev_type": "HBLS-R0810",
+                    "_id": 6,
+                    "dev_id": 1,
+                    "room_name": "主卧",
+                    "loop_name": "relay 6",
+                    "is_enable": 1
+                },
+                {
+                    "loop_type": 3,
+                    "sub_dev_id": 2,
+                    "roomid": 5,
+                    "loop_id": 7,
+                    "sub_dev_type": "HBLS-R0810",
+                    "_id": 7,
+                    "dev_id": 1,
+                    "room_name": "餐厅",
+                    "loop_name": "relay 7",
+                    "is_enable": 1
+                },
+                {
+                    "loop_type": 3,
+                    "sub_dev_id": 2,
+                    "roomid": 5,
+                    "loop_id": 8,
+                    "sub_dev_type": "HBLS-R0810",
+                    "_id": 8,
+                    "dev_id": 1,
+                    "room_name": "餐厅",
+                    "loop_name": "relay 8",
+                    "is_enable": 1
+                },
+                {
+                    "loop_type": 1,
+                    "sub_dev_id": 4,
+                    "roomid": 6,
+                    "loop_id": 1,
+                    "sub_dev_type": "HBLS-D0403",
+                    "_id": 17,
+                    "dev_id": 1,
+                    "room_name": "客厅",
+                    "loop_name": "light 1",
+                    "is_enable": 1
+                },
+                {
+                    "loop_type": 1,
+                    "sub_dev_id": 4,
+                    "roomid": 6,
+                    "loop_id": 2,
+                    "sub_dev_type": "HBLS-D0403",
+                    "_id": 18,
+                    "dev_id": 1,
+                    "room_name": "客厅",
+                    "loop_name": "light 2",
+                    "is_enable": 1
+                },
+                {
+                    "loop_type": 1,
+                    "sub_dev_id": 4,
+                    "roomid": 1,
+                    "loop_id": 3,
+                    "sub_dev_type": "HBLS-D0403",
+                    "_id": 19,
+                    "dev_id": 1,
+                    "room_name": "主卧",
+                    "loop_name": "light 3",
+                    "is_enable": 1
+                },
+                {
+                    "loop_type": 1,
+                    "sub_dev_id": 4,
+                    "roomid": 5,
+                    "loop_id": 4,
+                    "sub_dev_type": "HBLS-D0403",
+                    "_id": 20,
+                    "dev_id": 1,
+                    "room_name": "餐厅",
+                    "loop_name": "light 4",
+                    "is_enable": 1
+                },
+                {
+                    "loop_type": 2,
+                    "sub_dev_id": 3,
+                    "roomid": 6,
+                    "loop_id": 1,
+                    "sub_dev_type": "HBLS-C02",
+                    "_id": 21,
+                    "dev_id": 1,
+                    "room_name": "客厅",
+                    "loop_name": "curtain 1",
+                    "is_enable": 1
+                },
+                {
+                    "loop_type": 2,
+                    "sub_dev_id": 3,
+                    "roomid": 1,
+                    "loop_id": 2,
+                    "sub_dev_type": "HBLS-C02",
+                    "_id": 22,
+                    "dev_id": 1,
+                    "room_name": "主卧",
+                    "loop_name": "curtain 2",
+                    "is_enable": 1
+                }
+            ]
+        },
+        {
+            "scenarioloopmap": [
+                {
+                    "moduletype": 1,
+                    "_id": 1,
+                    "dev_id": 17,
+                    "scenario_name": "灯光全开",
+                    "scenario_id": 101,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":75,\"status\":\"on\"}",
+                    "imagename": "scenario_customize"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 2,
+                    "dev_id": 18,
+                    "scenario_name": "灯光全开",
+                    "scenario_id": 101,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":76,\"status\":\"on\"}",
+                    "imagename": "scenario_customize"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 3,
+                    "dev_id": 19,
+                    "scenario_name": "灯光全开",
+                    "scenario_id": 101,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":77,\"status\":\"on\"}",
+                    "imagename": "scenario_customize"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 4,
+                    "dev_id": 20,
+                    "scenario_name": "灯光全开",
+                    "scenario_id": 101,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":77,\"status\":\"on\"}",
+                    "imagename": "scenario_customize"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 5,
+                    "dev_id": 1,
+                    "scenario_name": "灯光全开",
+                    "scenario_id": 101,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"on\"}",
+                    "imagename": "scenario_customize"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 6,
+                    "dev_id": 2,
+                    "scenario_name": "灯光全开",
+                    "scenario_id": 101,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"on\"}",
+                    "imagename": "scenario_customize"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 7,
+                    "dev_id": 3,
+                    "scenario_name": "灯光全开",
+                    "scenario_id": 101,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"on\"}",
+                    "imagename": "scenario_customize"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 8,
+                    "dev_id": 4,
+                    "scenario_name": "灯光全开",
+                    "scenario_id": 101,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"on\"}",
+                    "imagename": "scenario_customize"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 9,
+                    "dev_id": 5,
+                    "scenario_name": "灯光全开",
+                    "scenario_id": 101,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"on\"}",
+                    "imagename": "scenario_customize"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 10,
+                    "dev_id": 6,
+                    "scenario_name": "灯光全开",
+                    "scenario_id": 101,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"on\"}",
+                    "imagename": "scenario_customize"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 11,
+                    "dev_id": 7,
+                    "scenario_name": "灯光全开",
+                    "scenario_id": 101,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"on\"}",
+                    "imagename": "scenario_customize"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 12,
+                    "dev_id": 8,
+                    "scenario_name": "灯光全开",
+                    "scenario_id": 101,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"on\"}",
+                    "imagename": "scenario_customize"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 13,
+                    "dev_id": 17,
+                    "scenario_name": "灯光全关",
+                    "scenario_id": 102,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"off\"}",
+                    "imagename": "scenario_sleep"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 14,
+                    "dev_id": 18,
+                    "scenario_name": "灯光全关",
+                    "scenario_id": 102,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"off\"}",
+                    "imagename": "scenario_sleep"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 15,
+                    "dev_id": 19,
+                    "scenario_name": "灯光全关",
+                    "scenario_id": 102,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"off\"}",
+                    "imagename": "scenario_sleep"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 16,
+                    "dev_id": 20,
+                    "scenario_name": "灯光全关",
+                    "scenario_id": 102,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"off\"}",
+                    "imagename": "scenario_sleep"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 17,
+                    "dev_id": 1,
+                    "scenario_name": "灯光全关",
+                    "scenario_id": 102,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"off\"}",
+                    "imagename": "scenario_sleep"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 18,
+                    "dev_id": 2,
+                    "scenario_name": "灯光全关",
+                    "scenario_id": 102,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"off\"}",
+                    "imagename": "scenario_sleep"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 19,
+                    "dev_id": 3,
+                    "scenario_name": "灯光全关",
+                    "scenario_id": 102,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"off\"}",
+                    "imagename": "scenario_sleep"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 20,
+                    "dev_id": 4,
+                    "scenario_name": "灯光全关",
+                    "scenario_id": 102,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"off\"}",
+                    "imagename": "scenario_sleep"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 21,
+                    "dev_id": 5,
+                    "scenario_name": "灯光全关",
+                    "scenario_id": 102,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"off\"}",
+                    "imagename": "scenario_sleep"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 22,
+                    "dev_id": 6,
+                    "scenario_name": "灯光全关",
+                    "scenario_id": 102,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"off\"}",
+                    "imagename": "scenario_sleep"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 23,
+                    "dev_id": 7,
+                    "scenario_name": "灯光全关",
+                    "scenario_id": 102,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"off\"}",
+                    "imagename": "scenario_sleep"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 24,
+                    "dev_id": 8,
+                    "scenario_name": "灯光全关",
+                    "scenario_id": 102,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"off\"}",
+                    "imagename": "scenario_sleep"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 25,
+                    "dev_id": 21,
+                    "scenario_name": "窗帘全开",
+                    "scenario_id": 103,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"opening\"}",
+                    "imagename": "scenario_leave"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 26,
+                    "dev_id": 22,
+                    "scenario_name": "窗帘全开",
+                    "scenario_id": 103,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"opening\"}",
+                    "imagename": "scenario_leave"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 27,
+                    "dev_id": 21,
+                    "scenario_name": "窗帘全关",
+                    "scenario_id": 104,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"closing\"}",
+                    "imagename": "scenario_leave"
+                },
+                {
+                    "moduletype": 1,
+                    "_id": 28,
+                    "dev_id": 22,
+                    "scenario_name": "窗帘全关",
+                    "scenario_id": 104,
+                    "isarm": 0,
+                    "actioninfo": "{\"openclosepercent\":0,\"status\":\"closing\"}",
+                    "imagename": "scenario_leave"
+                }
+            ]
+        },
+        {
+            "roomloopmap": [
+                {
+                    "_id": 1,
+                    "imagename": "master_bedroom",
+                    "room_name": "主卧"
+                },
+                {
+                    "_id": 5,
+                    "imagename": "dining_room",
+                    "room_name": "餐厅"
+                },
+                {
+                    "_id": 6,
+                    "imagename": "living_room",
+                    "room_name": "客厅"
+                }
+            ]
+        }
+    ],
+    "moduleipaddr": "192.168.0.104",
+    "version": "88",
+    "modulemacaddr": "00:1F:55:2A:05:62",
+    "securitypwd": "123456",
+    "moduletype": "cube",
+    "aliasname": "My Cube",
+    "action": "response",
+    "errorcode": 0,
+    "ethip": "10.2.2.5",
+    "scenarioid": 101,
+    "voicerecognizestatus": "0",
+    "securityscenarioid": 4
+}

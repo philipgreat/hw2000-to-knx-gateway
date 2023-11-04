@@ -105,7 +105,7 @@ return  CoreGateway
 
 
 --[[ 
-Honeywell
+Honeywell
 verify：命令类型；
 token：加密字符串
 例如用户验证成功，得到的验证回复为：

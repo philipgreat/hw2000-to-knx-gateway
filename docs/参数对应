@@ -1,0 +1,13 @@
+          {
+                    "loop_type": 1,
+                    "sub_dev_id": 4,
+                    "roomid": 6,
+                    "loop_id": 2,
+                    "sub_dev_type": "HBLS-D0403",
+                    "_id": 18,
+                    "dev_id": 1,
+                    "room_name": "客厅",
+                    "loop_name": "light 2",
+                    "is_enable": 1
+                },
+                
